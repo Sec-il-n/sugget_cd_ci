@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      suggest: プロジェクト
+      user: ユーザー
+      # categories: カテゴリー
+      # corporations: 企業
+      # self_employees: 個人事業主
+    attributes:
+      suggest:
+        title: タイトル
+        details: 詳細
+      user:
+        user_name: ユーザー名
+        email: メールアドレス
+        password: パスワード
