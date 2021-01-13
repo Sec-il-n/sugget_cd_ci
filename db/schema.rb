@@ -10,14 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_171940) do
+ActiveRecord::Schema.define(version: 2021_01_15_064736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "corporations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "info", null: false
+    t.string "image"
+    t.integer "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "text"
+    t.boolean "read", default: false
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "proprietorships", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "info", null: false
+    t.string "image"
+    t.integer "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_rooms_on_recipient_id"
+    t.index ["sender_id", "recipient_id"], name: "index_rooms_on_sender_id_and_recipient_id", unique: true
+    t.index ["sender_id"], name: "index_rooms_on_sender_id"
+  end
+
+  create_table "suggest_tags", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "suggest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["suggest_id"], name: "index_suggest_tags_on_suggest_id"
+    t.index ["tag_id"], name: "index_suggest_tags_on_tag_id"
+  end
+
   create_table "suggests", force: :cascade do |t|
     t.string "title", null: false
     t.string "details", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_suggests_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,9 +91,22 @@ ActiveRecord::Schema.define(version: 2021_01_09_171940) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_image"
+    t.boolean "admin", default: false
+    t.bigint "corporation_id"
+    t.bigint "proprietorship_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["corporation_id"], name: "index_users_on_corporation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["proprietorship_id"], name: "index_users_on_proprietorship_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "suggest_tags", "suggests"
+  add_foreign_key "suggest_tags", "tags"
+  add_foreign_key "suggests", "users"
+  add_foreign_key "users", "corporations"
+  add_foreign_key "users", "proprietorships"
 end

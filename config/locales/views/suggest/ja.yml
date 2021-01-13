@@ -1,6 +1,17 @@
 ja:
   suggests:
+    new:
+      title: 新規投稿
     index:
       suggestions: プロジェクト一覧
       login: ログイン
       registration: 新規登録
+      show: 新規提案・プロジェクト詳細
+      overview: 概要
+      info: 企業詳細
+    create:
+      suggest:
+        created: 新規投稿が完了しました
+        create_faild: 新規投稿に失敗しました
+    show:
+      title: 提案・プロジェクト名

@@ -10,6 +10,7 @@ ja:
       suggest:
         title: タイトル
         details: 詳細
+      suggest_tags:
       user:
         user_name: ユーザー名
         email: メールアドレス

@@ -1,0 +1,6 @@
+<h1>Rooms#index</h1>
+<% @rooms.each do |room| %>
+  <% if room.target_user(current_user).present? %>
+    <%= link_to room.target_user(current_user).user_name, room_messages_path(room) %>
+  <% end %>
+<% end %>

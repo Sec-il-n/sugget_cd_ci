@@ -1,0 +1,15 @@
+<% @messages.each do |message| %>
+  <% if message.text.present? %>
+    <%= message.user.user_name %>
+    <%= message.message_time %>
+    <%= message.text %>
+    <% if message.user == current_user %>
+      <%= message.read ? '既読' : '未読' %>
+    <% end %>
+  <% end %>
+<% end %>
+<% form_with(model: [@room, @message])do |f| %>
+  <%= f.text_area :text, class: "form-control" %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+  <%= f.submit "送信" %>
+<% end %>
