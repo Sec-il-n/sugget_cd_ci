@@ -1,16 +1,16 @@
 # 1.times do |n|
-#   # name = "#{Faker::Name.name}.corp"
-#   # info = "aaa"
-#   # image = nil
-#   # category = [1,2,3].sample
-#   # corporation = Corporation.create!(
-#   #   name: name,
-#   #   info: info,
-#   #   image: image,
-#   #   category: category
-#   # )
+#   name = "#{Faker::Name.name}.prop"
+#   info = "aaa"
+#   image = nil
+#   category_id = rand(1..11)#複数
+#   corporation = Corporation.create!(
+#     name: name,
+#     info: info,
+#     image: image,
+#     category_id: category_id,
+#   )
 #   user_name = Faker::Name.name
-#   email = "user_1_#{n}@hoge#{n}.jp"
+#   email = "user_#{n}@hoge#{n}.jp"
 #   password = "password"
 #   user_image = nil
 #   admin = false
@@ -26,20 +26,32 @@
 #     corporation_id: corporation_id,
 #     proprietorship_id: proprietorship_id
 #   )
+#     user_id = user.id
+#     title = "テスト#{n}-#{user.id}"
+#     details = "ddd"
+#     category_id = corporation.category_id
+#     suggest = Suggest.create!(
+#       user_id: user_id,
+#       title: title,
+#       details: details,
+#       category_id: category_id
+#     )
 # end
+
+# Proprietorship
 
 1.times do |n|
   name = "#{Faker::Name.name}.prop"
   info = "aaa"
   image = nil
-  category = [1,2,3].sample#複数
+  category_id = rand(1..11)#複数
   proprietorship = Proprietorship.create!(
     name: name,
     info: info,
     image: image,
-    category: category,
+    category_id: category_id,
   )
-  email = "user_prop#{n}@hoge#{n}.jp"
+  email = "prop_1#{n}@hoge#{n}.jp"
   user_name = Faker::Name.name
   # user_image =
   password = "password"
@@ -53,10 +65,30 @@
     admin: admin,
     proprietorship_id: proprietorship_id
   )
+  user_id = user.id
+  title = "テスト#{n}-#{user.id}"
+  details = "ddd"
+  category_id = proprietorship.category_id
+  suggest = Suggest.create!(
+    user_id: user_id,
+    title: title,
+    details: details,
+    category_id: category_id
+  )
 end
+
+# タグ(seed管理)
 # 5.times do |n|
 #   name = "タグ#{n + 1}"
 #   Tag.create!(
+#     name: name
+#   )
+# end
+
+# カテゴリー(seed管理)
+# names = ['農林水産業', '建設業', '食品加工業', '製造業', '小売業', '情報通信業', '運輸業', '不動産業', '教育・福祉複合サービス業', 'サービス業', 'その他']
+# names.each do |name|
+#   Category.create!(
 #     name: name
 #   )
 # end

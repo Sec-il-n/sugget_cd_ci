@@ -1,0 +1,2 @@
+module ProprietorshipsHelper
+end

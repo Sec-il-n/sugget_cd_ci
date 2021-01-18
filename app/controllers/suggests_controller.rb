@@ -15,8 +15,11 @@ class SuggestsController < ApplicationController
   end
   def index
     @suggests = Suggest.all
+    # binding.pry
     if params[:tag].present?
-        @suggests = Tag.find_by(id: params[:tag]).suggests
+      @suggests = Tag.find_by(id: params[:tag]).suggests
+    elsif params[:category_id].present?
+      @suggests = @suggests.category_search(params[:category_id])
     end
   end
   def show
@@ -30,7 +33,7 @@ class SuggestsController < ApplicationController
     # EROR:Unpermitted parameter: :tag_ids
     # params.require(:suggest).permit(:title, :details).merge(tag_ids: params[:suggest][:tag_ids])
     # ERROR:attributes.suggest.required
-    params.require(:suggest).permit(:title, :details, { tag_ids: [] }).merge(user_id: current_user.id)
+    params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }).merge(user_id: current_user.id)
 
     # 中間モデルの「optional: true」で解決
   end

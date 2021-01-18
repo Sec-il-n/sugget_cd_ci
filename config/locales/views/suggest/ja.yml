@@ -9,6 +9,18 @@ ja:
       show: 新規提案・プロジェクト詳細
       overview: 概要
       info: 企業詳細
+      agriculture: 農林水産業
+      construction: 建設業
+      food processing: 食品加工業
+      manufacturing: 製造業
+      retail: 小売業
+      Telecommunications: 情報通信業
+      transport: 運輸業
+      real estate: 不動産業
+      education: 教育・福祉複合サービス業
+      service: サービス業
+      etc: その他
+      category_search: カテゴリ検索
     create:
       suggest:
         created: 新規投稿が完了しました
