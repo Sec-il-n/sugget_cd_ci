@@ -10,17 +10,34 @@
   </head>
 
   <body>
+    <header>
+      <ul>
+        <!-- アイコンtop -->
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <%= link_to 'ログアウト', destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
+              <%= link_to 'アカウント編集',  edit_user_registration_path(current_user.id), class:'right' %>
+              <%= link_to '投稿', new_suggest_path, class:'right' %>
+              <%= link_to '一覧', suggests_path, class:'right' %>
+            <% else %>
+              <%= link_to 'ログイン', new_user_session_path, class:'right' %>
+              <%= link_to '新規登録', new_user_registration_path, class:'right' %>
+            <% end %>
+          </ul>
+        </nav>
+      </ul>
+    </header>
     <!-- devise -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <% if @suggest && @suggest.errors.any? %>
-        <p class="text-danger bg-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
-        <% @suggest.errors.full_messages.each do |msg| %>
-          <p class="text-danger bg-warning"><%= msg %></p>
-        <% end %>
+      <p class="text-danger bg-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
+      <% @suggest.errors.full_messages.each do |msg| %>
+        <p class="text-danger bg-warning"><%= msg %></p>
       <% end %>
-      
+    <% end %>
     <%= yield %>
   </body>
 </html>

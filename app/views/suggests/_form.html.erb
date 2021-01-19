@@ -9,17 +9,19 @@
     <%= f.text_area :details, class:'form-control' %>
   </div>
   <div class="form-group">
-      <%# controllerで変数作成すると途中から画面遷移したときにTag.allがnillでエラーになる %>
-      <% tags = Tag.all %>
-      <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
+    <%# controllerで変数作成すると途中から画面遷移したときにTag.allがnillでエラーになる %>
+    <% tags = Tag.all %>
+    <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
   </div>
-
+    <%= f.fields_for :images do |ff| %>
+    <div class="form-group">
+      <p><%= ff.label t('.file') %></p>
+      <%= ff.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
+      <%# <%= ff.file_field :images, multiple: true, accept: 'image/png, image/jpeg, image/gif' %>
+    </div>
+    <% end %>
   <div class="form-group">
-      <%# <%= f.label t('.file') %>
-      <%# <%= f.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
-  </div>
-  <div class="form-group">
-      <%= f.submit :class => 'btn btn-primary' %>
+    <%= f.submit :class => 'btn btn-primary' %>
   </div>
   <% end %>
 </div>

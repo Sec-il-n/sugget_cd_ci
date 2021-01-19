@@ -13,4 +13,17 @@ class Suggest < ApplicationRecord
   # .invalid-⤵︎　 # required
   # accepts_nested_attributes_for :suggest_tags, allow_destroy: true
   # どっちにせよいらん↑　
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images, reject_if: :reject_blank, allow_destroy: true
+
+  # mount_uploaders :images, ImageUploader#uploader  modelの複数形?
+  # serialize :image, JSON #複数の画像をアップロードをする場合は左の1文が必要 カラムのデータ型がJSONの場合不要
+  def reject_blank(attributes)
+    exists = attributes[:id].present?
+    empty = attributes[:image].blank?
+    # レコードとして保存済みでかつメールアドレスが空のものに { _destroy: 1 } を追加
+    attributes.merge!(_destroy: 1) if exists && empty
+    # 戻り
+    !exists && empty
+  end
 end

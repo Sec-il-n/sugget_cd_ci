@@ -21,6 +21,8 @@ ja:
       service: サービス業
       etc: その他
       category_search: カテゴリ検索
+    form:
+      file: ファイル選択(画像)
     create:
       suggest:
         created: 新規投稿が完了しました

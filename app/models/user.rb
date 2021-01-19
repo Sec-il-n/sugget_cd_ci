@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :user_image, UserImageUploader
   validates :user_name, presence: true, length: { maximum: 30 }
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

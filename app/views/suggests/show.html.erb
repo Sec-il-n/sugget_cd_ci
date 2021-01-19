@@ -3,10 +3,16 @@
   <div class="">
     <% belonging = choose_corp_or_prop %>
     <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
-    <!-- user image -->
+
   </div>
   <div class="">
-    <%# <%= <%= image_tag @suggest.image.url %>
+    <!-- user image -->
+    <p><%= @suggest.details %></p>
+  </div>
+  <div class="">
+    <% @suggest.images.each do |image| %>
+      <p><%= image_tag image.image.url, class: "suggest-images" %></p>
+    <% end %>
   </div>
   <div class="">
     <%# コメント　非同期の場合 %>
