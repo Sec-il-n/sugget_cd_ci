@@ -5,4 +5,5 @@ class Proprietorship < ApplicationRecord
     validates :category
   end
   belongs_to :category
+  has_one :user, foreign_key: 'proprietorship_id'
 end

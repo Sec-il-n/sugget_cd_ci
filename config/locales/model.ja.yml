@@ -3,9 +3,9 @@ ja:
     models:
       suggest: プロジェクト
       user: ユーザー
-      # categories: カテゴリー
-      # corporations: 企業
-      # self_employees: 個人事業主
+      categorie: カテゴリー
+      corporation: 企業
+      proprietorship: 個人事業主
     attributes:
       suggest:
         title: タイトル
@@ -15,3 +15,13 @@ ja:
         user_name: ユーザー名
         email: メールアドレス
         password: パスワード
+      corporation:
+        name: 企業名
+        info: 詳細
+        image: イメージ
+        category_id: 業種カテゴリ
+      proprietorship:
+        name: 企業(個人)名
+        info: 詳細
+        image: イメージ
+        category_id: 業種カテゴリ

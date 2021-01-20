@@ -1,0 +1,8 @@
+<div class="">
+  <h3><%= t('.info') %></h3>
+  <p><%= @proprietorship.name %></p>
+  <p><%= @proprietorship.info %></p>
+  <% if @proprietorship.image.present? %>
+    <p><%= image_tag @proprietorship.image.url %></p>
+  <% end %>
+</div>

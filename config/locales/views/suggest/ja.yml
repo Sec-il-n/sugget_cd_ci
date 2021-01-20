@@ -29,3 +29,13 @@ ja:
         create_faild: 新規投稿に失敗しました
     show:
       title: 提案・プロジェクト名
+  proprietorships:
+    show:
+      info: 企業詳細(個人)
+    new:
+      title: 企業(個人)新規登録
+  corporations:
+    show:
+      info: 企業詳細
+    new:
+      title: 企業新規登録
