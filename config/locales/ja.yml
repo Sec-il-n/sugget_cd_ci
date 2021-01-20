@@ -2,6 +2,15 @@ ja:
   dictionary:
     words:
       registerd: 企業登録を完了しました
+  layouts:
+    application:
+      login: ログイン
+      logout: ログアウト
+      register: 新規登録
+      edit account: アカウント編集
+      participants: 参加中提案一覧
+      post suggest: 新規提案
+      index: 提案/プロジェクト一覧
   activerecord:
     errors:
       models:
@@ -10,7 +19,6 @@ ja:
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
-
     date:
       abbr_day_names:
       - 日

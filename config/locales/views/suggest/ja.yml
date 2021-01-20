@@ -29,6 +29,8 @@ ja:
         create_faild: 新規投稿に失敗しました
     show:
       title: 提案・プロジェクト名
+      join: 参加する
+      participants: 参加中提案/プロジェクト一覧
   proprietorships:
     show:
       info: 企業詳細(個人)
@@ -39,3 +41,17 @@ ja:
       info: 企業詳細
     new:
       title: 企業新規登録
+  messages:
+    new:
+      send messages: 提案者とやりとりが出来るようになりました
+  participants:
+    index:
+      participants: 参加済み提案/プロジェクト一覧
+      unjoin: 非参加にする
+      overview: 概要
+      show: 提案詳細
+    destroy:
+      title name: 提案/プロジェクト名
+      unjoined: の参加を取り消しました
+    create:
+      error occured: エラーが発生しました

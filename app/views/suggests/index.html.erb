@@ -15,6 +15,11 @@
     <p><%= t('.overview') %></p>
     <%# 検証　引数なし→＠suggestsの場合のみOK %>
     <p><%= link_to t('.info'), choose_corp_or_prop_path(suggest) %></p>
+    
+    <% if suggest.user.user_image.present? %>
+      <p><%= image_tag suggest.user.user_image.url %></p>
+    <% end %>
+    <p><%= suggest.details %></p>
     <% suggest.tags.each do |tag| %>
       <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
     <% end %>

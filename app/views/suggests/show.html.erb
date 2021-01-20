@@ -1,12 +1,21 @@
 <div class="">
-  <h2><% t('.title') %></h2>
+  <strong><%= t('.title') %>:</strong>
+  <h2><%= @suggest.title %></h2>
+
+  <% if participants_find.present? %>
+    <p><%= link_to t('.participants'), participants_path %></p>
+  <% else %>
+    <p><%= link_to t('.join'), participants_path(suggest_id: @suggest.id), method: 'post', class: 'btn btn-default' %></p>
+  <% end %>
+
   <div class="">
     <% belonging = choose_corp_or_prop %>
     <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
-
   </div>
   <div class="">
-    <!-- user image -->
+    <% if @suggest.user.user_image.present? %>
+      <p><%= image_tag @suggest.user.user_image.url %></p>
+    <% end %>
     <p><%= @suggest.details %></p>
   </div>
   <div class="">

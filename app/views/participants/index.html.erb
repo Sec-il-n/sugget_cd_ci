@@ -1,0 +1,28 @@
+<h1><%= t('.participants') %></h1>
+
+<% @participants.each do |participant| %>
+  <div class="">
+    <p><%= link_to t('.show'), suggest_path(id: participant.suggest_id) %></p>
+    <p><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'btn btn-default' %></p>
+  </div>
+  <div class="">
+    <p><%= t('.overview') %></p>
+    <%# 検証　引数なし→＠suggestsの場合のみOK %>
+    <p><%= participant.suggest.details %></p>
+    <% participant.suggest.tags.each do |tag| %>
+      <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
+    <% end %>
+  </div>
+  <%# <div class="">
+    <% if cuurentUser.suggests_on_going.present? %>
+    <%# <%= link_to t('.room'), ??room_path(current_user.id) %>
+    <%# <% end %>
+  <!-- </div> -->
+<% end %>
+
+
+<%# participantのindexで表示 %>
+<%# <% if current_user.participant.suggests  .present %>
+<%# link_to チャット %>
+<%= link_to t('.login'), new_user_session_path %>
+<%= link_to t('.registration'), new_user_registration_path %>

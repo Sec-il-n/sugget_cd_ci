@@ -16,13 +16,14 @@
         <nav>
           <ul>
             <% if user_signed_in? %>
-              <%= link_to 'ログアウト', destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
-              <%= link_to 'アカウント編集',  edit_user_registration_path(current_user.id), class:'right' %>
-              <%= link_to '投稿', new_suggest_path, class:'right' %>
-              <%= link_to '一覧', suggests_path, class:'right' %>
+              <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
+              <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right' %>
+              <%= link_to t('.post suggest'), new_suggest_path, class:'right' %>
+              <%= link_to t('.index'), suggests_path, class:'right' %>
+              <%= link_to t('.participants'), participants_path %>
             <% else %>
-              <%= link_to 'ログイン', new_user_session_path, class:'right' %>
-              <%= link_to '新規登録', new_user_registration_path, class:'right' %>
+              <%= link_to t('.login'), new_user_session_path, class:'right' %>
+              <%= link_to t('.register'), new_user_registration_path, class:'right' %>
             <% end %>
           </ul>
         </nav>
@@ -31,6 +32,7 @@
     <!-- devise -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <p class="danger"><%= danger %></p>
 
     <% if @suggest && @suggest.errors.any? %>
       <p class="text-danger bg-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
