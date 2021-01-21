@@ -29,7 +29,9 @@ class RoomsController < ApplicationController
   end
   def show
     @room = Room.find_by(id: params[:id])
-    
+    @messages = @room.messages
+    @suggest = @room.suggest
+    # @message = @room.messages.build ??
   end
   private
   # def params_room

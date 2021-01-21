@@ -16,6 +16,8 @@ class Suggest < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, reject_if: :reject_blank, allow_destroy: true
 
+  belongs_to :room, foreign_key: 'suggest_id'
+  
   # mount_uploaders :images, ImageUploader#uploader  modelの複数形?
   # serialize :image, JSON #複数の画像をアップロードをする場合は左の1文が必要 カラムのデータ型がJSONの場合不要
   def reject_blank(attributes)

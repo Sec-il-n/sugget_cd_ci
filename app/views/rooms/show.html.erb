@@ -1,5 +1,13 @@
 <h1><%= t('.room') %></h1>
 
 <div id="messages">
-  <%# <%= @messages %>
+  <strong><%= "#{t('.suggest')}: #{@suggest.title}" %></strong>
+  <%= render 'message', collection: @messages %>
+  <%# model ?? url?? %>
+  <%# undefined method `model_name' for nil:NilClass %>
+  <%# <% form_with(model: [@room, @message])do |f| %>
+    <%# <%= f.text_area :text, class: "form-control" %>
+    <%# <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+    <%# <%= f.submit "送信" %>
+  <%# <% end %>
 </div>

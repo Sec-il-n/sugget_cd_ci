@@ -1,4 +1,4 @@
-<% @messages.each do |message| %>
+<%# <% @messages.each do |message| %>
   <% if message.text.present? %>
     <%= message.user.user_name %>
     <%= message.message_time %>
@@ -12,4 +12,4 @@
   <%= f.text_area :text, class: "form-control" %>
   <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
   <%= f.submit "送信" %>
-<% end %>
+<% end %> %>
