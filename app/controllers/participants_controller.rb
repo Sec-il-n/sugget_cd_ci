@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController
   def create
     participant = current_user.participants.create!(suggest_id: params[:suggest_id])
-    redirect_to rooms_path, notice: t('.send messages')
+    redirect_to top_rooms_path(suggest_id: params[:suggest_id]), notice: t('.send messages')
     # redirect_to new_room_path, notice: t('.send messages')
   rescue => e
     puts e.class

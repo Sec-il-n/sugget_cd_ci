@@ -43,7 +43,6 @@ ja:
       title: 企業新規登録
   messages:
     new:
-      send messages: 提案者とやりとりが出来るようになりました
   participants:
     index:
       participants: 参加済み提案/プロジェクト一覧
@@ -55,3 +54,14 @@ ja:
       unjoined: の参加を取り消しました
     create:
       error occured: エラーが発生しました
+      send messages: 提案者とチャットを開始できます。
+  rooms:
+    top:
+      create room: チャットルームを作成する
+    create:
+      create room faild: チャットルーム作成に失敗しました。
+      room created: チャットルームを作成しました。提案者とチャットを開始できます。
+    index:
+      rooms: チャットルーム一覧
+    show:
+      room: チャットルーム

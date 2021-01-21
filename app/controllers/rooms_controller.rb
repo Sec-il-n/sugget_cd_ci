@@ -1,22 +1,41 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  # ここを「参加済み一覧に持ってきたい」
+  def top
+
+    # if @user.id == params[:user_id] && user_signed_in?
+    if user_signed_in?
+      @suggest = Suggest.find_by(id: params[:suggest_id])
+      @user = current_user
+      @room = Room.new
+    end
+  end
   def index
-    # index(get)とcreate(post)のpath表記が同じ
-    # @rooms = Room.all
+    @rooms = current_user.rooms
   end
   def create
-    if Room.between(params[:sender_id],params[:recipient_id]).present?
-      @room = Room.between(params[:sender_id],params[:recipient_id]).first
-    else
-      @room = Room.create!(params_room)
-    end
-    redirect_to room_messages_path(@room)
+    @room = Room.new(suggest_id: params[:suggest_id])
+    @room.save!
+    redirect_to room_path(id: @room.id), notice: t('.room created')
+  rescue => e
+    puts e.class
+    redirect_to participants_path, danger: t('.create room faild')
+    # if Room.between(params[:sender_id],params[:recipient_id]).present?
+    #   @room = Room.between(params[:sender_id],params[:recipient_id]).first
+    # else
+    #   @room = Room.create!(params_room)
+    # end
+    # redirect_to room_messages_path(@room)
   end
-
+  def show
+    @room = Room.find_by(id: params[:id])
+    
+  end
   private
-  def params_room
-    params.permit(:sender_id, :recipient_id)
-  end
+  # def params_room
+  #   params.require(:room).permit(:suggest_id, :sender_id, :recipient_id).merge(user_id: urrent_user.id)
+  # end
+
   # def between
   #   Room.where(sender_id: params[:sender_id], recipient_id: params[:recipient_id]) or
   #   Room.where(sender_id: params[:recipient_id], recipient_id: params[:sender_id])

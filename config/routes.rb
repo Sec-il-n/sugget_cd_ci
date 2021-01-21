@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root to: 'suggests#index'
   resources :suggests
   resources :rooms do
+    collection do
+      get :top 
+    end
     resources :messages
   end
   resources :suggests_tags, only:[:new, :create, :destroy]

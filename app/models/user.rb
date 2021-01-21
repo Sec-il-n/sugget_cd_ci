@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
   has_many :participants
   has_many :suggests_on_going, through: :participants, source: :suggests
+
+  has_many :message_rooms
+  has_many :rooms, through: :message_rooms
+
 end
