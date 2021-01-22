@@ -5,10 +5,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'suggests#index'
-  resources :suggests
+  resources :suggests do
+    resources :comments, only:[:create, :edit, :update, :destroy]
+  end
   resources :rooms do
     collection do
-      get :top 
+      get :top
     end
     resources :messages
   end
@@ -21,6 +23,6 @@ Rails.application.routes.draw do
   end
   resources :proprietorships
   resources :participants, only:[:create, :index, :destroy]
-#
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

@@ -2,6 +2,8 @@ ja:
   dictionary:
     words:
       registerd: 企業登録を完了しました
+      edit: 編集する
+      destroy: 削除する
   layouts:
     application:
       login: ログイン

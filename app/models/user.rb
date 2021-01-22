@@ -18,4 +18,5 @@ class User < ApplicationRecord
   has_many :rooms, through: :message_rooms
   has_many :messages
 
+  has_many :comments, foreign_key: 'user_id'
 end

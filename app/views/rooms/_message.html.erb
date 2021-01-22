@@ -1,5 +1,8 @@
 <div class="message">
   <% @messages.each do |message| %>
-    <p><%= message.text %></p>
+    <div class="">
+      <%= image_tag current_user.user_image.url %>
+      <%= message.text %>
+    </div>
   <% end %>
 </div>

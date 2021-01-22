@@ -23,7 +23,20 @@
       <p><%= image_tag image.image.url, class: "suggest-images" %></p>
     <% end %>
   </div>
-  <div class="">
-    <%# コメント　非同期の場合 %>
+  <hr>
+  <!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
+  <div class="row">
+    <ul>
+      <li>
+        <h3 class="text-left title"><%= t('.comments') %></h3>
+      </li>
+      <li class="comment-area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+      </li>
+      <% if user_signed_in? %>
+        <div class="comment-post">
+          <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
+        </div>
+      <% end %>
   </div>
 </div>

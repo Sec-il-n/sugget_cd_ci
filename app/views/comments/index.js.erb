@@ -1,0 +1,3 @@
+// showのrender部
+$("#comment-area").html("<%= j(render 'index', { comments: @comment.suggest.comments }) %>")
+$("textarea").val('')

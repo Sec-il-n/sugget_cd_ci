@@ -1,0 +1,4 @@
+<%= form_with(model: [suggest, comment], url: suggest_comments_path(suggest))do |f| %>
+  <%= f.text_area :text %>
+  <%= f.submit class: "btn btn-outline-dark float-right" %>
+<% end %>

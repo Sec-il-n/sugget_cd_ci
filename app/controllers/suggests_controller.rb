@@ -32,7 +32,8 @@ class SuggestsController < ApplicationController
     end
   end
   def show
-
+    @comment = Comment.new
+    @comments = @suggest.comments.recent
   end
   private
   def set_suggest
