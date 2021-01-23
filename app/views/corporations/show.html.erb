@@ -6,3 +6,14 @@
     <p><%= image_tag @corporation.image.url %></p>
   <% end %>
 </div>
+<div class="member">
+  <% @users.each do |user| %>
+    <p><%= image_tag user.user_image.url if user.user_image.present? %></p>
+  <% end %>
+</div>
+<!-- <div class="participants"> -->
+  <%# <% @users_joined.each do |user| %>
+    <%# <%= link_to "@#{user.user_name}", user_path(user.id) %>
+    <%# <!-- <p><%= image_tag user.user_image.url if user.user_image.present? %></p>
+  <%# <% end %>
+<!-- </div> -->

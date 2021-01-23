@@ -12,7 +12,13 @@ class CorporationsController < ApplicationController
     end
   end
   def show
-
+    @users = @corporation.users
+    @user_images = @users.map { |user| user.user_image }
+    # 企業の提案中案件
+    # suggests = @users.map { |user| user.suggests }
+    # suggests.each do |suggest|
+    #   @users_joined << suggest.users
+    # end
   end
   def edit
   end

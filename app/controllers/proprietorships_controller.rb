@@ -12,6 +12,7 @@ class ProprietorshipsController < ApplicationController
     end
   end
   def show
+    @user = @proprietorship.user
   end
   def edit
   end

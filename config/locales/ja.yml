@@ -4,6 +4,7 @@ ja:
       registerd: 企業登録を完了しました
       edit: 編集する
       destroy: 削除する
+      not admin: 管理者権限が必要です
   layouts:
     application:
       login: ログイン

@@ -8,11 +8,11 @@ class User < ApplicationRecord
   belongs_to :corporation, optional: true
   # accepts_nested_attributes_for :corporation, reject_if: :reject_both_blank, allow_destroy: true
   has_many :suggests
-  belongs_to :proprietorship
+  belongs_to :proprietorship, optional: true
   # accepts_nested_attributes_for :proprietorship, reject_if: :reject_both_blank, allow_destroy: true
 
   has_many :participants
-  # has_many :suggests_on_going, through: :participants, source: :suggests
+  has_many :suggests_on_going, through: :participants, source: :suggests
 
   has_many :message_rooms
   has_many :rooms, through: :message_rooms

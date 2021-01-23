@@ -6,3 +6,6 @@
     <p><%= image_tag @proprietorship.image.url %></p>
   <% end %>
 </div>
+<div class="member">
+  <p><%= image_tag @user.user_image.url if @user.user_image.present? %></p>
+</div>

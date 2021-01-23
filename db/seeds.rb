@@ -39,41 +39,56 @@
 # end
 
 # Proprietorship
+# 1.times do |n|
+#   name = "#{Faker::Name.name}.prop"
+#   info = "aaa"
+#   image = nil
+#   category_id = rand(1..11)#複数
+#   proprietorship = Proprietorship.create!(
+#     name: name,
+#     info: info,
+#     image: image,
+#     category_id: category_id,
+#   )
+#   email = "prop_1#{n}@hoge#{n}.jp"
+#   user_name = Faker::Name.name
+#   # user_image =
+#   password = "password"
+#   proprietorship_id = proprietorship.id
+#   admin = false
+#   user = User.create!(
+#     email: email,
+#     user_name: user_name,
+#     password: password,
+#     # password_confirmation: password,
+#     admin: admin,
+#     proprietorship_id: proprietorship_id
+#   )
+#   user_id = user.id
+#   title = "テスト#{n}-#{user.id}"
+#   details = "ddd"
+#   category_id = proprietorship.category_id
+#   suggest = Suggest.create!(
+#     user_id: user_id,
+#     title: title,
+#     details: details,
+#     category_id: category_id
+#   )
+# end
 
+# 管理者
 1.times do |n|
-  name = "#{Faker::Name.name}.prop"
-  info = "aaa"
-  image = nil
-  category_id = rand(1..11)#複数
-  proprietorship = Proprietorship.create!(
-    name: name,
-    info: info,
-    image: image,
-    category_id: category_id,
-  )
-  email = "prop_1#{n}@hoge#{n}.jp"
+  email = "admin_1#{n}@hoge#{n}.jp"
   user_name = Faker::Name.name
   # user_image =
   password = "password"
-  proprietorship_id = proprietorship.id
-  admin = false
+  admin = true
   user = User.create!(
     email: email,
     user_name: user_name,
     password: password,
     # password_confirmation: password,
     admin: admin,
-    proprietorship_id: proprietorship_id
-  )
-  user_id = user.id
-  title = "テスト#{n}-#{user.id}"
-  details = "ddd"
-  category_id = proprietorship.category_id
-  suggest = Suggest.create!(
-    user_id: user_id,
-    title: title,
-    details: details,
-    category_id: category_id
   )
 end
 

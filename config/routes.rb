@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users, only:[:show]
+  namespace :admin do
+    resources :users, only:[:edit, :update, :destroy]
+  end
 
   resources :suggests do
     resources :comments, only:[:create, :edit, :update, :destroy]
