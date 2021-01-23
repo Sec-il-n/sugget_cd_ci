@@ -70,3 +70,7 @@ ja:
   comments:
     form:
       title: コメント投稿
+  users:
+    show:
+      title: プロフィール
+      participants: 参加中の提案/プロジェクト

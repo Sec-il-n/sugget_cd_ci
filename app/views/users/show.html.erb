@@ -1,0 +1,18 @@
+<h1><%= t('.title') %></h1>
+<div class="">
+  <%= @user.user_name %>
+  <% if @user.user_image.present? %>
+    <%= image_tag @user.user_image.url %>
+  <% end %>
+</div>
+
+<% if @user.corporation_id.present? %>
+  <%= link_to @user.corporation.name, corporation_path(@user.corporation.id) %>
+<% elsif @user.proprietorship_id.present? %>
+  <%= link_to @user.proprietorship.name, proprietorship_path(@user.proprietorship.id) %>
+<% end %>
+
+<h4><%= t('.participants') %></h4>
+<% @participants.each do |participant| %>
+  <%= link_to participant.suggest.title, suggest_path(participant.suggest_id) %>
+<% end %>

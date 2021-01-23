@@ -13,7 +13,7 @@
         </div>
         <div class="">
           <p>
-            <%# <%= link_to "@#{comment.user.user_name}", users_user_path(comment.user.id) %>
+            <%= link_to "@#{comment.user.user_name}", user_path(comment.user.id) %>
           </p>
           <div class="">
             <%= comment.text %>
@@ -41,7 +41,7 @@
         </div>
         <div class="">
           <p>
-            <%# <%= link_to "@#{comment.user.user_name}", users_user_path(comment.user.id) %>
+            <%= link_to "@#{comment.user.user_name}", user_path(comment.user.id) %>
           </p>
           <div class="">
             <%= comment.text %>
