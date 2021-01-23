@@ -44,12 +44,12 @@
             <%# <%= link_to "@#{comment.user.user_name}", users_user_path(comment.user.id) %>
           </p>
           <div class="">
-            <% comment.text %>
+            <%= comment.text %>
             <% if comment.user == current_user %>
-              <%= link_to t('.dictionary.words.edit'),  edit_suggest_comment_path(comment, suggest_id: comment.suggest.id,), class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment, suggest_id: comment.suggest.id,), class: 'btn btn-default btn-sm' %>
 
             <% elsif current_user.admin %>
-              <%= link_to t('.dictionary.words.destroy'), suggest_comment_path(comment), class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment), class: 'btn btn-default btn-sm' %>
             <% end %>
           </div>
           <span class="">
