@@ -21,8 +21,6 @@ class Suggest < ApplicationRecord
   has_many :users, through: :participants
 
 
-
-
   belongs_to :room, foreign_key: 'suggest_id'
 
   has_many :comments, dependent: :destroy, foreign_key: 'suggest_id'

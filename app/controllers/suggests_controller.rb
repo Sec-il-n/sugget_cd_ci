@@ -35,6 +35,15 @@ class SuggestsController < ApplicationController
     @comment = Comment.new
     @comments = @suggest.comments.recent
   end
+  def destroy
+    if current_user.admin?
+      @suggest.destroy!
+      redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
+    end
+  rescue => e
+    puts e.class
+    redirect_to admin_users_path, danger: t('.destroy faild')
+  end
   private
   def set_suggest
     @suggest = Suggest.find_by(id: params[:id])

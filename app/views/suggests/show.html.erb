@@ -27,6 +27,8 @@
 <hr>
 <!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
 <div class="row">
+  <p><%= notice %></p>
+  <p><%= danger %></p>
   <ul>
     <li>
       <h3 class="text-left title"><%= t('.comments') %></h3>
@@ -36,7 +38,7 @@
     </li>
   </ul>
   <% if user_signed_in? %>
-    <div id="comment-post">
+    <div create="comment-post">
       <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
     </div>
   <% end %>

@@ -14,6 +14,7 @@ ja:
       participants: 参加中提案一覧
       post suggest: 新規提案
       index: 提案/プロジェクト一覧
+      management screen: 管理者画面
   activerecord:
     errors:
       models:

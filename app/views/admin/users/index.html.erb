@@ -1,0 +1,17 @@
+<h1><%= t('.title') %></h1>
+
+<%# カテゴリ検索 %>
+<%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
+  <%= f.label t('.category search') %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+  <div class="form-group">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<% @suggests.each do |suggest| %>
+  <p><%= t('.show') %>:
+  <%= link_to suggest.title, suggest_path(suggest.id) %>
+  <%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %></p>
+
+<% end %>

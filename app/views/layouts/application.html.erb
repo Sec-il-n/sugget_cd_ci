@@ -18,11 +18,19 @@
         <nav>
           <ul>
             <% if user_signed_in? %>
-              <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
+              <div data-turbolinks="false">
+                <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
+              </div>
+              <%# <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, data: {"turbolinks" => false}, class:'right' %>
               <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right' %>
               <%= link_to t('.post suggest'), new_suggest_path, class:'right' %>
               <%= link_to t('.index'), suggests_path, class:'right' %>
               <%= link_to t('.participants'), participants_path %>
+
+              <% if current_user.admin? %>
+                <%= link_to t('.management screen'), admin_users_path, class:'right' %>
+              <% end %>
+
             <% else %>
               <%= link_to t('.login'), new_user_session_path, class:'right' %>
               <%= link_to t('.register'), new_user_registration_path, class:'right' %>

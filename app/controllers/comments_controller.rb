@@ -3,21 +3,30 @@ class CommentsController < ApplicationController
   def create
     #投稿に紐づいたコメントを作成(idをi含んだ形でインスタンスを作成)
     @comment = current_user.comments.build(params_comment)
-    @comment.save!
-    render 'index'
-  # rescue => e
-    # puts e.class
-    # redirect_to _path, danger: t('.create room faild')
+    begin
+      @comment.save!
+    # render 'index'
+    rescue => e
+      puts e.class
+      redirect_to _path, danger: t('.create comment faild')
+    end
   end
   def edit
   end
   def update
   end
   def destroy
-    @comment.destroy!
-    render 'index'
-    # rescue => e
-    #   puts e.class
+    if current_user.admin?
+      begin
+        @comment.destroy!
+      rescue => e
+        puts e.class
+        redirect_to admin_users_path, danger: t('.delete faild')
+      end
+      flash[:notice] = t('.deleted')
+      # render 'index'
+    end
+
   end
   private
   def set_comment

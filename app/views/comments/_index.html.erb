@@ -9,7 +9,7 @@
       <div class="">
         <div class="">
           <%# <%= attachment_image_tag....gemが必要 %>
-          <%= image_tag comment.user.user_image.url unless comment.user.user_image.nil?  %>
+          <%= image_tag comment.user.user_image.url if comment.user.user_image.present? %>
         </div>
         <div class="">
           <p>
@@ -17,11 +17,16 @@
           </p>
           <div class="">
             <%= comment.text %>
-            <% if comment.user == current_user %>
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment, suggest_id: comment.suggest.id,), class: 'btn btn-default btn-sm' %>
+            <% if current_user.admin? && comment.user == current_user %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
 
-            <% elsif current_user.admin %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment), class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+            <% elsif current_user.admin? %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+
+            <% elsif comment.user == current_user %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+
             <% end %>
           </div>
           <span class="">
@@ -37,7 +42,10 @@
     <% comments.offset(2).each do |comment| %>
       <% unless comment.id.nil? %>
         <div class="">
-          <%= image_tag comment.user.user_image.url unless comment.user.user_image.nil?  %>
+          <%# <%= image_tag comment.user.user_image.url unless comment.user.user_image.nil?  %>
+          <% if comment.user.user_image.present? %>
+            <%= image_tag comment.user.user_image.url %>
+          <% end %>
         </div>
         <div class="">
           <p>
@@ -45,12 +53,17 @@
           </p>
           <div class="">
             <%= comment.text %>
-            <% if comment.user == current_user %>
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment, suggest_id: comment.suggest.id,), class: 'btn btn-default btn-sm' %>
+            <% if current_user.admin? && comment.user == current_user %>
+            <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
 
-            <% elsif current_user.admin %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment), class: 'btn btn-default btn-sm' %>
-            <% end %>
+            <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+          <% elsif current_user.admin? %>
+            <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+
+          <% elsif comment.user == current_user %>
+            <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+
+          <% end %>
           </div>
           <span class="">
             <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>

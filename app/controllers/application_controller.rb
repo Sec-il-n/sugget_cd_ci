@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :success, :info, :warning, :danger
+
   def configure_permitted_parameters
     # カラム追加時　StorongParameter
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name])

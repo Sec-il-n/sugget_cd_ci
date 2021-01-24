@@ -32,6 +32,9 @@ ja:
       join: 参加する
       participants: 参加中提案/プロジェクト一覧
       comments: コメント
+    destroy:
+      destroyed: を削除しました
+      destroy faild: 削除に失敗しました
   proprietorships:
     show:
       info: 企業詳細(個人)
@@ -70,7 +73,23 @@ ja:
   comments:
     form:
       title: コメント投稿
+    destroy:
+      delete faild: コメントの削除に失敗しました
+      deleted: コメントを削除しました
+    index:
+      title: コメント
+      confirmation: 削除しますか？
+    create:
+      create comment faild: コメントの作成に失敗しました
   users:
     show:
       title: プロフィール
       participants: 参加中の提案/プロジェクト
+  admin:
+    users:
+      index:
+        title: 新規提案/プロジェクト一覧(管理者)
+        category search: カテゴリ検索
+        show: 新規提案・プロジェクト詳細
+        delete: 削除する
+        confirmation: 削除しますか？

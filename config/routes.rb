@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   resources :users, only:[:show]
   namespace :admin do
-    resources :users, only:[:edit, :update, :destroy]
+    resources :users#, only:[:edit, :update, :destroy]
   end
 
   resources :suggests do
