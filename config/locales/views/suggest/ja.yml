@@ -35,6 +35,9 @@ ja:
     destroy:
       destroyed: を削除しました
       destroy faild: 削除に失敗しました
+    confirm:
+      confirmation: この内容で登録しますか(登録後の編集は、お問い合わせフォームからご依頼ください)
+      back: 戻る
   proprietorships:
     show:
       info: 企業詳細(個人)

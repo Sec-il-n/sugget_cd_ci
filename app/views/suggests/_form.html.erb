@@ -1,5 +1,9 @@
 <div class="form row">
-  <%= form_with(model: suggest, local:true)do |f| %>
+  <%= form_with(model: suggest, local:true, url: choose_confirm_path)do |f| %>
+  <div class="">
+    <%= f.hidden_field :image_cache %>
+    <%= f.hidden_field :image_cache %>
+  </div>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_area :title, class:'form-control' %>

@@ -17,6 +17,9 @@ module SuggestsHelper
       @suggest.user.proprietorship
     end
   end
+  def choose_confirm_path
+      confirm_suggests_path if action_name == 'create' || action_name == 'new'
+  end
   def participants_find
     current_user.participants.find_by(suggest_id: @suggest.id)
   end

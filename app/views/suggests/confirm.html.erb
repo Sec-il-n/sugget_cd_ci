@@ -1,0 +1,17 @@
+<%= form_with(model: @suggest, url: suggests_path, method: 'post', local: true)do |f| %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :details %>
+  <% @images.each do |image| %>
+      <%# <%= image_tag image.url if image.present? && image.url %>
+  <% end %>
+  <%= @suggest.title %><br>
+  <%= @suggest.details %>
+  <% @tags.each do |tag| %>
+    <p><%= tag %></p>
+  <% end %>
+
+  <%= f.submit t('.back'), name: 'back' %>
+  <%= f.submit %>
+<% end %>

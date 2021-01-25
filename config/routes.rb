@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :suggests do
     resources :comments, only:[:create, :edit, :update, :destroy]
+    collection do
+      post :confirm
+    end
   end
 
   resources :rooms do

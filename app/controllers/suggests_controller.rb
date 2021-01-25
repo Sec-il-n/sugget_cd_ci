@@ -7,18 +7,35 @@ class SuggestsController < ApplicationController
   end
   def create
     @suggest = Suggest.new(suggest_params)
+    @suggest.suggest_tags.build
+    2.times{@suggest.images.build}
+    if params[:back]
+      render 'new'
     # if params[:suggest][:images].present?
     #   suggest_params[:images].each do |image|
     #     @suggest.images.build(suggest_params.clone.merge({images: image}))
-        if @suggest.save
+    else
+      if @suggest.save
           redirect_to suggests_path, notice: t('.suggest.created')
     #     end
     #   end
     # elsif @suggest.save
     # # if @suggest.save
     #   redirect_to suggests_path, notice: t('.suggest.created')
+      else
+        flash.now[:warning] = t('.suggest.create_faild')
+        render 'new'
+      end
+    end
+  end
+  def confirm
+    @suggest = Suggest.new(suggest_params)
+    @images = @suggest.images.collect(&:image)
+    @tags = @suggest.tags.collect(&:name)
+    if @suggest.valid?
+      flash.now[:notice] = t('.confirmation')
+      render 'confirm'
     else
-      flash.now[:warning] = t('.suggest.create_faild')
       render 'new'
     end
   end
@@ -54,7 +71,9 @@ class SuggestsController < ApplicationController
     # ERROR:attributes.suggest.required
 
     # image 複数
-    params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image] }).merge(user_id: current_user.id)
+    params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image, :image_cache] }).merge(user_id: current_user.id)
+    # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image] }).merge(user_id: current_user.id)
+
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, {images: []}).merge(user_id: current_user.id)
 
     # 中間モデルの「optional: true」で解決
