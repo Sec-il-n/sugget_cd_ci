@@ -38,6 +38,9 @@ ja:
     confirm:
       confirmation: この内容で登録しますか(登録後の編集は、お問い合わせフォームからご依頼ください)
       back: 戻る
+    update:
+      update failed: 提案/プロジェクトの編集に失敗しました
+      need admin: 編集できません
   proprietorships:
     show:
       info: 企業詳細(個人)
@@ -95,4 +98,5 @@ ja:
         category search: カテゴリ検索
         show: 新規提案・プロジェクト詳細
         delete: 削除する
+        edit: 編集する
         confirmation: 削除しますか？

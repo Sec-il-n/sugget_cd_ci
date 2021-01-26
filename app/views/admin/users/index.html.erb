@@ -12,6 +12,7 @@
 <% @suggests.each do |suggest| %>
   <p><%= t('.show') %>:
   <%= link_to suggest.title, suggest_path(suggest.id) %>
-  <%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %></p>
-
+  <%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %>
+  <%= link_to t('.edit'), edit_suggest_path(suggest.id) %>
+  </p>
 <% end %>

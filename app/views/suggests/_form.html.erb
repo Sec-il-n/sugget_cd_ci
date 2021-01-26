@@ -1,8 +1,11 @@
 <div class="form row">
-  <%= form_with(model: suggest, local:true, url: choose_confirm_path)do |f| %>
+  <%= form_with(model: suggest, local: true, url: choose_confirm_path)do |f| %>
   <div class="">
     <%= f.hidden_field :image_cache %>
-    <%= f.hidden_field :image_cache %>
+    <%# <% binding.pry %>
+    <% suggest.tags.each do |tag| %>
+      <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :title %>
@@ -17,10 +20,12 @@
     <% tags = Tag.all %>
     <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
   </div>
+  <% count = 1 %>
     <%= f.fields_for :images do |ff| %>
     <div class="form-group">
-      <p><%= ff.label t('.file') %></p>
+      <p><%= ff.label "#{t('.file')}#{count}" %></p>
       <%= ff.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
+      <% count += 1 %>
       <%# <%= ff.file_field :images, multiple: true, accept: 'image/png, image/jpeg, image/gif' %>
     </div>
     <% end %>

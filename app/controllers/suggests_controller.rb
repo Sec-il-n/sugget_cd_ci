@@ -7,6 +7,7 @@ class SuggestsController < ApplicationController
   end
   def create
     @suggest = Suggest.new(suggest_params)
+    # 要↓
     @suggest.suggest_tags.build
     2.times{@suggest.images.build}
     if params[:back]
@@ -32,10 +33,13 @@ class SuggestsController < ApplicationController
     @suggest = Suggest.new(suggest_params)
     @images = @suggest.images.collect(&:image)
     @tags = @suggest.tags.collect(&:name)
+    # @tag_id = @suggest.tags.collect(&:id)
     if @suggest.valid?
       flash.now[:notice] = t('.confirmation')
       render 'confirm'
     else
+      @suggest.suggest_tags.build
+      2.times{@suggest.images.build}
       render 'new'
     end
   end
@@ -52,15 +56,39 @@ class SuggestsController < ApplicationController
     @comment = Comment.new
     @comments = @suggest.comments.recent
   end
+  def edit
+    # ファイルの変更は不可にするしか無い。
+    @suggest.suggest_tags.build
+    # 2.times{@suggest.images.build}
+
+  end
+  def update
+    if current_user.admin?
+      begin
+        redirect_to admin_users_path if @suggest.update!
+      rescue => e# ↓working 確認済
+        puts e.class
+        flash.now[:danger] = t('.update failed')
+        render 'edit'
+      end
+    else
+      redirect_to suggests_path, danger: t('.need admin')
+    end
+  end
   def destroy
     if current_user.admin?
-      @suggest.destroy!
-      redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
+      begin
+        @suggest.destroy!
+        redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
+      rescue => e
+        puts e.class
+        redirect_to admin_users_path, danger: t('.destroy faild')
+      end
+    else
+      redirect_to suggests_path, danger: t('.need admin')
     end
-  rescue => e
-    puts e.class
-    redirect_to admin_users_path, danger: t('.destroy faild')
   end
+
   private
   def set_suggest
     @suggest = Suggest.find_by(id: params[:id])
@@ -70,8 +98,8 @@ class SuggestsController < ApplicationController
     # params.require(:suggest).permit(:title, :details).merge(tag_ids: params[:suggest][:tag_ids])
     # ERROR:attributes.suggest.required
 
-    # image 複数
-    params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image, :image_cache] }).merge(user_id: current_user.id)
+    # Unpermitted parameter: :image_cache
+    params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[:image, :image_cache] }).merge(user_id: current_user.id)
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image] }).merge(user_id: current_user.id)
 
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, {images: []}).merge(user_id: current_user.id)
