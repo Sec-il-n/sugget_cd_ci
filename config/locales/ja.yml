@@ -6,7 +6,7 @@ ja:
       destroy: 削除する
       not admin: 管理者権限が必要です
   layouts:
-    application:
+    header:
       login: ログイン
       logout: ログアウト
       register: 新規登録

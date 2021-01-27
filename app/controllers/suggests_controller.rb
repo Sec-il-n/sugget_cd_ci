@@ -1,5 +1,6 @@
 class SuggestsController < ApplicationController
   before_action :set_suggest, only:[:show, :edit, :update, :destroy]
+  before_action :not_admin, only:[:edit, :update, :destroy]
   def new
     @suggest = Suggest.new
     @suggest.suggest_tags.build
@@ -63,7 +64,7 @@ class SuggestsController < ApplicationController
 
   end
   def update
-    if current_user.admin?
+    # if current_user.admin?
       begin
         redirect_to admin_users_path if @suggest.update!
       rescue => e# ↓working 確認済
@@ -71,12 +72,12 @@ class SuggestsController < ApplicationController
         flash.now[:danger] = t('.update failed')
         render 'edit'
       end
-    else
-      redirect_to suggests_path, danger: t('.need admin')
-    end
+    # else
+    #   redirect_to suggests_path, danger: t('.need admin')
+    # end
   end
   def destroy
-    if current_user.admin?
+    # if current_user.admin?
       begin
         @suggest.destroy!
         redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
@@ -84,9 +85,9 @@ class SuggestsController < ApplicationController
         puts e.class
         redirect_to admin_users_path, danger: t('.destroy faild')
       end
-    else
-      redirect_to suggests_path, danger: t('.need admin')
-    end
+    # else
+    #   redirect_to suggests_path, danger: t('.need admin')
+    # end
   end
 
   private
@@ -105,5 +106,11 @@ class SuggestsController < ApplicationController
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, {images: []}).merge(user_id: current_user.id)
 
     # 中間モデルの「optional: true」で解決
+  end
+  # admin users_controller
+  def not_admin
+    unless current_user.admin?
+      redirect_to root_path, danger: t('dictionary.words.not admin')
+    end
   end
 end

@@ -9,6 +9,8 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
 gem 'faker'
 # gem 'mini_racer', platforms: :ruby
 
@@ -23,6 +25,12 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
+
+gem 'bootstrap', '~> 4.1.1'
+# ↓本来必要だがdevise-bootstrap-viewsに含まれているため不要
+# gem 'bootstrap-sass'
+# gem 'sass-rails'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
