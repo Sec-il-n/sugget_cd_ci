@@ -15,9 +15,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
+  def destroy
   #   super
-  # end
+    redirect_to new_user_session_path, notice: "ログアウトしました"
+  end
 
   # protected
 

@@ -1,17 +1,19 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[edit, update, destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
   def create
     #投稿に紐づいたコメントを作成(idをi含んだ形でインスタンスを作成)
     @comment = current_user.comments.build(params_comment)
     begin
       @comment.save!
-    # render 'index'
+      render 'index'
     rescue => e
       puts e.class
       redirect_to _path, danger: t('.create comment faild')
     end
   end
   def edit
+    binding.pry
+    @suggest = @comment.suggest
   end
   def update
   end
@@ -24,7 +26,7 @@ class CommentsController < ApplicationController
         redirect_to admin_users_path, danger: t('.delete faild')
       end
       flash[:notice] = t('.deleted')
-      # render 'index'
+      render 'index'
     end
 
   end

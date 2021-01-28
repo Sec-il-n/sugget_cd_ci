@@ -17,6 +17,10 @@ class Suggest < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: :reject_blank, allow_destroy: true
   # mount_uploaders :images, ImageUploader#uploader  modelの複数形?
   # serialize :image, JSON #複数の画像をアップロードをする場合は左の1文が必要 カラムのデータ型がJSONの場合不要
+
+  # polymorphic: 適応後　こっちへシフト!!!!!!!!!!nestがなくなるので、周辺の変更も必要→確認画面の表示できるか？？
+  # has_many :images, as: :imageable
+
   has_many :participants, dependent: :destroy, foreign_key: 'suggest_id'
   has_many :users, through: :participants
 

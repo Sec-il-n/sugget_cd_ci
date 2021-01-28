@@ -1,27 +1,59 @@
-<header>
-      <ul>
-        <!-- アイコンtop -->
-        <nav>
-          <ul>
-            <% if user_signed_in? %>
-              <div data-turbolinks="false">
-                <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right' %>
-              </div>
-              <%# <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, data: {"turbolinks" => false}, class:'right' %>
-              <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right' %>
-              <%= link_to t('.post suggest'), new_suggest_path, class:'right' %>
-              <%= link_to t('.index'), suggests_path, class:'right' %>
-              <%= link_to t('.participants'), participants_path %>
+<div class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#00b377;" >
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
+    <%= link_to 'Meets Suggests & abilities', root_path, class: 'navbar-brand' %>
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+        <!-- <li class="nav-item active"> -->
+          <li class="nav-item">
+            <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right nav-link' %>
+          </li>
+          <!-- <li class="nav-item"> -->
+            <%# <%= link_to t('.post suggest'), new_suggest_path, class:'right nav-item nav-link' %>
+          <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <%# <%= link_to t('.index'), suggests_path, class:'right nav-item nav-link' %>
+          <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <%# <%= link_to t('.participants'), participants_path %>
+          <!-- </li> -->
+          <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to t('.management screen'), admin_users_path, class:'right nav-link' %>
+            </li>
+          <% end %>
 
-              <% if current_user.admin? %>
-                <%= link_to t('.management screen'), admin_users_path, class:'right' %>
-              <% end %>
-
-            <% else %>
-              <%= link_to t('.login'), new_user_session_path, class:'right' %>
-              <%= link_to t('.register'), new_user_registration_path, class:'right' %>
-            <% end %>
-          </ul>
-        </nav>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to t('.login'), new_user_session_path, class:'right nav-item nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('.register'), new_user_registration_path, class:'right nav-item nav-link' %>
+          </li>
+        <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Suggests & Projects
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to t('.index'), suggests_path, class: 'dropdown-item' %>
+              <%= link_to t('.post suggest'), new_suggest_path, class:'dropdown-item' %>
+              <%= link_to t('.participants'), participants_path, class:'dropdown-item' %>
+            </div>
+          </li>
       </ul>
-    </header>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>

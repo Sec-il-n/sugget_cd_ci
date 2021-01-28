@@ -1,5 +1,7 @@
 {
   "name": "parts_divice",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "popper.js": "^1.16.1"
+  }
 }

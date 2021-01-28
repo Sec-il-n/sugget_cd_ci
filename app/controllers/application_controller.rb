@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     # devise_parameter_sanitizer.permit(:sign_in, keys: [:])
     devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :user_image, :user_image_cache, :remove_user_image])
   end
-  def after_sign_out_path_for(resource)
-    new_user_session_path # ログアウト後に遷移するpathを設定
-  end
+  # def after_sign_out_path_for(resource)
+  #   new_user_session_path # ログアウト後に遷移するpathを設定
+  # end
 end

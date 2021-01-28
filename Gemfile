@@ -26,10 +26,8 @@ gem 'jquery-rails'
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.1.1'
-# ↓本来必要だがdevise-bootstrap-viewsに含まれているため不要
-# gem 'bootstrap-sass'
-# gem 'sass-rails'
+gem 'bootstrap', '~> 4.5'
+gem 'font-awesome-rails'
 gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false

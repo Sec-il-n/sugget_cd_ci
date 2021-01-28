@@ -5,4 +5,6 @@ class Corporation < ApplicationRecord
   end
   belongs_to :category
   has_many :users, foreign_key: 'corporation_id'
+  # polymorphic: 適応後　追加
+  # has_many :images, as: :imageable
 end
