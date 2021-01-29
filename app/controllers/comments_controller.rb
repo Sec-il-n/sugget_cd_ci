@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :corp_prop_registerd, only:[:create, :edit, :update]
   def create
     #投稿に紐づいたコメントを作成(idをi含んだ形でインスタンスを作成)
     @comment = current_user.comments.build(params_comment)
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
     end
   end
   def edit
-    binding.pry
     @suggest = @comment.suggest
   end
   def update
@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
       flash[:notice] = t('.deleted')
       render 'index'
     end
-
   end
   private
   def set_comment

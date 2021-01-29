@@ -2,6 +2,7 @@
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   skip_before_action :authenticate_user!
+  # skip_before_action :corp_prop_registerd
   # GET /resource/confirmation/new
   # def new
   #   super

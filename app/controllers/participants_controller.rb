@@ -1,4 +1,5 @@
 class ParticipantsController < ApplicationController
+  before_action :corp_prop_registerd, only:[:create]
   def create
     participant = current_user.participants.create!(suggest_id: params[:suggest_id])
     redirect_to top_rooms_path(suggest_id: params[:suggest_id]), notice: t('.send messages')

@@ -16,6 +16,16 @@
           <li class="nav-item">
             <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right nav-link' %>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Suggests & Projects
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to t('.index'), suggests_path, class: 'dropdown-item' %>
+              <%= link_to t('.post suggest'), new_suggest_path, class:'dropdown-item' %>
+              <%= link_to t('.participants'), participants_path, class:'dropdown-item' %>
+            </div>
+          </li>
           <!-- <li class="nav-item"> -->
             <%# <%= link_to t('.post suggest'), new_suggest_path, class:'right nav-item nav-link' %>
           <!-- </li> -->
@@ -39,16 +49,7 @@
             <%= link_to t('.register'), new_user_registration_path, class:'right nav-item nav-link' %>
           </li>
         <% end %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Suggests & Projects
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('.index'), suggests_path, class: 'dropdown-item' %>
-              <%= link_to t('.post suggest'), new_suggest_path, class:'dropdown-item' %>
-              <%= link_to t('.participants'), participants_path, class:'dropdown-item' %>
-            </div>
-          </li>
+
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

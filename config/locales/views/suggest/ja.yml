@@ -2,6 +2,7 @@ ja:
   suggests:
     new:
       title: 新規投稿
+      register needed: 企業登録が必要です
     index:
       suggestions: プロジェクト一覧
       login: ログイン
@@ -28,6 +29,7 @@ ja:
       suggest:
         created: 新規投稿が完了しました
         create_faild: 新規投稿に失敗しました
+        register needed: 企業登録が必要です
     show:
       title: 提案・プロジェクト名
       join: 参加する
@@ -55,6 +57,8 @@ ja:
       info: 企業詳細
     new:
       title: 企業新規登録
+    select:
+      register needed: 企業登録が必要です
   messages:
     new:
   participants:
@@ -68,7 +72,8 @@ ja:
       unjoined: の参加を取り消しました
     create:
       error occured: エラーが発生しました
-      send messages: 提案者とチャットを開始できます。
+      send messages: 提案者とチャットを開始できます
+      register needed: 企業登録が必要です
   rooms:
     top:
       create room: チャットルームを作成する
@@ -91,6 +96,11 @@ ja:
       confirmation: 削除しますか？
     create:
       create comment faild: コメントの作成に失敗しました
+      register needed: 企業登録が必要です
+    edit:
+      register needed: 企業登録が必要です
+    update:
+      register needed: 企業登録が必要です
   users:
     show:
       title: プロフィール

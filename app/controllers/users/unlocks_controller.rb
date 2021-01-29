@@ -2,6 +2,7 @@
 
 class Users::UnlocksController < Devise::UnlocksController
   skip_before_action :authenticate_user!
+  # skip_before_action :corp_prop_registerd
   # GET /resource/unlock/new
   # def new
   #   super

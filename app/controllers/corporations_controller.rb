@@ -24,7 +24,7 @@ class CorporationsController < ApplicationController
   def edit
   end
   def select
-
+    
   end
   def selected
     corp_or_prop

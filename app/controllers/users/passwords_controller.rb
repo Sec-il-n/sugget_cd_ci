@@ -2,6 +2,7 @@
 
 class Users::PasswordsController < Devise::PasswordsController
   skip_before_action :authenticate_user!
+  # skip_before_action :corp_prop_registerd
   # GET /resource/password/new
   # def new
   #   super
