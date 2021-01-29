@@ -1,4 +1,5 @@
 class SuggestsController < ApplicationController
+  include SuggestsHelper
   before_action :set_suggest, only:[:show, :edit, :update, :destroy]
   before_action :not_admin, only:[:edit, :update, :destroy]
   before_action :corp_prop_registerd, only:[:new, :create]

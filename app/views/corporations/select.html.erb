@@ -4,5 +4,6 @@
   <%= f.radio_button :figure, :proprietorship %>
   <%= f.label :figure, "個人事業", {value: :roprietorship, style: "display: inline-block;"} %>
 
-  <%= f.submit %>
+  <%= f.submit t('.later'), data: { confirm: t('.be_restricted')}, name: 'later' %>
+  <%= f.submit t('.register') %>
 <% end %>

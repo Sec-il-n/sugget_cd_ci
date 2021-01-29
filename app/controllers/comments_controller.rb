@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  include SuggestsHelper
   before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :corp_prop_registerd, only:[:create, :edit, :update]
   def create

@@ -6,6 +6,8 @@ ja:
       destroy: 削除する
       not admin: 管理者権限が必要です
   layouts:
+    application:
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
     header:
       login: ログイン
       logout: ログアウト
@@ -15,6 +17,7 @@ ja:
       post suggest: 新規提案
       index: 提案/プロジェクト一覧
       management screen: 管理者画面
+      belonging_registration: 企業登録
   activerecord:
     errors:
       models:

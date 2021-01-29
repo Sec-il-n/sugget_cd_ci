@@ -2,6 +2,7 @@ class CorporationsController < ApplicationController
   before_action :set_corporation, only:[:show, :edit, :update, :destroy]
   def new
     @corporation = Corporation.new
+
   end
   def create
     @corporation = Corporation.new(params_corporation)
@@ -24,10 +25,14 @@ class CorporationsController < ApplicationController
   def edit
   end
   def select
-    
+
   end
   def selected
-    corp_or_prop
+    if params[:later]
+      redirect_to root_path
+    else
+      corp_or_prop
+    end
   end
   private
   def set_corporation

@@ -16,6 +16,12 @@
           <li class="nav-item">
             <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right nav-link' %>
           </li>
+          <% if belonging_registration_path.present? %>
+            <li class="nav-item">
+              <%= link_to t('.belonging_registration'), select_corporations_path, class:'right nav-link' %>
+            </li>
+          <% end %>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Suggests & Projects

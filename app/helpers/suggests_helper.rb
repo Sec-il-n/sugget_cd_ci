@@ -28,4 +28,14 @@ module SuggestsHelper
   def participants_find
     current_user.participants.find_by(suggest_id: @suggest.id)
   end
+  def corp_prop_registerd
+    if current_user.corporation_id.nil? && current_user.proprietorship_id.nil?
+      redirect_to select_corporations_path, warning: t('.register needed')
+    end
+  end
+  def belonging_registration_path
+    if current_user.corporation_id.nil? && current_user.proprietorship_id.nil?
+      select_corporations_path
+    end
+  end
 end

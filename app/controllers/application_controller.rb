@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # 5.2以降はActionController::Baseに移行
   # protect_from_forgery with: :exception
-  include ApplicationHelper
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :success, :info, :warning, :danger
@@ -14,5 +13,8 @@ class ApplicationController < ActionController::Base
   end
   def after_sign_out_path_for(resource)
     new_user_session_path# ログアウト後に遷移するpathを設定
+  end
+  def after_inactive_sign_up_path_for
+    choose_corp_or_prop_path
   end
 end

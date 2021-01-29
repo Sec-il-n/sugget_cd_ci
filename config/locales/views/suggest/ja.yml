@@ -21,6 +21,7 @@ ja:
       education: 教育・福祉複合サービス業
       service: サービス業
       etc: その他
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
       category_search: カテゴリ検索
       search: 検索
     form:
@@ -59,6 +60,9 @@ ja:
       title: 企業新規登録
     select:
       register needed: 企業登録が必要です
+      register: 企業登録へ
+      later: 後で登録
+      be_restricted: 企業未登録だと機能が制限されます
   messages:
     new:
   participants:

@@ -1,3 +1,9 @@
+<div class="belonging_registration">
+  <% if belonging_registration_path.present? %>
+    <%= link_to t('.belonging_registration'), select_corporations_path %>
+  <% end %>
+</div>
+
 <div class="">
   <strong><%= t('.title') %>:</strong>
   <h2><%= @suggest.title %></h2>

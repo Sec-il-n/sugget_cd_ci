@@ -1,3 +1,9 @@
+<div class="belonging_registration">
+  <% if belonging_registration_path.present? %>
+    <%= link_to t('.belonging_registration'), select_corporations_path %>
+  <% end %>
+</div>
+
 <h1><%= t('.suggestions') %></h1>
 <%# カテゴリ検索 %>
 <%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
