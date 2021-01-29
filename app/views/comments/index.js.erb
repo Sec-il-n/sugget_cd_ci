@@ -1,5 +1,6 @@
 // showのrender部
 $(function() {
-  $("#comment-area").html("<%= j(render 'index', { comments: @comment.suggest.comments }) %>")
+  // alert('OK!');
+  $("#comment-area").html("<%= j(render 'index', { comments: @comment.suggest.comments.recent }) %>")
   $("textarea").val('')
 });

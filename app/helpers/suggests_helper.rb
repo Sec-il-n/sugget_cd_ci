@@ -6,6 +6,7 @@ module SuggestsHelper
 
     elsif suggest.user.proprietorship_id.present?
       proprietorship_path(suggest.user.proprietorship_id)
+
     end
   end
     # present? => nil、空 = false

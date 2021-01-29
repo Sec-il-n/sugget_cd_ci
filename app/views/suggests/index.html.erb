@@ -2,24 +2,28 @@
 <%# カテゴリ検索 %>
 <%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
 <%# <%= form_with(scope: :search, method: get, local: true)do |f| %>
-  <%= f.label t('.category_search') %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
   <div class="form-group">
-    <%= f.submit :class => 'btn btn-primary' %>
+    <%= f.label t('.category_search') %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= f.submit "#{t('.search')}", :class => 'btn btn-primary' %>
   </div>
 <% end %>
 <% @suggests.each do |suggest| %>
   <div class="">
     <p><%= t('.show') %>:
-    <%= link_to suggest.title, suggest_path(suggest.id) %></p>
+    <%= link_to suggest.title, suggest_path(suggest) %></p>
     <p><%= t('.overview') %></p>
     <%# 検証　引数なし→＠suggestsの場合のみOK %>
-    <p><%= link_to t('.info'), choose_corp_or_prop_path(suggest) %></p>
+    <% if choose_corp_or_prop_path(suggest).present? %>
+      <p><%= link_to t('.info'), choose_corp_or_prop_path(suggest) %></p>
+    <% end %>
 
     <% if suggest.user.user_image.present? %>
       <p><%= image_tag suggest.user.user_image.url %></p>
     <% end %>
+
     <p><%= suggest.details %></p>
+
     <% suggest.tags.each do |tag| %>
       <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
     <% end %>
@@ -30,5 +34,5 @@
 <%# participantのindexで表示 %>
 <%# <% if current_user.participant.suggests  .present %>
 <%# link_to チャット %>
-<%= link_to t('.login'), new_user_session_path %>
-<%= link_to t('.registration'), new_user_registration_path %>
+<%# <%= link_to t('.login'), new_user_session_path %>
+<%# <%= link_to t('.registration'), new_user_registration_path %>

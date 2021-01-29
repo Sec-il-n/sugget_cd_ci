@@ -8,27 +8,34 @@
     <p><%= link_to t('.join'), participants_path(suggest_id: @suggest.id), method: 'post', class: 'btn btn-default' %></p>
   <% end %>
 
-  <div class="">
+  <div class="corp_prop">
+    <strong><%= t('.corp_prop') %>:</strong>
     <% belonging = choose_corp_or_prop %>
-    <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
+    <% if belonging %>
+      <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
+    <% end %>
   </div>
-  <div class="">
+  <div class="user_profile">
+    <strong><%= t('.user_profile') %>:</strong>
     <% if @suggest.user.user_image.present? %>
       <p><%= image_tag @suggest.user.user_image.url %></p>
     <% end %>
+    <strong><%= t('.details') %>:</strong>
     <p><%= @suggest.details %></p>
   </div>
-  <div class="">
+  <div class="suggest_images">
     <% @suggest.images.each do |image| %>
-      <p><%= image_tag image.image.url, class: "suggest-images" %></p>
+      <% if image.present? && image.image.url %>
+        <p><%= image_tag image.image.url, class: "suggest-images" %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
 <hr>
 <!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
 <div class="row">
-  <p><%= notice %></p>
-  <p><%= danger %></p>
+  <!-- <p><%= notice %></p>
+  <p><%= danger %></p> -->
   <ul>
     <li>
       <h3 class="text-left title"><%= t('.comments') %></h3>

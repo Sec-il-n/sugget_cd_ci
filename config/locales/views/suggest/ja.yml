@@ -21,6 +21,7 @@ ja:
       service: サービス業
       etc: その他
       category_search: カテゴリ検索
+      search: 検索
     form:
       file: ファイル選択(画像)
     create:
@@ -32,6 +33,9 @@ ja:
       join: 参加する
       participants: 参加中提案/プロジェクト一覧
       comments: コメント
+      corp_prop: 企業詳細
+      user_profile: 登録者情報
+      details: 提案詳細
     destroy:
       destroyed: を削除しました
       destroy faild: 削除に失敗しました

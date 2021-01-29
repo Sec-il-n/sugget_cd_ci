@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only:[:new, :create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -15,10 +15,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-  #   super
-    redirect_to new_user_session_path, notice: "ログアウトしました"
-  end
+  # ↓ならrouting -> devise_for: ??
+  # def destroy
+    # super
+    # redirect_to new_user_session_path, notice: "ログアウトしました"
+  # end
 
   # protected
 

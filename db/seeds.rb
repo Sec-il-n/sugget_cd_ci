@@ -1,5 +1,5 @@
 # 1.times do |n|
-#   name = "#{Faker::Name.name}.prop"
+#   name = "#{Faker::Name.name}.corp"
 #   info = "aaa"
 #   image = nil
 #   category_id = rand(1..11)#複数
