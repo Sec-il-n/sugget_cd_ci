@@ -1,4 +1,11 @@
 ja:
+  tops:
+    index:
+      title: We support new proposals and collaboration
+      sub_title_1: 現在抱えている問題、発揮しきれていない専門性を
+      sub_title_2: コラボレーションすることで世の中に発信できるような出会いを提案いたします
+      login: ログイン
+      registration: 新規登録
   suggests:
     new:
       title: 新規投稿
@@ -33,6 +40,7 @@ ja:
         register needed: 企業登録が必要です
     show:
       title: 提案・プロジェクト名
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
       join: 参加する
       participants: 参加中提案/プロジェクト一覧
       comments: コメント

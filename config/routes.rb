@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # get 'users/show'
-  root to: 'suggests#index'
+  root to: 'tops#index'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

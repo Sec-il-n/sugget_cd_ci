@@ -1,3 +1,4 @@
+<!-- 企業登録確認 -->
 <div class="belonging_registration">
   <% if belonging_registration_path.present? %>
     <%= link_to t('.belonging_registration'), select_corporations_path %>
@@ -7,32 +8,40 @@
 <h1><%= t('.suggestions') %></h1>
 <%# カテゴリ検索 %>
 <%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
-<%# <%= form_with(scope: :search, method: get, local: true)do |f| %>
   <div class="form-group">
     <%= f.label t('.category_search') %>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
     <%= f.submit "#{t('.search')}", :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
 <% @suggests.each do |suggest| %>
-  <div class="">
+  <div class="suggest">
     <p><%= t('.show') %>:
     <%= link_to suggest.title, suggest_path(suggest) %></p>
-    <p><%= t('.overview') %></p>
-    <%# 検証　引数なし→＠suggestsの場合のみOK %>
     <% if choose_corp_or_prop_path(suggest).present? %>
       <p><%= link_to t('.info'), choose_corp_or_prop_path(suggest) %></p>
     <% end %>
+    <div class="thumbnail">
+      <% if suggest.user.user_image.present? %>
+          <%= image_tag suggest.user.user_image.url, class: "user_image" %>
+      <% else %>
+        <% url = '' %>
+        <%= image_tag url, class: "user_image" %>
+      <% end %>
+      <%= link_to "@#{suggest.user.user_name}", user_path(suggest.user.id) %>
+    </div>
 
-    <% if suggest.user.user_image.present? %>
-      <p><%= image_tag suggest.user.user_image.url %></p>
-    <% end %>
+    <div class="overview">
+      <p><%= t('.overview') %>:</p>
+      <p><%= suggest.details %></p>
+    </div>
 
-    <p><%= suggest.details %></p>
-
-    <% suggest.tags.each do |tag| %>
-      <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
-    <% end %>
+    <div class="images">
+      <% suggest.tags.each do |tag| %>
+        <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 

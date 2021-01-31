@@ -6,34 +6,32 @@
   <%# コメントない場合 %>
   <% unless comment.id.nil? %>
     <li>
-      <div class="">
-        <div class="">
+        <div class="user_image">
           <%# <%= attachment_image_tag....gemが必要 %>
           <%= image_tag comment.user.user_image.url if comment.user.user_image.present? %>
         </div>
-        <div class="">
+        <div class="comment">
           <p>
             <%= link_to "@#{comment.user.user_name}", user_path(comment.user.id) %>
           </p>
-          <div class="">
+          <div class="texts_link">
             <%= comment.text %>
             <% if current_user.admin? && comment.user == current_user %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
             <% elsif current_user.admin? %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
             <% elsif comment.user == current_user %>
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
 
             <% end %>
           </div>
-          <span class="">
+          <span class="date_created">
             <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
           </span>
         </div>
-      </div>
     </li>
   <% end %>
 <% end %>
@@ -41,31 +39,31 @@
 <div class="collapse" id="collapseExample">
     <% comments.offset(2).each do |comment| %>
       <% unless comment.id.nil? %>
-        <div class="">
+        <div class="user_image">
           <%# <%= image_tag comment.user.user_image.url unless comment.user.user_image.nil?  %>
           <% if comment.user.user_image.present? %>
             <%= image_tag comment.user.user_image.url %>
           <% end %>
         </div>
-        <div class="">
+        <div class="comment">
           <p>
             <%= link_to "@#{comment.user.user_name}", user_path(comment.user.id) %>
           </p>
-          <div class="">
+          <div class="texts_link">
             <%= comment.text %>
             <% if current_user.admin? && comment.user == current_user %>
-            <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
-            <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
-          <% elsif current_user.admin? %>
-            <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-default btn-sm' %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
+            <% elsif current_user.admin? %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
-          <% elsif comment.user == current_user %>
-            <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-default btn-sm' %>
+            <% elsif comment.user == current_user %>
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
 
           <% end %>
           </div>
-          <span class="">
+          <span class="date_created">
             <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
           </span>
         </div>

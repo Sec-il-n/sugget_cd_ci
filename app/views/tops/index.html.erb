@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= t('.title') %></h1>
+  <p class="lead"><%= t('.sub_title_1') %></p>
+  <p class="lead"><%= t('.sub_title_2') %></p>
+
+  <hr class="my-4">
+  <div class="container">
+
+  </div>
+  <%= link_to t('.login'), new_user_session_path, class:'btn btn-outline-success' %>
+  <%= link_to t('.registration'), new_user_registration_path, class:'btn btn-success' %>
+</div>
