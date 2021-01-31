@@ -11,14 +11,14 @@
         <% if user_signed_in? %>
         <!-- <li class="nav-item active"> -->
           <li class="nav-item">
-            <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'right nav-link' %>
+            <%= link_to t('.logout'), destroy_user_session_path(current_user.id), method: :delete, class:'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'right nav-link' %>
+            <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'nav-link' %>
           </li>
           <% if belonging_registration_path.present? %>
             <li class="nav-item">
-              <%= link_to t('.belonging_registration'), select_corporations_path, class:'right nav-link' %>
+              <%= link_to t('.belonging_registration'), select_corporations_path, class:'nav-link' %>
             </li>
           <% end %>
 
@@ -43,16 +43,16 @@
           <!-- </li> -->
           <% if current_user.admin? %>
             <li class="nav-item">
-              <%= link_to t('.management screen'), admin_users_path, class:'right nav-link' %>
+              <%= link_to t('.management screen'), admin_users_path, class:'nav-link' %>
             </li>
           <% end %>
 
         <% else %>
           <li class="nav-item">
-            <%= link_to t('.login'), new_user_session_path, class:'right nav-item nav-link' %>
+            <%= link_to t('.login'), new_user_session_path, class:'nav-item nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to t('.register'), new_user_registration_path, class:'right nav-item nav-link' %>
+            <%= link_to t('.register'), new_user_registration_path, class:'nav-item nav-link' %>
           </li>
         <% end %>
 

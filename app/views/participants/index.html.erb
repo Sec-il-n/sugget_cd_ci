@@ -1,25 +1,35 @@
+<!-- 企業登録確認 -->
+<div class="belonging_registration">
+  <% if belonging_registration_path.present? %>
+    <%= link_to t('.belonging_registration'), select_corporations_path %>
+  <% end %>
+</div>
+
 <h1><%= t('.participants') %></h1>
 
 <% @participants.each do |participant| %>
-  <div class="">
-    <p><%= link_to t('.show'), suggest_path(id: participant.suggest_id) %></p>
-    <p><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'btn btn-default' %></p>
+  <div class="card suggest">
+    <div class="card-body">
+      <strong class="card-title"><%= t('.show') %>:　<%= link_to participant.suggest.title, suggest_path(id: participant.suggest_id) %></strong>
+      <p class="right"><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'ht-tm-element btn btn-sm btn-outline-success' %></p>
+
+      <div class="overview">
+        <strong><%= t('.overview') %>: </strong>
+        <p><%= participant.suggest.details %></p>
+      </div>
+      <div class="tags">
+        <% participant.suggest.tags.each do |tag| %>
+          <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="">
-    <p><%= t('.overview') %></p>
-    <%# 検証　引数なし→＠suggestsの場合のみOK %>
-    <p><%= participant.suggest.details %></p>
-    <% participant.suggest.tags.each do |tag| %>
-      <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
-    <% end %>
-  </div>
+<% end %>
   <%# <div class="">
     <% if cuurentUser.suggests_on_going.present? %>
     <%# <%= link_to t('.room'), ??room_path(current_user.id) %>
     <%# <% end %>
   <!-- </div> -->
-<% end %>
-
 
 <%# participantのindexで表示 %>
 <%# <% if current_user.participant.suggests  .present %>

@@ -1,58 +1,68 @@
-<div class="belonging_registration">
-  <% if belonging_registration_path.present? %>
+<% if belonging_registration_path.present? %>
+  <div class="belonging_registration">
     <%= link_to t('.belonging_registration'), select_corporations_path %>
-  <% end %>
-</div>
-
-<div class="">
-  <strong><%= t('.title') %>:</strong>
-  <h2><%= @suggest.title %></h2>
-
-  <% if participants_find.present? %>
-    <p><%= link_to t('.participants'), participants_path %></p>
-  <% else %>
-    <p><%= link_to t('.join'), participants_path(suggest_id: @suggest.id), method: 'post', class: 'btn btn-default' %></p>
-  <% end %>
-
-  <div class="corp_prop">
-    <strong><%= t('.corp_prop') %>:</strong>
-    <% belonging = choose_corp_or_prop %>
-    <% if belonging %>
-      <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
-    <% end %>
   </div>
-  <div class="user_profile">
-    <strong><%= t('.user_profile') %>:</strong>
-    <% if @suggest.user.user_image.present? %>
-      <p><%= image_tag @suggest.user.user_image.url %></p>
-    <% end %>
-    <strong><%= t('.details') %>:</strong>
-    <p><%= @suggest.details %></p>
-  </div>
-  <div class="suggest_images">
-    <% @suggest.images.each do |image| %>
-      <% if image.present? && image.image.url %>
-        <p><%= image_tag image.image.url, class: "suggest-images" %></p>
+<% end %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3><%= @suggest.title %></h3>
+
+      <% if participants_find.present? %>
+        <p><%= link_to t('.participants'), participants_path %></p>
+      <% else %>
+        <p><%= link_to t('.join'), participants_path(suggest_id: @suggest.id), method: 'post', class: 'ht-tm-element btn btn-sm btn-success' %></p>
       <% end %>
-    <% end %>
-  </div>
-</div>
-<hr>
-<!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
-<div class="row">
-  <!-- <p><%= notice %></p>
-  <p><%= danger %></p> -->
-  <ul>
-    <li>
-      <h3 class="text-left title"><%= t('.comments') %></h3>
-    </li>
-    <li id="comment-area">
-      <%= render partial: 'comments/index', locals: { comments: @comments } %>
-    </li>
-  </ul>
-  <% if user_signed_in? %>
-    <div create="comment-post">
-      <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
+
+      <div class="show corp_prop">
+        <strong><%= t('.corp_prop') %>:　</strong>
+        <% belonging = choose_corp_or_prop %>
+        <% if belonging %>
+          <%= link_to belonging.name, choose_corp_or_prop_path(@suggest) %>
+        <% end %>
+      </div>
+      <div class="show user_profile">
+        <strong><%= t('.user_profile') %>:　</strong>
+        <%= link_to "@#{@suggest.user.user_name}", user_path(@suggest.user.id) %>
+        <% if @suggest.user.user_image.present? %>
+          <%= image_tag @suggest.user.user_image.url, class: "user_image" %>
+        <% else %>
+          <% url = '' %>
+          <%= image_tag url, class: "user_image" %>
+        <% end %>
+      </div>
+      <div class="shoe overview">
+        <strong><%= t('.details') %>:</strong>
+        <p><%= @suggest.details %></p>
+      </div>
+      <div class="show suggest_images">
+        <% @suggest.images.each do |image| %>
+          <% if image.present? && image.image.url %>
+            <p><%= image_tag image.image.url, class: "suggest-images" %></p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    <hr>
+    <!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
+    <div class="row">
+      <!-- <p><%= notice %></p>
+      <p><%= danger %></p> -->
+      <ul>
+        <li>
+          <h3 class="text-left title"><%= t('.comments') %></h3>
+        </li>
+        <li id="comment-area">
+          <%= render partial: 'comments/index', locals: { comments: @comments } %>
+        </li>
+      </ul>
+      <% if user_signed_in? %>
+        <div create="comment-post">
+          <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>

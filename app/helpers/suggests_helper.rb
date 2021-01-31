@@ -18,6 +18,14 @@ module SuggestsHelper
       @suggest.user.proprietorship
     end
   end
+  def corp_or_prop(suggest)
+    if suggest.user.corporation_id.present?
+      suggest.user.corporation
+
+    elsif suggest.user.proprietorship_id.present?
+      suggest.user.proprietorship
+    end
+  end
   def choose_confirm_path
     if action_name == 'create' || action_name == 'new'
       confirm_suggests_path

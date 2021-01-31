@@ -16,38 +16,42 @@
 <% end %>
 
 <% @suggests.each do |suggest| %>
-  <div class="suggest">
-    <p><%= t('.show') %>:
-    <%= link_to suggest.title, suggest_path(suggest) %></p>
-    <% if choose_corp_or_prop_path(suggest).present? %>
-      <p><%= link_to t('.info'), choose_corp_or_prop_path(suggest) %></p>
-    <% end %>
-    <div class="thumbnail">
-      <% if suggest.user.user_image.present? %>
-          <%= image_tag suggest.user.user_image.url, class: "user_image" %>
-      <% else %>
-        <% url = '' %>
-        <%= image_tag url, class: "user_image" %>
-      <% end %>
-      <%= link_to "@#{suggest.user.user_name}", user_path(suggest.user.id) %>
-    </div>
+  <div class="card suggest">
+    <div class="card-body">
+      <div class="title">
+        <strong class="card-title"><%= t('.show') %>:
+        <%= link_to suggest.title, suggest_path(suggest) %></strong>
+      </div>
+      <div class="info right">
+        <div class="corp">
+          <% corp_or_prop = corp_or_prop(suggest) %>
+          <% if corp_or_prop %>
+            <strong><%= t('.info') %>:</strong>
+            <%= link_to corp_or_prop.name, choose_corp_or_prop_path(suggest) %>
+          <% end %>
+        </div>
 
-    <div class="overview">
-      <p><%= t('.overview') %>:</p>
-      <p><%= suggest.details %></p>
-    </div>
+        <div class="thumbnail">
+          <% if suggest.user.user_image.present? %>
+              <%= image_tag suggest.user.user_image.url, class: "user_image" %>
+          <% else %>
+            <% url = '' %>
+            <%= image_tag url, class: "user_image" %>
+          <% end %>
+          <%= link_to "@#{suggest.user.user_name}", user_path(suggest.user.id) %>
+        </div>
+      </div>
 
-    <div class="images">
+      <div class="overview">
+        <strong><%= t('.overview') %>:</strong>
+        <p><%= suggest.details %></p>
+      </div>
+
+    </div>
+    <div class="tags">
       <% suggest.tags.each do |tag| %>
-        <%= link_to tag.name, suggests_path(tag: tag.id, class: 'btn btn-default') %>
+        <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
       <% end %>
     </div>
   </div>
 <% end %>
-
-
-<%# participantのindexで表示 %>
-<%# <% if current_user.participant.suggests  .present %>
-<%# link_to チャット %>
-<%# <%= link_to t('.login'), new_user_session_path %>
-<%# <%= link_to t('.registration'), new_user_registration_path %>
