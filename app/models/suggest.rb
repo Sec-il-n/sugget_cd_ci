@@ -20,10 +20,10 @@ class Suggest < ApplicationRecord
 
   # polymorphic: 適応後　こっちへシフト!!!!!!!!!!nestがなくなるので、周辺の変更も必要→確認画面の表示できるか？？
   # has_many :images, as: :imageable
+  belongs_to :category
 
   has_many :participants, dependent: :destroy, foreign_key: 'suggest_id'
   has_many :users, through: :participants
-
 
   belongs_to :room, foreign_key: 'suggest_id', optional: true
 

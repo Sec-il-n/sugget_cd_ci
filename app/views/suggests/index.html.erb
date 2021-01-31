@@ -48,6 +48,12 @@
       </div>
 
     </div>
+    <div class="category">
+      <%# 全権カテゴリ登録後if   %>
+      <% if suggest.category %>
+        <%= link_to suggest.category.name, suggests_path(category_id: suggest.category_id), class: 'ht-tm-element badge badge-pill badge-warning' %>
+      <% end %>
+    </div>
     <div class="tags">
       <% suggest.tags.each do |tag| %>
         <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
