@@ -12,6 +12,8 @@ gem 'devise'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'faker'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'coffee-rails', '~> 4.2'
