@@ -10,7 +10,8 @@
       <h3><%= @suggest.title %></h3>
 
       <% if participants_find.present? %>
-        <p><%= link_to t('.participants'), participants_path %></p>
+        <p><%= link_to t('.participants'), participants_path, class: 'ht-tm-element btn btn-sm btn-outline-success' %>
+        <%# <%= link_to t('.chat'), room_path(@suggest.room.id), class: 'ht-tm-element btn btn-outline-dark' %></p>
       <% else %>
         <p><%= link_to t('.join'), participants_path(suggest_id: @suggest.id), method: 'post', class: 'ht-tm-element btn btn-sm btn-success' %></p>
       <% end %>

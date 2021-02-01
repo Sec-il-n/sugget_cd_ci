@@ -1,8 +1,10 @@
-<div class="message">
   <% @messages.each do |message| %>
-    <div class="">
-      <%= image_tag current_user.user_image.url %>
-      <%= message.text %>
+    <div class="card">
+      <div class="card-body message">
+        <% if message.user.user_image && message.user.user_image.url %>
+          <%= image_tag message.user.user_image.url, class: 'user_image' %>
+        <% end %>
+        <strong><%= message.user.user_name %>: </strong><%= message.text %>
+      </div>
     </div>
   <% end %>
-</div>

@@ -1,17 +1,20 @@
 <h1><%= t('.room') %></h1>
-
+<!-- <p>説明文</p> -->
 <div class="">
   <strong><%= "#{t('.suggest')}: #{@suggest.title}" %></strong>
 
   <div id="messages">
-  <%= render 'message', collection: @messages %>
+    <%= render 'message', collection: @messages %>
+  </div>
+
+  <div class="chat">
+    <%= t('.chat') %>
+    <input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>" class="form-control">
   </div>
 
   <div class="">
-    <input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>">
+    <%= link_to t('.leave'), participants_path, class: 'ht-tm-element btn btn-link' %>
   </div>
-
-
   <%# data-behavior属性が指定できないので使わない %>
   <%# model ?? url?? %>
   <%# undefined method `model_name' for nil:NilClass %>

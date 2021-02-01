@@ -22,15 +22,16 @@
           <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
         <% end %>
       </div>
+      <div class="message right">
+        <% unless participant.suggest.room %>
+          <%= link_to t('.create_room'), rooms_path(suggest_id: participant.suggest.id), method: 'post', class: 'ht-tm-element btn btn-dark' %>
+        <% else %>
+        <%# ローム複数の場合 %>
+          <%= link_to t('.room_index'), rooms_path(participant.suggest.id), class: 'ht-tm-element btn btn-outline-dark' %>
+          <%# ルーム単数の場合 %>
+          <%# <%= link_to t('.room'), room_path(participant.suggest.room.id), class: 'ht-tm-element btn btn-outline-dark' %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
-  <%# <div class="">
-    <% if cuurentUser.suggests_on_going.present? %>
-    <%# <%= link_to t('.room'), ??room_path(current_user.id) %>
-    <%# <% end %>
-  <!-- </div> -->
-
-<%# participantのindexで表示 %>
-<%# <% if current_user.participant.suggests  .present %>
-<%# link_to チャット %>

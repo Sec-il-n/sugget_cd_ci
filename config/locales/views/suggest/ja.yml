@@ -42,7 +42,8 @@ ja:
       title: 提案・プロジェクト名
       belonging_registration: 企業登録はお済みですか？(機能が制限されています)
       join: 参加する
-      participants: 参加中提案/プロジェクト一覧
+      participants: 参加中提案一覧
+      chat: チャットルームへ
       comments: コメント
       corp_prop: 企業詳細
       user_profile: 登録者情報
@@ -79,6 +80,9 @@ ja:
       unjoin: 非参加にする
       overview: 概要
       show: 提案詳細
+      create_room: チャットルーム開設
+      room: チャットルームへ
+      room_index: チャットルーム一覧へ
     destroy:
       title name: 提案/プロジェクト名
       unjoined: の参加を取り消しました
@@ -94,9 +98,13 @@ ja:
       room created: チャットルームを作成しました。提案者とチャットを開始できます。
     index:
       rooms: チャットルーム一覧
+      suggest: 提案/プロジェクト名
+      move_to_room: チャットルームへ
     show:
       room: チャットルーム
       suggest: 提案/プロジェクト名
+      chat: 入力してenter
+      leave: 退室する
   comments:
     form:
       title: コメント投稿

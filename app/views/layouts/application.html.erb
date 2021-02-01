@@ -17,15 +17,29 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container-fluid">
-      <p class="notice"><%= notice %></p>
+      <% if notice %>
+        <div class="ht-tm-element alert alert-dismissible fade show alert-secondary">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+      <% if danger %>
+        <div class="ht-tm-element alert alert-dismissible fade show alert-danger">
+          <p class="danger"><%= danger %></p>
+        </div>
+      <% end %>
+      <% if danger %>
+        <div class="ht-tm-element alert alert-dismissible fade show alert-warning">
+          <p class="warning"><%= warning %></p>
+        </div>
+      <% end %>
+
       <p class="alert"><%= alert %></p>
-      <p class="warning"><%= warning %></p>
-      <p class="danger"><%= danger %></p>
 
       <% if @suggest && @suggest.errors.any? %>
-        <p class="text-danger bg-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
+        <p class="text-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
         <% @suggest.errors.full_messages.each do |msg| %>
-          <p class="text-danger bg-warning"><%= msg %></p>
+          <p class="text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
+          <!-- <p class="text-danger bg-warning"><%= msg %></p> -->
         <% end %>
       <% end %>
       <%= yield %>

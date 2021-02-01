@@ -18,10 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms do
-    collection do
-      get :top
-    end
+  resources :rooms, only:[:index, :create, :show] do
+  # resources :rooms, only:[:create, :show] do
+    # collection do
+    #   get :top
+    # end
     resources :messages
   end
 

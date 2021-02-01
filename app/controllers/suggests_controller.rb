@@ -20,7 +20,9 @@ class SuggestsController < ApplicationController
     #     @suggest.images.build(suggest_params.clone.merge({images: image}))
     else
       if @suggest.save
-          redirect_to suggests_path, notice: t('.suggest.created')
+          Participant.create(suggest_id: @suggest.id, user_id: current_user.id)
+          redirect_to suggests_path,
+          notice: t('.suggest.created')
     #     end
     #   end
     # elsif @suggest.save

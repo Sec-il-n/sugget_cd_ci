@@ -11,7 +11,7 @@
   <div class="form-group">
     <%= f.label t('.category_search') %>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-    <%= f.submit "#{t('.search')}", :class => 'btn btn-primary' %>
+    <%= f.submit "#{t('.search')}", class: 'btn btn-primary' %>
   </div>
 <% end %>
 

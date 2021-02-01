@@ -1,7 +1,15 @@
+<!-- 不可 -->
 <h1><%= t('.rooms') %></h1>
 <%# 旧コード %>
+<strong><%= t('.suggest') %>: </strong><br>
 <% @rooms.each do |room| %>
-  <% if room.target_user(current_user).present? %>
-    <%= link_to room.target_user(current_user).user_name, room_messages_path(room) %>
+<%# まだチャットルームを開設していない場合@roomsの配列にnilがはいる %>
+  <% unless room.nil? %>
+    <div class="card">
+      <div class="card-body">
+        <%= " #{room.suggest.title}" %>
+        <%= link_to "#{t('.move_to_room')}", room_path(room.id), class: 'right btn btn-light' %>
+      </div>
+    </div>
   <% end %>
 <% end %>

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :suggests_on_going, through: :participants, source: :suggests
 
   has_many :message_rooms
-  has_many :rooms, through: :message_rooms
+  has_many :rooms, through: :message_rooms#取得不可
   has_many :messages
 
   has_many :comments, foreign_key: 'user_id'

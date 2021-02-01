@@ -1,20 +1,23 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  # ここを「参加済み一覧に持ってきたい」
-  def top
-
-    # if @user.id == params[:user_id] && user_signed_in?
-    if user_signed_in?
-      @suggest = Suggest.find_by(id: params[:suggest_id])
-      @user = current_user
-      @room = Room.new
-    end
-  end
+  # ここを「参加済み一覧に持ってきたい」　？？tops不要？
+  # def top
+  #   # if @user.id == params[:user_id] && user_signed_in?
+  #   if user_signed_in?
+  #     @suggest = Suggest.find_by(id: params[:suggest_id])
+  #     @user = current_user
+  #     @room = Room.new
+  #   end
+  # end
+  # 取得不可
   def index
-    @rooms = current_user.rooms
+
+    # @rooms = current_user.rooms
+    @rooms = current_user.participants.map { |participant| participant.suggest.room }
   end
   def create
     @room = Room.new(suggest_id: params[:suggest_id])
+
     @room.save!
     redirect_to room_path(id: @room.id), notice: t('.room created')
   rescue => e
@@ -34,6 +37,9 @@ class RoomsController < ApplicationController
     # @message = @room.messages.build ??
   end
   private
+  # def room_alredy_created?
+  #   @room = Room.find_by(suggest_id: params[:suggest_id])
+  # end
   # def params_room
   #   params.require(:room).permit(:suggest_id, :sender_id, :recipient_id).merge(user_id: urrent_user.id)
   # end

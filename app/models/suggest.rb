@@ -7,7 +7,7 @@ class Suggest < ApplicationRecord
   # suggest.user.corporation_id
   # user.corporation.where(category_id: category_id)
   # scope :corporation, -> (category_id) { where }
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :suggest_tags, dependent: :destroy, foreign_key: 'suggest_id'
   has_many :tags, through: :suggest_tags
   # .invalid-⤵︎　 # required
@@ -20,12 +20,14 @@ class Suggest < ApplicationRecord
 
   # polymorphic: 適応後　こっちへシフト!!!!!!!!!!nestがなくなるので、周辺の変更も必要→確認画面の表示できるか？？
   # has_many :images, as: :imageable
-  belongs_to :category
+  belongs_to :category, optional: true
 
   has_many :participants, dependent: :destroy, foreign_key: 'suggest_id'
   has_many :users, through: :participants
 
-  belongs_to :room, foreign_key: 'suggest_id', optional: true
+  has_one :room, foreign_key: 'suggest_id'#, optional: true
+  # 間違い↓
+  # belongs_to :room, foreign_key: 'suggest_id', optional: true
 
   has_many :comments, dependent: :destroy, foreign_key: 'suggest_id'
 
