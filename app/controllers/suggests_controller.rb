@@ -14,6 +14,7 @@ class SuggestsController < ApplicationController
     @suggest.suggest_tags.build
     2.times{@suggest.images.build}
     if params[:back]
+      # ここでタグチェック外れる
       render 'new'
     # if params[:suggest][:images].present?
     #   suggest_params[:images].each do |image|
@@ -38,15 +39,27 @@ class SuggestsController < ApplicationController
     @suggest = Suggest.new(suggest_params)
     @images = @suggest.images.collect(&:image)
     @tags = @suggest.tags.collect(&:name)
-    # @tag_id = @suggest.tags.collect(&:id)
-    if @suggest.valid?
-      flash.now[:notice] = t('.confirmation')
-      render 'confirm'
-    else
+
+    if @suggest.invalid?
       @suggest.suggest_tags.build
       2.times{@suggest.images.build}
       render 'new'
+
+    elsif @suggest.valid?
+      @suggest.suggest_tags.build
+      2.times{@suggest.images.build}
+      flash.now[:notice] = t('.confirmation')
+      render 'confirm'
+
     end
+    # if @suggest.valid?
+    #   flash.now[:notice] = t('.confirmation')
+    #   render 'confirm'
+    # else
+    #   @suggest.suggest_tags.build
+    #   2.times{@suggest.images.build}
+    #   render 'new'
+    # end
   end
   def index
     @suggests = Suggest.all.page(params[:page]).per(5)
@@ -59,6 +72,7 @@ class SuggestsController < ApplicationController
   end
   def show
     @comment = Comment.new
+    # undefined method `comments' for nil:NilClass
     @comments = @suggest.comments.recent
   end
   def edit

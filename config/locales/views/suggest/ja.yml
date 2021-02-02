@@ -52,7 +52,10 @@ ja:
       destroyed: を削除しました
       destroy faild: 削除に失敗しました
     confirm:
-      confirmation: この内容で登録しますか(登録後の編集は、お問い合わせフォームからご依頼ください)
+      confirmation: この内容で登録しますか? (登録後の編集は、お問い合わせフォームからご依頼ください)
+      title: タイトル
+      details: 詳細
+      tags: タグ
       back: 戻る
     update:
       update failed: 提案/プロジェクトの編集に失敗しました

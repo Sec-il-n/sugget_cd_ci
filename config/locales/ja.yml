@@ -4,7 +4,14 @@ ja:
       registerd: 企業登録を完了しました
       edit: 編集する
       destroy: 削除する
+      submit: 登録する
       not admin: 管理者権限が必要です
+      sign_in: ログイン
+      email: Eメール
+      password: パスワード
+      index: プロジェクト一覧
+      title: タイトル
+      details: 詳細
   layouts:
     application:
       belonging_registration: 企業登録はお済みですか？(機能が制限されています)

@@ -3,27 +3,28 @@ describe '提案/プロジェクト機能', type: :model do
   describe '入力項目バリデーション' do
     context 'タイトルが未入力の際' do
       it 'バリデーションに引っかかる'do
-        suggest = FactoryBot.build(:suggest, title:'')
+        suggest = build(:suggest, title:'')
         suggest.valid?
         expect(suggest.errors.full_messages).to include('タイトルが未入力です')
       end
     end
     context '詳細が未入力の際' do
       it 'バリデーションに引っかかる'do
-      suggest = FactoryBot.build(:suggest, details:'')
+      suggest = build(:suggest, details:'')
       suggest.valid?
       expect(suggest.errors.full_messages).to include('詳細が未入力です')
       end
     end
     context 'タイトルと詳細が入力されている際' do
       it 'バリデーションに通る'do
-        suggest = FactoryBot.build(:suggest)
+        suggest = build(:suggest)
         expect(suggest).to be_valid
       end
     end
   end
   describe '検索機能' do
-    let!(:suggests) { FactoryBot.create_list(:suggest_1, 20) }
+    let!(:suggests) { create_list(:suggest_1, 20) }
+    # let!(:suggests) { FactoryBot.create_list(:suggest_1, 20) }
     before do
       suggests
     end
@@ -32,6 +33,7 @@ describe '提案/プロジェクト機能', type: :model do
         results_3 = Suggest.category_search(3).map(&:category)
         results_5 = Suggest.category_search(5).map(&:category)
         results_7 = Suggest.category_search(7).map(&:category)
+
         results_3.each do |result_3|
           expect(result_3.name).to eq('食品加工業')
         end
