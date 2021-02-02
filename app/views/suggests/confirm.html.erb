@@ -1,21 +1,48 @@
-<%= form_with(model: @suggest, url: suggests_path, method: 'post', local: true)do |f| %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.hidden_field :title %>
-  <%= f.hidden_field :details %>
-  <% @suggest.tags.each do |tag| %>
-    <%= f.hidden_field :tag_ids, maltiple: true, value: tag.id %>
-    <%# <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
-  <% end %>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <!-- <h5><%= t('.confirmation') %></h5> -->
 
-  <% @images.each do |image| %>
-      <p><%= image_tag image.url if image.present? && image.url %></p>
-  <% end %>
-  <%= @suggest.title %><br>
-  <%= @suggest.details %>
-  <% @tags.each do |tag| %>
-    <p><%= tag %></p>
-  <% end %>
+      <%= form_with(model: @suggest, url: suggests_path, method: 'post', local: true)do |f| %>
+        <%= f.hidden_field :image_cache %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :details %>
+        <% @suggest.tags.each do |tag| %>
+          <%= f.hidden_field :tag_ids, maltiple: true, value: tag.id %>
+          <%# <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
+        <% end %>
+        <% count = 1 %>
+        <% @images.each do |image| %>
+          <strong><%= t('.image') %> <%= count %> :  </strong>
+          <div class="suggest-images">
+            <%= image_tag image.url if image.present? && image.url %>
+          </div>
+          <% count += 1 %>
+        <% end %>
 
-  <%= f.submit t('.back'), name: 'back' %>
-  <%= f.submit %>
-<% end %>
+        <div class="title_confirm">
+          <strong><%= t('.title') %> :  </strong>
+          <%= @suggest.title %>
+        </div>
+
+        <div class="details_confirm">
+          <strong><%= t('.details') %> :  </strong>
+          <%= @suggest.details %>
+        </div>
+
+        <div class="tags_confirm">
+          <strong><%= t('.tags') %> :  </strong>
+          <% @tags.each do |tag| %>
+            <%= tag %>
+          <% end %>
+        </div>
+
+        <div class="form-controrl">
+          <%= f.submit t('.back'), name: 'back', class: 'btn btn-outline-secondary' %>
+          <%= f.submit class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
