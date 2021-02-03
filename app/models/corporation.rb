@@ -3,7 +3,7 @@ class Corporation < ApplicationRecord
     validates :name, length:{ maximum: 20 }
     validates :info, length:{ maximum: 2000 }
   end
-  belongs_to :category
+  belongs_to :category, optional: true
   has_many :users, foreign_key: 'corporation_id'
   # polymorphic: 適応後　追加
   # has_many :images, as: :imageable

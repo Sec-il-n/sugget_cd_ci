@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   # get 'users/show'
   root to: 'tops#index'
-
+  post '/suggests/:id', to: 'suggests#update'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
   resources :users, only:[:show]
   namespace :admin do
-    resources :users#, only:[:edit, :update, :destroy]
+    resources :users, only:[:index, :edit, :update, :destroy]
   end
 
   resources :suggests do
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  resources :suggests_tags, only:[:new, :create, :destroy]
+  resources :suggests_tags, only:[:new, :create, :destroy, :update]
 
   resources :corporations do
     collection do

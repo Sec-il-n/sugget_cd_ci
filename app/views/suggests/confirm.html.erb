@@ -3,7 +3,8 @@
     <div class="card-body">
       <!-- <h5><%= t('.confirmation') %></h5> -->
 
-      <%= form_with(model: @suggest, url: suggests_path, method: 'post', local: true)do |f| %>
+      <%= form_with(model: @suggest, url: choose_path, local: true)do |f| %>
+      <%# <%= form_with(model: @suggest, url: suggests_path, method: 'post', local: true)do |f| %> %>
         <%= f.hidden_field :image_cache %>
         <%= f.hidden_field :title %>
         <%= f.hidden_field :details %>

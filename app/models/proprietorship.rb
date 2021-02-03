@@ -4,7 +4,7 @@ class Proprietorship < ApplicationRecord
     validates :info, length:{ maximum: 2000 }
     validates :category
   end
-  belongs_to :category
+  belongs_to :category, optional: true
   # https://railsguides.jp/association_basics.html#belongs-toとhas-oneのどちらを選ぶか
   # belongs_to :user, foreign_key: 'proprietorship_id'
   has_one :user, foreign_key: 'proprietorship_id'

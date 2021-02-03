@@ -76,23 +76,24 @@ class SuggestsController < ApplicationController
     @comments = @suggest.comments.recent
   end
   def edit
-    # ファイルの変更は不可にするしか無い。
-    @suggest.suggest_tags.build
-    # 2.times{@suggest.images.build}
+    # collection + collection_check_boxesが新規[POST]と混ざってerrorになるのでタグの更新は行わない
+    # @suggest.suggest_tags.build
+
+    # 現在の最低2+1⬇︎
+    @suggest.images.build
 
   end
   def update
-    # if current_user.admin?
-      begin
-        redirect_to admin_users_path if @suggest.update!
-      rescue => e# ↓working 確認済
-        puts e.class
-        flash.now[:danger] = t('.update failed')
-        render 'edit'
-      end
-    # else
-    #   redirect_to suggests_path, danger: t('.need admin')
-    # end
+    if current_user.admin? &&
+    begin @suggest.update!(suggest_update_params)
+      redirect_to admin_users_path, notice: t('.updated')
+    rescue => e
+      puts e.class
+      redirect_to admin_users_path, notice: '更新に失敗しました'
+    end
+    else
+      redirect_to suggests_path, danger: t('.need admin')
+    end
   end
   def destroy
     # if current_user.admin?
@@ -122,10 +123,13 @@ class SuggestsController < ApplicationController
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image] }).merge(user_id: current_user.id)
 
     # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, {images: []}).merge(user_id: current_user.id)
-
-    # 中間モデルの「optional: true」で解決
   end
-  # admin users_controller
+  def suggest_update_params
+    params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id)
+    # params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id, suggest:[images_attributes:[:image, :image_cache, :id]],suggest:[tag_ids: [].map(&:to_i)] )
+    # params.require(:suggest).permit(:title, :details, :category_id).merge(user_id: current_user.id, suggest:[images_attributes:[:image, :image_cache, :id]],suggest:[tag_ids: [].map(&:to_i)] )
+    # params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id)
+  end
   def not_admin
     unless current_user.admin?
       redirect_to root_path, danger: t('dictionary.words.not admin')

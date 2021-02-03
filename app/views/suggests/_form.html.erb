@@ -5,7 +5,8 @@
     <% end %>
   </div>
   <div class="form row">
-    <%= form_with(model: suggest, local: true, url: choose_confirm_path)do |f| %>
+    <%= form_with(model: suggest, local: true, url: choose_path) do |f| %>
+    <%# <%= form_with(model: suggest, local: true, url: choose_confirm_path) do |f| %>
     <div class="">
       <%= f.hidden_field :image_cache %>
       <%# <% binding.pry %>

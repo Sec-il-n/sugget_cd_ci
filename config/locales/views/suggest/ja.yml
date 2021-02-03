@@ -10,6 +10,7 @@ ja:
     new:
       title: 新規投稿
       register needed: 企業登録が必要です
+      file: ファイル選択(画像)
     index:
       suggestions: プロジェクト一覧
       login: ログイン
@@ -33,6 +34,7 @@ ja:
       search: 検索
     form:
       file: ファイル選択(画像)
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
     create:
       suggest:
         created: 新規投稿が完了しました
@@ -48,6 +50,9 @@ ja:
       corp_prop: 企業詳細
       user_profile: 登録者情報
       details: 提案詳細
+    edit:
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
+      file: ファイル選択(画像)
     destroy:
       destroyed: を削除しました
       destroy faild: 削除に失敗しました
@@ -58,6 +63,7 @@ ja:
       tags: タグ
       back: 戻る
     update:
+      updated: 編集しました
       update failed: 提案/プロジェクトの編集に失敗しました
       need admin: 編集できません
   proprietorships:
@@ -65,11 +71,15 @@ ja:
       info: 企業詳細(個人)
     new:
       title: 企業(個人)新規登録
+    edit:
+      title: 企業登録(個人)編集
   corporations:
     show:
       info: 企業詳細
     new:
       title: 企業新規登録
+    edit:
+      title: 企業登録編集
     select:
       register needed: 企業登録が必要です
       register: 企業登録へ
@@ -86,6 +96,7 @@ ja:
       create_room: チャットルーム開設
       room: チャットルームへ
       room_index: チャットルーム一覧へ
+      belonging_registration: 企業登録はお済みですか？(機能が制限されています)
     destroy:
       title name: 提案/プロジェクト名
       unjoined: の参加を取り消しました

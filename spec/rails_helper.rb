@@ -73,7 +73,7 @@ RSpec.configure do |config|
   # ↓sign_in and sign_out methods使用可能
   # 結合テスト
   config.include Devise::Test::IntegrationHelpers, type: :request
-
+  config.include ActionDispatch::TestProcess
   # config.include Devise::Test::ControllerHelpers, type: :controller
   # config.extend ControllerMacros, type: :controller
 

@@ -27,10 +27,17 @@ module SuggestsHelper
     end
   end
   def choose_confirm_path
-    if action_name == 'create' || action_name == 'new' 
+    if action_name == 'create' || action_name == 'new'
       confirm_suggests_path
-    elsif action_name == 'edit'
-      edit_suggest_path
+    elsif action_name == 'update' || action_name == 'edit'
+      suggest_path
+    end
+  end
+  def choose_path
+    if action_name == 'new' || action_name == 'create'
+      confirm_suggests_path
+    elsif action_name == 'edit' || action_name == 'update'
+      suggest_path
     end
   end
   def participants_find

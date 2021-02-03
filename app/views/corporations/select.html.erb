@@ -1,9 +1,11 @@
-<%= form_with(url: selected_corporations_path, method: 'post', local: true) do |f| %>
-  <%= f.radio_button :figure, :corporation, checked: true %>
-  <%= f.label :figure, "企業", {value: :corporation, style: "display: inline-block;"} %>
-  <%= f.radio_button :figure, :proprietorship %>
-  <%= f.label :figure, "個人事業", {value: :roprietorship, style: "display: inline-block;"} %>
+<div class="select_corp">
+  <%= form_with(url: selected_corporations_path, method: 'post', local: true) do |f| %>
+    <%= f.radio_button :figure, :corporation, checked: true %>
+    <%= f.label :figure, "企業", {value: :corporation, style: "display: inline-block;"} %>
+    <%= f.radio_button :figure, :proprietorship %>
+    <%= f.label :figure, "個人事業", {value: :roprietorship, style: "display: inline-block;"} %>
 
-  <%= f.submit t('.later'), data: { confirm: t('.be_restricted')}, name: 'later' %>
-  <%= f.submit t('.register') %>
-<% end %>
+    <%= f.submit t('.later'), data: { confirm: t('.be_restricted')}, name: 'later' %>
+    <%= f.submit t('.register') %>
+  <% end %>
+</div>

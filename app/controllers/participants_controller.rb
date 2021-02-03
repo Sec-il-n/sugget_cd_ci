@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
   include SuggestsHelper
-  before_action :corp_prop_registerd, only:[:create]
+  before_action :corp_prop_registerd
   def create
     participant = current_user.participants.create!(suggest_id: params[:suggest_id])
     redirect_to rooms_path(suggest_id: params[:suggest_id]),method: 'post', notice: t('.send messages')
