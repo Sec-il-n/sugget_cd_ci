@@ -65,7 +65,7 @@ class SuggestsController < ApplicationController
     @suggests = Suggest.all.page(params[:page]).per(5)
     # binding.pry
     if params[:tag].present?
-      @suggests = Tag.find_by(id: params[:tag]).suggests
+      @suggests = Tag.find_by(id: params[:tag]).suggests.all.page(params[:page]).per(5)
     elsif params[:category_id].present?
       @suggests = @suggests.category_search(params[:category_id])
     end

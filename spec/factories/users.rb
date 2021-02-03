@@ -9,8 +9,22 @@ FactoryBot.define do
     # password_confirmation { password }
     corporation_id { 1 }
     proprietorship_id { nil }
+
+    trait :with_suggest do
+      after(:build) do |user|
+        user.suggests << create(:user_suggest, details: 'ddd' , user_id: user.id)
+        user.suggests << create(:user_suggest, details: 'bbb' , user_id: user.id)
+      end
+    end
   end
-  factory :user_popr, class: User do
+
+  factory :user_suggest, class: Suggest do
+    title { Faker::Job.field }
+    details { '提案詳細' }
+    category_id { rand(1..3) }
+    user_id { 1 }
+  end
+  factory :user_prop, class: User do
     user_name { Faker::Name.name }
     email { Faker::Internet.email }
     password { password }

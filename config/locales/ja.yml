@@ -12,6 +12,11 @@ ja:
       index: プロジェクト一覧
       title: タイトル
       details: 詳細
+      back: 戻る
+      new suggest: 新規投稿
+      suggest created: 新規投稿が完了しました
+      search: 検索
+      category_id_2: 建設業
   layouts:
     application:
       belonging_registration: 企業登録はお済みですか？(機能が制限されています)
