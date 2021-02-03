@@ -120,6 +120,7 @@ ja:
     create:
       create comment faild: コメントの作成に失敗しました
       register needed: 企業登録が必要です
+      cannot comment: 提案作成者はコメントできません
     edit:
       register needed: 企業登録が必要です
     update:

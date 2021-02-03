@@ -100,5 +100,30 @@ RSpec.describe Suggest, type: :system do
 
       end
     end
+# adminに持っていく？
+    describe '投稿編集機能' do
+      context 'ログインユーザーが管理者権限を有する場合' do
+        it '投稿を編集できる' do
+
+        end
+      end
+      context 'ログインユーザーが管理者権限を持たない場合' do
+        it '投稿の更新が失敗する' do
+
+        end
+      end
+    end
+    descrive '投稿削除機能' do
+      context 'ログインユーザーが管理者権限を有する場合' do
+        it '投稿を削除できる' do
+
+        end
+      end
+      context 'ログインユーザーが管理者権限を持たない場合' do
+        it '投稿の削除が失敗する' do
+
+        end
+      end
+    end
   end
 end

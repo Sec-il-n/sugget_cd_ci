@@ -5,12 +5,18 @@ class CommentsController < ApplicationController
   def create
     #投稿に紐づいたコメントを作成(idをi含んだ形でインスタンスを作成)
     @comment = current_user.comments.build(params_comment)
-    begin
-      @comment.save!
+    if contributor?
+      flash.now[:warning] = t('.cannot comment')
       render 'index'
-    rescue => e
-      puts e.class
-      redirect_to _path, danger: t('.create comment faild')
+    else
+      # @comment = current_user.comments.build(params_comment)
+      begin
+        @comment.save!
+        render 'index'
+      rescue => e
+        puts e.class
+        redirect_to _path, danger: t('.create comment faild')
+      end
     end
   end
   def edit
@@ -39,5 +45,10 @@ class CommentsController < ApplicationController
     # params.require(:comment).permit(:text, :suggest_id, :user_id)
     params.require(:comment).permit(:text).merge(suggest_id: params[:suggest_id])
   end
-
+  def contributor?
+    suggest = Suggest.find_by(id: params[:suggest_id])
+    unless suggest.nil?
+      suggest.user.id == current_user.id
+    end
+  end
 end

@@ -1,5 +1,6 @@
 <%= form_with(model: [suggest, comment], url: suggest_comments_path(suggest))do |f| %>
+  <%= f.label :text %>
   <%= f.text_area :text %>
   <%= f.submit class: "btn btn-outline-dark btn-sm float-right" %>
-  <%# <%= f.submit class: "btn btn-primary btn-sm float-right" %> 
+  <%# <%= f.submit class: "btn btn-primary btn-sm float-right" %>
 <% end %>

@@ -17,6 +17,7 @@ ja:
       suggest created: 新規投稿が完了しました
       search: 検索
       category_id_2: 建設業
+      cannot comment: 提案作成者はコメントできません
   layouts:
     application:
       belonging_registration: 企業登録はお済みですか？(機能が制限されています)

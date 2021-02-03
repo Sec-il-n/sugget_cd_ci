@@ -6,6 +6,7 @@ ja:
       categorie: カテゴリー
       corporation: 企業
       proprietorship: 個人事業主
+      comment: コメント
     attributes:
       suggest:
         title: タイトル
@@ -25,3 +26,5 @@ ja:
         info: 詳細
         image: イメージ
         category_id: 業種カテゴリ
+      comment:
+        text: コメント

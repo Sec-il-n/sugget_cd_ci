@@ -1,3 +1,8 @@
+<% if warning %>
+  <div class="ht-tm-element alert alert-dismissible fade show alert-warning">
+    <p class="warning"><%= warning %></p>
+  </div>
+<% end %>
 <%= comments.count %>件コメント
 <!-- コメント二件 -->
 <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
