@@ -41,6 +41,7 @@ ja:
       index: 提案/プロジェクト一覧
       management screen: 管理者画面
       belonging_registration: 企業登録
+      contact: お問い合わせ
   activerecord:
     errors:
       models:
@@ -49,6 +50,10 @@ ja:
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
+        contact:
+          attributes:
+            content:
+              blank: を入力してください
     date:
       abbr_day_names:
       - 日

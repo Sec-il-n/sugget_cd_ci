@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2021_01_22_072458) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
   create_table "corporations", force: :cascade do |t|
     t.string "name", null: false
     t.string "info", null: false
@@ -152,6 +160,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_072458) do
 
   add_foreign_key "comments", "suggests"
   add_foreign_key "comments", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "corporations", "categories"
   add_foreign_key "images", "suggests"
   add_foreign_key "message_rooms", "rooms"

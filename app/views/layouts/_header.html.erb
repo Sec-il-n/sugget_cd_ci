@@ -16,6 +16,9 @@
           <li class="nav-item">
             <%= link_to t('.edit account'),  edit_user_registration_path(current_user.id), class:'nav-link' %>
           </li>
+          <li class="nav-item">
+            <%= link_to t('.contact'),  new_contact_path, class:'nav-link' %>
+          </li>
           <% if belonging_registration_path.present? %>
             <li class="nav-item">
               <%= link_to t('.belonging_registration'), select_corporations_path, class:'nav-link' %>

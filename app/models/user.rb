@@ -19,4 +19,6 @@ class User < ApplicationRecord
   has_many :messages
 
   has_many :comments, foreign_key: 'user_id'
+
+  has_many :contacts, foreign_key: 'user_id'
 end

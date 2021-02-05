@@ -136,6 +136,9 @@ ja:
       register needed: 企業登録が必要です
     update:
       register needed: 企業登録が必要です
+  contacts:
+    create:
+      contact created: お問い合わせを受け付けました
   users:
     show:
       title: プロフィール

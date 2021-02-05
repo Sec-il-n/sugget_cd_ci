@@ -1,0 +1,5 @@
+<%= form_with(model: @contact, local:true)do |f| %>
+  <p><%= f.label :content %></p>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>

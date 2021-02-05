@@ -42,6 +42,13 @@
           <!-- <p class="text-danger bg-warning"><%= msg %></p> -->
         <% end %>
       <% end %>
+
+      <% if @contact && @contact.errors.any? %>
+      <p class="text-danger bg-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <p class="text-danger bg-warning"><%= msg %></p>
+      <% end %>
+    <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

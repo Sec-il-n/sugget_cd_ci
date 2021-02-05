@@ -7,6 +7,7 @@ ja:
       corporation: 企業
       proprietorship: 個人事業主
       comment: コメント
+      contact: お問い合わせ
     attributes:
       suggest:
         title: タイトル
@@ -28,3 +29,5 @@ ja:
         category_id: 業種カテゴリ
       comment:
         text: コメント
+      contact:
+        content: お問い合わせ内容
