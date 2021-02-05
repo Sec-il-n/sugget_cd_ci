@@ -1,10 +1,12 @@
+<%# 非同期の場合controllerからの変数が反映されないのでmodelの属性部分のみ表示される「 %>
   <% @messages.each do |message| %>
     <div class="card">
       <div class="card-body message">
         <% if message.user.user_image && message.user.user_image.url %>
           <%= image_tag message.user.user_image.url, class: 'user_image' %>
         <% end %>
-        <strong><%= message.user.user_name %>: </strong><%= message.text %>
+        <strong><%= message.user.user_name %>: </strong>
+        <%= message.text %>
         <p><%= message.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
       </div>
     </div>

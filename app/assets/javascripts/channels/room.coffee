@@ -8,7 +8,9 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 # 非同期で画面に入力した文字を表示(ブロードキャストされたmessageをクライアントサイドのrecieveの処理を変更し、viewにappendする。)
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    $('#messages').append("<p>"+data["message"]+"</p>"); # 投稿を追加
+    ele = $('<p />', { class: 'message_added' }).append(data["message"])
+    $('#messages').append(ele);
+    # $('#messages').append("<div><p>"+data["message"]+"</p></ div>"); # 投稿を追加
 
   speak: (message) ->
     @perform 'speak', message: message#サーバーサイドのspeakアクションにmessageパラメータを渡す

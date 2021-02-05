@@ -68,6 +68,9 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    capybara-email (3.0.2)
+      capybara (>= 2.4, < 4.0)
+      mail
     carrierwave (2.1.0)
       activemodel (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -348,6 +351,7 @@ DEPENDENCIES
   bootstrap4-kaminari-views
   byebug
   capybara (>= 2.15)
+  capybara-email
   carrierwave
   coffee-rails (~> 4.2)
   database_cleaner-active_record
