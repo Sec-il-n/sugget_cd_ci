@@ -8,6 +8,8 @@ ja:
       proprietorship: 個人事業主
       comment: コメント
       contact: お問い合わせ
+      message: メッセージ
+      tag: タグ
     attributes:
       suggest:
         title: タイトル
@@ -31,3 +33,7 @@ ja:
         text: コメント
       contact:
         content: お問い合わせ内容
+      message:
+        text: メッセージ
+      tag:
+        name: タグ名
