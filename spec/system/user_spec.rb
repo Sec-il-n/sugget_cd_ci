@@ -59,8 +59,7 @@ RSpec.describe User, type: :system do
       end
       it '提案の新規投稿ができる' do
         # SuggestSpecHelpers
-        create_new_suggest
-
+        confirm_view
         url = URI.parse(current_url)
         expect(url).to have_content('/suggests')
         expect(page).to have_content("#{I18n.t('.dictionary.words.suggest created')}")

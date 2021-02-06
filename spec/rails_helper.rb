@@ -70,6 +70,7 @@ RSpec.configure do |config|
   config.include SuggestSpecHelpers
   config.include UserSpecHelpers
   config.include CommentSpecHelpers
+  config.include MessageSpecHelpers
   # ↓sign_in and sign_out methods使用可能
   # 結合テスト
   config.include Devise::Test::IntegrationHelpers, type: :request
