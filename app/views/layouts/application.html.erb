@@ -44,11 +44,26 @@
       <% end %>
 
       <% if @contact && @contact.errors.any? %>
-      <p class="text-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <p class="text-danger text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
+        <p class="text-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <p class="text-danger text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
+        <% end %>
       <% end %>
-    <% end %>
+
+      <% if @corporation && @corporation.errors.any? %>
+        <p class="text-danger"><%= @corporation.errors.count %> 件のエラーがあります。</p>
+        <% @corporation.errors.full_messages.each do |msg| %>
+          <p class="text-danger text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
+        <% end %>
+      <% end %>
+
+      <% if @proprietorship && @proprietorship.errors.any? %>
+        <p class="text-danger"><%= @proprietorship.errors.count %> 件のエラーがあります。</p>
+        <% @proprietorship.errors.full_messages.each do |msg| %>
+          <p class="text-danger text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
+        <% end %>
+      <% end %>
+
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
