@@ -43,7 +43,7 @@ class CorporationsController < ApplicationController
     # end
   end
   def select
-
+    
   end
   def selected
     if params[:later]

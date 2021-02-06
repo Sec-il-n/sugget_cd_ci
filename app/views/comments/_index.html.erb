@@ -24,13 +24,16 @@
             <% if current_user.admin? && comment.user == current_user %>
               <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
+              <div id="js-comment-<%= comment.id %>">
+                <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
+              </div>
             <% elsif current_user.admin? %>
               <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
             <% elsif comment.user == current_user %>
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
-
+              <div id="js-comment-<%= comment.id %>">
+                <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
+              </div>
             <% end %>
           </div>
           <span class="date_created">
@@ -59,12 +62,16 @@
             <% if current_user.admin? && comment.user == current_user %>
               <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
+              <div id="js-comment-<%= comment.id %>">
+                <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
+              </div>
             <% elsif current_user.admin? %>
               <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
 
             <% elsif comment.user == current_user %>
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm' %>
+            <div id="js-comment-<%= comment.id %>">
+              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
+            </div>
 
           <% end %>
           </div>
