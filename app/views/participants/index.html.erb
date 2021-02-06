@@ -27,7 +27,7 @@
         <% unless participant.suggest.room %>
           <%= link_to t('.create_room'), rooms_path(suggest_id: participant.suggest.id), method: 'post', class: 'ht-tm-element btn btn-dark' %>
         <% else %>
-        <%# ローム複数の場合 %>
+        <%# ルーム複数の場合 %>
           <%= link_to t('.room_index'), rooms_path(participant.suggest.id), class: 'ht-tm-element btn btn-outline-dark' %>
           <%# ルーム単数の場合 %>
           <%# <%= link_to t('.room'), room_path(participant.suggest.room.id), class: 'ht-tm-element btn btn-outline-dark' %>

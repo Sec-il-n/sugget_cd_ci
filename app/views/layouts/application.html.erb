@@ -44,9 +44,9 @@
       <% end %>
 
       <% if @contact && @contact.errors.any? %>
-      <p class="text-danger bg-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
+      <p class="text-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
       <% @contact.errors.full_messages.each do |msg| %>
-        <p class="text-danger bg-warning"><%= msg %></p>
+        <p class="text-danger text-danger ht-tm-element alert alert-dismissible fade show alert-danger"><%= msg %></p>
       <% end %>
     <% end %>
       <%= yield %>
