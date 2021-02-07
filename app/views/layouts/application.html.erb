@@ -42,7 +42,7 @@
           <!-- <p class="text-danger bg-warning"><%= msg %></p> -->
         <% end %>
       <% end %>
-
+<%# パーシャルへ %>
       <% if @contact && @contact.errors.any? %>
         <p class="text-danger"><%= @contact.errors.count %> 件のエラーがあります。</p>
         <% @contact.errors.full_messages.each do |msg| %>

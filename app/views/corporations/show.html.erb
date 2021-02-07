@@ -1,19 +1,22 @@
-<div class="">
+<div class="container">
   <h3><%= t('.info') %></h3>
-  <p><%= @corporation.name %></p>
-  <p><%= @corporation.info %></p>
-  <% if @corporation.image.present? %>
-    <p><%= image_tag @corporation.image.url %></p>
-  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>企業名: </strong><%= @corporation.name %></p>
+      <p><strong>詳細: </strong><%= @corporation.info %></p>
+      <% if @corporation.image.present? %>
+        <p><%= image_tag @corporation.image.url %></p>
+      <% end %>
+      <div class="member">
+        <strong>メンバー: </strong>
+        <% @users.each do |user| %>
+          <div class="right">
+            <%= image_tag user.user_image.url if user.user_image.present? %>
+            <%= link_to "@#{user.user_name}", user_path(user.id) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
-<div class="member">
-  <% @users.each do |user| %>
-    <p><%= image_tag user.user_image.url if user.user_image.present? %></p>
-  <% end %>
-</div>
-<!-- <div class="participants"> -->
-  <%# <% @users_joined.each do |user| %>
-    <%# <%= link_to "@#{user.user_name}", user_path(user.id) %>
-    <%# <!-- <p><%= image_tag user.user_image.url if user.user_image.present? %></p>
-  <%# <% end %>
-<!-- </div> -->

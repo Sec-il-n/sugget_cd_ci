@@ -1,5 +1,12 @@
-<%= form_with(model: @contact, local:true)do |f| %>
-  <p><%= f.label :content %></p>
-  <%= f.text_area :content %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1><%= t('.title') %></h1>
+  <%= form_with(model: @contact, local:true)do |f| %>
+      <div class="form-group">
+        <strong><%= f.label :content %>
+        <%= f.text_area :content, class:'field' %></strong>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>

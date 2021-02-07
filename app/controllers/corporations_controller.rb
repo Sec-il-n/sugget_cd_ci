@@ -9,8 +9,10 @@ class CorporationsController < ApplicationController
   end
   def create
     @corporation = Corporation.new(params_corporation)
-    if @corporation.save
-      flash[:notice] = t('.registerd')
+    if @corporation.save!
+      update_user_corporation_id
+      redirect_to corporation_path(@corporation.id), notice: t('.registerd')
+
     else
       render 'new'
     end
@@ -43,7 +45,7 @@ class CorporationsController < ApplicationController
     # end
   end
   def select
-    
+
   end
   def selected
     if params[:later]
@@ -55,6 +57,10 @@ class CorporationsController < ApplicationController
   private
   def set_corporation
     @corporation = Corporation.find_by(id: params[:id])
+  end
+  def update_user_corporation_id
+    @user = User.find(current_user.id)
+    @user.update!(corporation_id: @corporation.id)
   end
   def params_corporation
     params.require(:corporation).permit(:figure, :name, :info, :image, :category_id)

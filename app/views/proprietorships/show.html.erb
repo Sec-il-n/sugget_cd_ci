@@ -1,11 +1,23 @@
-<div class="">
+<div class="container">
   <h3><%= t('.info') %></h3>
-  <p><%= @proprietorship.name %></p>
-  <p><%= @proprietorship.info %></p>
-  <% if @proprietorship.image.present? %>
-    <p><%= image_tag @proprietorship.image.url %></p>
-  <% end %>
-</div>
-<div class="member">
-  <p><%= image_tag @user.user_image.url if @user.user_image.present? %></p>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>企業名: </strong><%= @proprietorship.name %></p>
+      <p><strong>詳細: </strong><%= @proprietorship.info %></p>
+      <div class="corp-image">
+        <% if @proprietorship.image.present? %>
+          <p><%= image_tag @proprietorship.image.url %></p>
+        <% end %>
+      </div>
+
+      <div class="member">
+        <strong>メンバー: </strong>
+        <div class="right">
+          <%= image_tag @user.user_image.url, class: 'user_image' if @user.user_image.present? %>
+          <%= link_to "@#{@user.user_name}", user_path(@user.id) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

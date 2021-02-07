@@ -4,12 +4,13 @@ class ProprietorshipsController < ApplicationController
   before_action :create_not_permitted, only:[:new, :create]
   before_action :edit_not_permitted, only:[:edit, :update, :destroy]
   def new
-    @proprietorship = Proprietorship.new
+    @proprietorship = Proprietorship.
   end
   def create
     @proprietorship = Proprietorship.new(params_proprietorship)
-    if @proprietorship.save
-      flash[:notice] = t('.registerd')
+    if @proprietorship.save!
+      update_user_proprietorship_id
+      redirect_to proprietorship_path(@proprietorship), notice: t('.registerd')
     else
       render 'new'
     end
@@ -32,6 +33,10 @@ class ProprietorshipsController < ApplicationController
   private
   def set_proprietorship
     @proprietorship = Proprietorship.find_by(id: params[:id])
+  end
+  def update_user_proprietorship_id
+    @user = User.find(current_user.id)
+    @user.update!(proprietorship_id: @proprietorship.id)
   end
   def params_proprietorship
     params.require(:proprietorship).permit(:name, :info, :image, :category_id)

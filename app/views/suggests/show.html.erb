@@ -47,17 +47,15 @@
     </div>
     <hr>
     <!-- https://qiita.com/yuto_1014/items/c7d6213139a48833e21a#itemsshowhtmlerb -->
-    <div class="row">
-      <!-- <p><%= notice %></p>
-      <p><%= danger %></p> -->
-      <ul>
-        <li>
-          <h3 class="text-left title"><%= t('.comments') %></h3>
-        </li>
-        <div id="comment-area">
-          <%= render partial: 'comments/index', locals: { comments: @comments } %>
-        </div>
-      </ul>
+    <div class="container">
+      <p><%= notice %></p>
+      <p><%= danger %></p>
+      <h3 class="text-left title"><%= t('.comments') %></h3>
+        <!-- </li> -->
+      <div id="comment-area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+      </div>
+      <!-- </ul> -->
       <% if user_signed_in? %>
         <div create="comment-post" id="form-area">
           <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
@@ -65,5 +63,4 @@
       <% end %>
     </div>
   </div>
-
 </div>

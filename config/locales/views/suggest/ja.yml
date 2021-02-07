@@ -67,6 +67,8 @@ ja:
       update failed: 提案/プロジェクトの編集に失敗しました
       need admin: 編集できません
   proprietorships:
+    create:
+      registerd: 企業登録を完了しました
     show:
       info: 企業詳細(個人)
     new:
@@ -74,6 +76,8 @@ ja:
     edit:
       title: 企業登録(個人)編集
   corporations:
+    create:
+      registerd: 企業登録を完了しました
     show:
       info: 企業詳細
     new:
@@ -81,6 +85,7 @@ ja:
     edit:
       title: 企業登録編集
     select:
+      title: 企業の種類を選択してください
       register needed: 企業登録が必要です
       register: 企業登録へ
       later: 後で登録
@@ -97,6 +102,7 @@ ja:
       room: チャットルームへ
       room_index: チャットルーム一覧へ
       belonging_registration: 企業登録はお済みですか？(機能が制限されています)
+      register needed: 企業登録が必要です
     destroy:
       title name: 提案/プロジェクト名
       unjoined: の参加を取り消しました
@@ -137,18 +143,23 @@ ja:
     update:
       register needed: 企業登録が必要です
   contacts:
+    new:
+      title: お問い合わせ
     create:
       contact created: お問い合わせを受け付けました
   users:
     show:
       title: プロフィール
       participants: 参加中の提案/プロジェクト
+      com: 企業名
   admin:
     users:
       index:
         title: 新規提案/プロジェクト一覧(管理者)
         category search: カテゴリ検索
-        show: 新規提案・プロジェクト詳細
+        suggest: 新規提案・プロジェクト名
+        details: 詳細
+        com: 企業名
         delete: 削除する
         edit: 編集する
         confirmation: 削除しますか？

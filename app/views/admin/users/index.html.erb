@@ -1,18 +1,38 @@
-<h1><%= t('.title') %></h1>
+<div class="container">
+  <h1><%= t('.title') %></h1>
 
-<%# カテゴリ検索 %>
-<%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
-  <div class="form-group">
-  <%= f.label t('.category search') %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-  <%= f.submit '検索', :class => 'btn btn-primary' %>
+  <%# カテゴリ検索 %>
+  <%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
+    <div class="form-group">
+    <%= f.label t('.category search') %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= f.submit '検索', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <div class="ht-hm-codeblock">
+    <% @suggests.each do |suggest| %>
+
+      <table class="table table-hover table-striped ht-tm-element">
+
+        <thead class="thead-dark">
+          <tr>
+            <th><%= t('.suggest') %></th>
+            <th><%= t('.details') %></th>
+            <!-- <th><%= t('.com') %></th> -->
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><%= link_to suggest.title, suggest_path(suggest.id) %></th>
+            <td class="table_format"><%= suggest.details %></td>
+            <td><%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %>
+            </td>
+            <td><%= link_to t('.edit'), edit_suggest_path(suggest.id) %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   </div>
-<% end %>
-
-<% @suggests.each do |suggest| %>
-  <p><%= t('.show') %>:
-  <%= link_to suggest.title, suggest_path(suggest.id) %>
-  <%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %>
-  <%= link_to t('.edit'), edit_suggest_path(suggest.id) %>
-  </p>
-<% end %>
+</div>

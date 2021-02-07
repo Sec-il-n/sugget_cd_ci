@@ -37,6 +37,7 @@ nav {
 }
 .thumbnail {
   margin-top: 15px;
+  width: 220px;
 }
 .user_image {
   margin: 15px;
@@ -45,12 +46,25 @@ nav {
   margin: auto;
   padding: 20px;
 }
+.space {
+  padding: 50px;
+  margin: 10%;
+}
+.form_block {
+  margin: 20px;
+}
 .title_confirm .details_confirm .tags_confirm strong {
   margin: 20px;
 }
 .form-controrl {
   margin: auto;
   padding: 20px;
+}
+.field {
+  width: 100%;
+}
+.table_format {
+  overflow: hidden;
 }
 .tags {
   padding-left: 20px;
@@ -61,8 +75,22 @@ nav {
   padding-left: 20px;
   padding-right: 20px;
 }
+.corp_prop .cancel {
+  margin: auto;
+  padding: 20px;
+}
+#cancel {
+  margin-top: 30px;
+}
 .show {
   margin-bottom: 15px;
+}
+.user {
+  margin: auto;
+  text-align: center;
+}
+.participants {
+  margin-top: 30px;
 }
 .pagination {
   justify-content: center;

@@ -1,4 +1,5 @@
 class Proprietorship < ApplicationRecord
+  mount_uploader :image, ImageUploader
   with_options presence: true do
     validates :name, length:{ maximum: 20 }
     validates :info, length:{ maximum: 2000 }
