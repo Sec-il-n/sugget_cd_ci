@@ -32,8 +32,12 @@
           <p class="warning"><%= warning %></p>
         </div>
       <% end %>
-
-      <!-- <p class="alert"><%= alert %></p> -->
+      <%# divise %>
+      <% if alert %>
+        <div class="ht-tm-element alert alert-dismissible fade show alert-warning">
+          <p class="warning"><%= alert %></p>
+        </div>
+      <% end %>
 
       <% if @suggest && @suggest.errors.any? %>
         <p class="text-danger"><%= @suggest.errors.count %> 件のエラーがあります。</p>
