@@ -13,6 +13,9 @@ gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'faker'
 gem 'seed-fu'
+gem 'dotenv-rails'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
 # gem 'mini_racer', platforms: :ruby
 
 gem 'coffee-rails', '~> 4.2'
@@ -43,7 +46,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'launchy'
-  gem 'dotenv-rails'
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
