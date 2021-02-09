@@ -7,7 +7,7 @@ set :application, 'suggests_and_projects_2-production'
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/Sec-il-n/dic_issue_graduate.git'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'chat'
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/suggests_and_projects_2-production'
 # シンボリックリンクをはるフォルダ・ファイル
