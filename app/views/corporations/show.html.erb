@@ -11,7 +11,7 @@
         <strong>メンバー: </strong>
         <% @users.each do |user| %>
           <div class="right">
-            <%= image_tag user.user_image.url if user.user_image.present? %>
+            <%= image_tag user.user_image.url, class: 'user_image' if user.user_image.present? %>
             <%= link_to "@#{user.user_name}", user_path(user.id) %>
           </div>
         <% end %>

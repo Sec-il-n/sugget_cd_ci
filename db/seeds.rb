@@ -17,8 +17,7 @@ end
 # corporation
 20.times do |n|
   name = "#{Faker::Company.name}.corp"
-  info = "#{Faker::Lorem.sentences}"
-  # info = "#{Faker::Lorem.characters(10)}"
+  info = "#{Faker::Lorem.characters(1000)}"#max3000
   image = nil
   category_id = rand(1..11)
   corporation = Corporation.create!(

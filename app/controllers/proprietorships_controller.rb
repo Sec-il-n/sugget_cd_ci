@@ -4,7 +4,7 @@ class ProprietorshipsController < ApplicationController
   before_action :create_not_permitted, only:[:new, :create]
   before_action :edit_not_permitted, only:[:edit, :update, :destroy]
   def new
-    @proprietorship = Proprietorship.
+    @proprietorship = Proprietorship.new
   end
   def create
     @proprietorship = Proprietorship.new(params_proprietorship)
