@@ -1,1 +1,14 @@
-<%= render 'form', {suggest: @suggest, comment: @comment} %>
+<%# <%= render 'form', {suggest: @suggest, comment: @comment} %>
+<div class="ht-tm-codeblock">
+  <%# local: falseの時はpath指定しても　x　ここでの動作を.jsで処理しなければならない。 %>
+  <%# _edit.htmlはrenderされているが、reloadしないとeditのフォームにならない。現状最初のフォーム_newに編集内容が表示されている状態なのでsubmitしたらcreateされる %>
+  <%= form_with(model: [@suggest, @comment], url: suggest_comment_path(@suggest.id, @comment.id))do |f| %>
+    <div class="form-group">
+      <%= f.label t('.edit') %><br>
+      <%= f.text_area :text, class:'field', id: 'edit_text_box' %>
+      <div class="input-group-append" id="subumit_edit">
+        <%= f.submit '更新する', class: "btn btn-info btn-sm float-right" %>
+      </div>
+    </div>
+  <% end %>
+</div>

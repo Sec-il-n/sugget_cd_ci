@@ -1,10 +1,10 @@
-<div class="ht-tm-codeblock">
+<div class="ht-tm-codeblock" id="comment_form">
   <%= form_with(model: [suggest, comment], url: suggest_comments_path(suggest))do |f| %>
     <div class="form-group form-controrl">
       <%= f.label :text %><br>
       <%= f.text_area :text, class:'field' %>
       <div class="input-group-append">
-        <%= f.submit class: "btn btn-outline-info btn-sm float-right" %>
+        <%= f.submit class: "btn btn-outline-info btn-sm float-right", id: 'comment_submit' %>
       </div>
     </div>
   <% end %>

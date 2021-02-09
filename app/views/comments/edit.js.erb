@@ -1,7 +1,7 @@
 // showのrender部
 $(function() {
   $('#js-comment-<%= @comment.id %> .edit').on("click", function () {
-    $("#form-area").html("<%= j(render 'edit') %>")
+    $("#edit-area").html("<%= j(render 'edit') %>")
+    $("#edit_text_box").val('<%= @comment.text %>')
   });
-  $("textarea").val('<%= @comment.text %>')
 });

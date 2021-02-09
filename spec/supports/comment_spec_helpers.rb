@@ -6,4 +6,11 @@ module CommentSpecHelpers
     fill_in 'comment[text]', with: 'aaa'
     click_button("#{I18n.t('.dictionary.words.submit')}")
   end
+  # def select_driver(example)
+  #   if example.metadata[:js]
+  #     Capybara.current_driver = :selenium
+  #   else
+  #     Capybara.use_default_driver
+  #   end
+  # end
 end
