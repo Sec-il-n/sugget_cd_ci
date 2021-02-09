@@ -17,7 +17,8 @@ end
 # corporation
 20.times do |n|
   name = "#{Faker::Company.name}.corp"
-  info = "#{Faker::String.random(length: 3..100)}"
+  info = "#{Faker::Lorem.sentences}"
+  # info = "#{Faker::Lorem.characters(10)}"
   image = nil
   category_id = rand(1..11)
   corporation = Corporation.create!(
@@ -60,7 +61,7 @@ end
 # Proprietorship
 20.times do |n|
   name = "#{Faker::Name.name}.prop"
-  info = "#{Faker::String.random(length: 3..100)}"
+  info = "#{Faker::Lorem.sentences}"
   image = nil
   category_id = rand(1..11)#複数
   proprietorship = Proprietorship.create!(
