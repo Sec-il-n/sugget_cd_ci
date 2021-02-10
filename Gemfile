@@ -15,7 +15,7 @@ gem 'faker'
 gem 'seed-fu'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
-gem 'libv8', '~> 8.4', '>= 8.4.255.0'
+gem 'libv8', '~> 8.4', '>= 8.3.255.0'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
