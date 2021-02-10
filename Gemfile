@@ -16,6 +16,7 @@ gem 'seed-fu'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'libv8', '~> 8.4', '>= 8.3.255.0'
+gem 'aws-sdk-rails'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
