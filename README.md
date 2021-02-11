@@ -41,16 +41,16 @@ Rails 5.2.4
 - [ ] SNSログイン機能
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1QarMazm0V8BS-qANOKpb1HXgNEDyPufsvOfpb9NfRE4/edit#gid=0
+https://docs.google.com/spreadsheets/d/1QarMazm0V8BS-qANOKpb1HXgNEDyPufsvOfpb9NfRE4/edit?usp=sharing
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1q_pe_E9GvUeGWUrViyDejw9MnJwPwINRYutINFH5Lg0/edit#gid=187787550
+https://docs.google.com/spreadsheets/d/1q_pe_E9GvUeGWUrViyDejw9MnJwPwINRYutINFH5Lg0/edit?usp=sharing
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1lzj2cUPg4r8MVvH0KEybdCnciPl06OOMxmE3O4-UG28/edit#gid=0
+https://docs.google.com/spreadsheets/d/1lzj2cUPg4r8MVvH0KEybdCnciPl06OOMxmE3O4-UG28/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1BZcZW4gN4798b8y_P3gPs5HXNigK1WUd7ORRgfcsYkk/edit#gid=478272680
+https://docs.google.com/spreadsheets/d/1BZcZW4gN4798b8y_P3gPs5HXNigK1WUd7ORRgfcsYkk/edit?usp=sharing
 
 ## 使用予定Gem
 * devise
