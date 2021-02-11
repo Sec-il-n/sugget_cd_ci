@@ -58,6 +58,7 @@
       <!-- </ul> -->
       <% if user_signed_in? %>
         <div id="edit-area">
+          <%# <%= render partial: 'comments/edit', locals: { comment: @comment, suggest: @suggest } %>
         </div>
         <div create="comment-post" id="form-area">
           <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>

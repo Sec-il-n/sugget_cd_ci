@@ -70,5 +70,3 @@ group :test do
   gem 'webmock'
   gem 'capybara-email'
 end
-
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
