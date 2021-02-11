@@ -4,16 +4,13 @@ class CommentsController < ApplicationController
   before_action :corp_prop_registerd, only:[:create, :edit, :update]
   before_action :comment_user, only:[:edit, :update]
   def create
-    #投稿に紐づいたコメントを作成(idをi含んだ形でインスタンスを作成)
     @comment = current_user.comments.build(params_comment)
     if contributor?
       flash.now[:warning] = t('.cannot comment')
       render 'index'
     else
-      # @comment = current_user.comments.build(params_comment)
       begin
-        @comment.save!
-        render 'index'
+        render 'index' if @comment.save!
       rescue => e
         puts e.class
         redirect_to suggest_path(@comment.suggest), danger: t('.create comment faild')
@@ -22,15 +19,14 @@ class CommentsController < ApplicationController
   end
   def edit
     @suggest = @comment.suggest
+    render 'edit'
   end
   def update
     begin
       render 'update' if @comment.update!(params_comment)
-      # else
-      #   render 'index'
     rescue => e
         puts e.class
-        redirect_to suggest_path(@comment.suggest), danger: t('.create comment faild')
+        redirect_to suggest_path(@comment.suggest), danger: t('.update comment faild')
     end
   end
 

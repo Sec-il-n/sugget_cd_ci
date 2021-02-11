@@ -143,6 +143,7 @@ ja:
       edit: 編集フォーム
     update:
       register needed: 企業登録が必要です
+      update comment faild: コメントの編集に失敗しました
   contacts:
     new:
       title: お問い合わせ

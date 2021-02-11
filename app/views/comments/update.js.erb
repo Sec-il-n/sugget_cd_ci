@@ -1,7 +1,5 @@
 // showのrender部
 $(function() {
-  // ここはコントローラーから呼び出しなのでイベント発火ではない
-  // $('#subumit_edit').on("click", function () {
     $("#edit-area").html('')
     $("#comment-area").html("<%= j(render 'index', { comments: @comment.suggest.comments.recent }) %>")
 });
