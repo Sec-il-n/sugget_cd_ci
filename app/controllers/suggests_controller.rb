@@ -10,25 +10,15 @@ class SuggestsController < ApplicationController
   end
   def create
     @suggest = Suggest.new(suggest_params)
-    # 要↓
     @suggest.suggest_tags.build
     2.times{@suggest.images.build}
     if params[:back]
-      # ここでタグチェック外れる
       render 'new'
-    # if params[:suggest][:images].present?
-    #   suggest_params[:images].each do |image|
-    #     @suggest.images.build(suggest_params.clone.merge({images: image}))
     else
       if @suggest.save
           Participant.create(suggest_id: @suggest.id, user_id: current_user.id)
           redirect_to suggests_path,
           notice: t('.suggest.created')
-    #     end
-    #   end
-    # elsif @suggest.save
-    # # if @suggest.save
-    #   redirect_to suggests_path, notice: t('.suggest.created')
       else
         flash.now[:warning] = t('.suggest.create_faild')
         render 'new'
@@ -52,18 +42,9 @@ class SuggestsController < ApplicationController
       render 'confirm'
 
     end
-    # if @suggest.valid?
-    #   flash.now[:notice] = t('.confirmation')
-    #   render 'confirm'
-    # else
-    #   @suggest.suggest_tags.build
-    #   2.times{@suggest.images.build}
-    #   render 'new'
-    # end
   end
   def index
     @suggests = Suggest.all.page(params[:page]).per(5)
-    # binding.pry
     if params[:tag].present?
       @suggests = Tag.find_by(id: params[:tag]).suggests.all.page(params[:page]).per(5)
     elsif params[:category_id].present?
