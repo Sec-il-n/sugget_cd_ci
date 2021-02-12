@@ -3,7 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   skip_before_action :authenticate_user!, only:[:new, :create]
   # before_action :configure_sign_in_params, only: [:create]
-
+  respond_to :html, :json
   # GET /resource/sign_in
   # def new
   #   super
