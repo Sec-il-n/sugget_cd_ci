@@ -8,10 +8,10 @@
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class:'nav-link' %>
+            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class:'nav-link', data: {"turbolinks"=>false} %>
           </li>
           <li class="nav-item">
-            <%= link_to t('.edit account'), edit_user_registration_path, class:'nav-link' %>
+            <%= link_to t('.edit account'), edit_user_registration_path, class:'nav-link', data: {"turbolinks"=>false} %>
           </li>
           <li class="nav-item">
             <%= link_to t('.contact'), new_contact_path, class:'nav-link' %>
@@ -27,8 +27,8 @@
               <%= t('.suggests projects') %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('.index'), suggests_path, class: 'dropdown-item' %>
-              <%= link_to t('.post suggest'), new_suggest_path, class:'dropdown-item' %>
+              <%= link_to t('.index'), suggests_path, class: 'dropdown-item', data: {"turbolinks"=>false} %>
+              <%= link_to t('.post suggest'), new_suggest_path, class:'dropdown-item', data: {"turbolinks"=>false} %>
               <%= link_to t('.participants'), participants_path, class:'dropdown-item' %>
             </div>
           </li>

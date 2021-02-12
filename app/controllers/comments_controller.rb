@@ -19,7 +19,11 @@ class CommentsController < ApplicationController
   end
   def edit
     @suggest = @comment.suggest
-    render 'edit'
+    respond_to do|format|
+      format.js { render }
+      format.html { render }
+    end
+    # render 'edit'
   end
   def update
     begin

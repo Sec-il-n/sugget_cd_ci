@@ -95,21 +95,10 @@ class SuggestsController < ApplicationController
     @suggest = Suggest.find_by(id: params[:id])
   end
   def suggest_params
-    # EROR:Unpermitted parameter: :tag_ids
-    # params.require(:suggest).permit(:title, :details).merge(tag_ids: params[:suggest][:tag_ids])
-    # ERROR:attributes.suggest.required
-
-    # Unpermitted parameter: :image_cache
     params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[:image, :image_cache] }).merge(user_id: current_user.id)
-    # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, { images_attributes:[ :image] }).merge(user_id: current_user.id)
-
-    # params.require(:suggest).permit(:title, :details, :category_id, { tag_ids: [] }, {images: []}).merge(user_id: current_user.id)
   end
   def suggest_update_params
     params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id)
-    # params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id, suggest:[images_attributes:[:image, :image_cache, :id]],suggest:[tag_ids: [].map(&:to_i)] )
-    # params.require(:suggest).permit(:title, :details, :category_id).merge(user_id: current_user.id, suggest:[images_attributes:[:image, :image_cache, :id]],suggest:[tag_ids: [].map(&:to_i)] )
-    # params.require(:suggest).permit(:title, :details, :category_id, { images_attributes:[:image, :image_cache, :id]}, tag_ids: [].map(&:to_i)).merge(user_id: current_user.id)
   end
   def not_admin
     unless current_user.admin?
