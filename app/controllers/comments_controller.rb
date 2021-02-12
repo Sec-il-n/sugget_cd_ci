@@ -20,10 +20,9 @@ class CommentsController < ApplicationController
   def edit
     @suggest = @comment.suggest
     respond_to do|format|
-      format.js { render }
+      format.js { render 'edit.js.erb' }
       format.html { render }
     end
-    # render 'edit'
   end
   def update
     begin

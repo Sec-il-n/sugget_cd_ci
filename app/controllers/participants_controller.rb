@@ -14,10 +14,15 @@ class ParticipantsController < ApplicationController
     @participants = current_user.participants
   end
   def destroy
-    @participant = Participant.find_by(id: params[:id])
-    @participant.destroy
+    binding.pry
+      @participant = Participant.find_by(id: params[:id])
+      if suggest_user?
+        redirect_to participants_path, danger: '提案投稿者は非参加に出来ません'
 
-    redirect_to participants_path, notice: "#{t('.title name')}:「#{@participant.suggest.title}」#{t('.unjoined')}"
+      else
+        @participant.destroy!
+        redirect_to participants_path, notice: "#{t('.title name')}:「#{@participant.suggest.title}」#{t('.unjoined')}"
+      end
   end
   private
   def already_joined
@@ -25,6 +30,10 @@ class ParticipantsController < ApplicationController
 
     redirect_to suggest_path(id: params[:suggest_id]), warning: '既に参加済です' if @participant.present?
   end
+  def suggest_user?
+    @participant.suggest.user == current_user
+  end
+
   # def params_participant
   #   params.require(:participant).permit(:suggest_id, :id).merge(user_id: current_user.id)
   # end

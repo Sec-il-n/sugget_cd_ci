@@ -6,12 +6,14 @@
 </div>
 
 <h1><%= t('.participants') %></h1>
-
 <% @participants.each do |participant| %>
   <div class="card suggest">
     <div class="card-body">
       <strong class="card-title"><%= t('.show') %>:　<%= link_to participant.suggest.title, suggest_path(id: participant.suggest_id) %></strong>
-      <p class="right"><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'ht-tm-element btn btn-sm btn-outline-success' %></p>
+
+      <% unless participant.suggest.user == current_user %>
+        <p class="right"><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'ht-tm-element btn btn-sm btn-outline-success' %></p>
+      <% end %>
 
       <div class="overview">
         <strong><%= t('.overview') %>: </strong>

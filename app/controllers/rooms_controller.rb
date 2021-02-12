@@ -15,6 +15,9 @@ class RoomsController < ApplicationController
 
     # @rooms = current_user.rooms
     @rooms = current_user.participants.map { |participant| participant.suggest.room }
+    if @rooms.nil?
+      redirect_to participants_path, notice: '参加済み提案でチャットルーム開設をしてメンバーとやりとりができます'
+    end
   end
   def create
 

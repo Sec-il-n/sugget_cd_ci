@@ -57,12 +57,8 @@ class SuggestsController < ApplicationController
     @comments = @suggest.comments.recent
   end
   def edit
-    # collection + collection_check_boxesが新規[POST]と混ざってerrorになるのでタグの更新は行わない
-    # @suggest.suggest_tags.build
-
     # 現在の最低2+1⬇︎
     @suggest.images.build
-
   end
   def update
     if current_user.admin? &&
@@ -77,7 +73,6 @@ class SuggestsController < ApplicationController
     end
   end
   def destroy
-    # if current_user.admin?
       begin
         @suggest.destroy!
         redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
@@ -85,9 +80,6 @@ class SuggestsController < ApplicationController
         puts e.class
         redirect_to admin_users_path, danger: t('.destroy faild')
       end
-    # else
-    #   redirect_to suggests_path, danger: t('.need admin')
-    # end
   end
 
   private

@@ -56,6 +56,11 @@ end
         details: details,
         category_id: category_id
       )
+        suggest_id = suggest.id
+        Participant.create!(
+          suggest_id: suggest_id,
+          user_id: user_id
+        )
 end
 
 # Proprietorship
@@ -96,6 +101,11 @@ end
       details: details,
       category_id: category_id
     )
+      suggest_id = suggest.id
+      Participant.create!(
+        suggest_id: suggest_id,
+        user_id: user_id
+      )
 end
 
 # 管理者
