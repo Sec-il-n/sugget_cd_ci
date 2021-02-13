@@ -1,4 +1,3 @@
-<p>ようこそ <%= @email %>　さん!</p>
-<p><%= t('.greeting') %></p>
+<p>ようこそ <%= t('.greeting', recipient: @email) %></p>
 
 <p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>

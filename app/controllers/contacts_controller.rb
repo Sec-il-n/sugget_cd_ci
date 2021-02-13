@@ -4,10 +4,18 @@ class ContactsController < ApplicationController
   end
   def create
     @contact = Contact.new(params_contact)
-    if @contact.save
+
+    if @contact.present? && begin @contact.save!
       ContactMailer.contact_mail(@contact).deliver
-      redirect_to root_path, notice: t('.contact created')
+      ContactConfMailer.contact_conf(@contact).deliver
+    rescue => e
+       puts e.classs
+       redirect_to suggests_path, danger: t('.contact faild')
+    end
+      redirect_to suggests_path, notice: t('.contact created')
+
     else
+      flash.now[:warning] = t('.contact faild')
       render 'new'
     end
   end

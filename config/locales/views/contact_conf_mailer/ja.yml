@@ -1,0 +1,8 @@
+ja:
+  contact_conf_mailer:
+    contact_conf:
+      greeting: 以下の内容で、お問い合わせを受け付けました
+      sender: "%{sender}様"
+      contents: 3営業日内にご連絡いたします。
+      ending: しばらくお待ちくださいませ。
+      note: ※注意）実際にはご連絡いたしません。

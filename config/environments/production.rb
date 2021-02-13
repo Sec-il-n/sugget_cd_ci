@@ -70,7 +70,26 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :ses
+  # config.action_mailer.delivery_method = :ses
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.smtp_settings = {
+    # # エンドポイント https://docs.aws.amazon.com/ja_jp/general/latest/gr/ses.html
+    # :address => 'email.ap-northeast-1.amazonaws.com',
+    # g-mailのエンドポイント
+    address: 'smtp.gmail.com',
+    # SMTP-AUTH認証　STARTTLSを使うので587番ポート
+    port: 587,
+    authentication: :login,
+    domain: 'gmail.com',
+    # domain: 'suggests-met.xyz',
+    # user_name: Rails.application.credentials.dig(:aws, :ses_smtp_usesr),
+    # password: Rails.application.credentials.dig(:aws, :ses_smtp_password)
+    user_name: Rails.application.credentials.dig(:gmail, :user_name),
+    password: Rails.application.credentials.dig(:gmail, :password)
+    # # STARTTLSを使うのでtrue
+    # :enable_starttls_auto => true
+  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
