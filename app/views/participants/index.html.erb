@@ -1,40 +1,40 @@
 <!-- 企業登録確認 -->
-<div class="belonging_registration">
-  <% if belonging_registration_path.present? %>
-    <%= link_to t('.belonging_registration'), select_corporations_path %>
-  <% end %>
-</div>
-
 <h1><%= t('.participants') %></h1>
-<% @participants.each do |participant| %>
-  <div class="card suggest">
-    <div class="card-body">
-      <strong class="card-title"><%= t('.show') %>:　<%= link_to participant.suggest.title, suggest_path(id: participant.suggest_id) %></strong>
+<% if @participants.present? %>
 
-      <% unless participant.suggest.user == current_user %>
-        <p class="right"><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'ht-tm-element btn btn-sm btn-outline-success' %></p>
-      <% end %>
+  <% @participants.each do |participant| %>
+    <div class="card suggest">
+      <div class="card-body">
+        <strong class="card-title"><%= t('.show') %>:　<%= link_to participant.suggest.title, suggest_path(id: participant.suggest_id) %></strong>
 
-      <div class="overview">
-        <strong><%= t('.overview') %>: </strong>
-        <p><%= participant.suggest.details %></p>
-      </div>
-      <div class="tags">
-        <% participant.suggest.tags.each do |tag| %>
-          <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
+        <% unless participant.suggest.user == current_user %>
+          <p class="right"><%= link_to t('.unjoin'), participant_path(participant.id), method: 'delete', class: 'ht-tm-element btn btn-sm btn-outline-success' %></p>
         <% end %>
-      </div>
-      <div class="message right">
-      <%# <div class="message right" id="room-<%= participant.suggest.id %>
-        <% unless participant.suggest.room %>
-          <%= link_to t('.create_room'), rooms_path(suggest_id: participant.suggest.id), method: 'post', class: 'ht-tm-element btn btn-dark' %>
-        <% else %>
-        <%# ルーム複数の場合 %>
-          <%= link_to t('.room_index'), rooms_path(participant.suggest.id), class: 'ht-tm-element btn btn-outline-dark' %>
-          <%# ルーム単数の場合 %>
-          <%# <%= link_to t('.room'), room_path(participant.suggest.room.id), class: 'ht-tm-element btn btn-outline-dark' %>
-        <% end %>
+
+        <div class="overview">
+          <strong><%= t('.overview') %>: </strong>
+          <p><%= participant.suggest.details %></p>
+        </div>
+        <div class="tags">
+          <% participant.suggest.tags.each do |tag| %>
+            <%= link_to tag.name, suggests_path(tag: tag.id), class: 'ht-tm-element badge badge-light' %>
+          <% end %>
+        </div>
+        <div class="message right">
+          <% unless participant.suggest.room %>
+            <%= link_to t('.create_room'), rooms_path(suggest_id: participant.suggest.id), method: 'post', class: 'ht-tm-element btn btn-dark' %>
+          <% else %>
+            <%= link_to t('.room_index'), rooms_path(participant.suggest.id), class: 'ht-tm-element btn btn-outline-dark' %>
+          <% end %>
+        </div>
       </div>
     </div>
+  <% end %>
+
+<% else %>
+  <div class="">
+    <p>詳細画面からコメントの投稿や参加ができます。</p>
+    <p>興味のある提案を探してみましょう！</p>
+    <%= link_to '新規提案/プロジェクト一覧へ', suggests_path, class: 'ht-tm-element btn btn-outline-dark' %>
   </div>
 <% end %>
