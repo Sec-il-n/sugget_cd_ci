@@ -46,4 +46,5 @@ Rails.application.routes.draw do
   resources :contacts, only:[:new, :create]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount ActionCable.server => '/cable'
 end

@@ -3,7 +3,7 @@ Rails.application.configure do
   host = '35.72.121.208'
   Rails.application.routes.default_url_options[:host] = host
   # Settings specified here will take precedence over those in config/application.rb.
-
+　
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -45,8 +45,12 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+  ActionCable.server.config.disable_request_forgery_protection = true
+  # ドメイン or IP
+  config.action_cable.url = 'ws://35.72.121.208/cable'
+  # ドメイン使用時には↓に当てはめて変更
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.allowed_request_origins = [ 'http://35.72.121.208' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
