@@ -4,7 +4,7 @@ class ParticipantsController < ApplicationController
   before_action :already_joined, only:[:create]
   def create
     participant = current_user.participants.create!(suggest_id: params[:suggest_id])
-    redirect_to rooms_path(suggest_id: params[:suggest_id]),method: 'post', notice: t('.send messages')
+    redirect_to participants_path(suggest_id: params[:suggest_id]),method: 'post', notice: t('.send messages')
     # redirect_to new_room_path, notice: t('.send messages')
   rescue => e
     puts e.class
