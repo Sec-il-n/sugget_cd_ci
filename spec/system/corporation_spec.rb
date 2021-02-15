@@ -16,6 +16,7 @@ RSpec.describe Corporation, type: :system do
         fill_in '詳細', with: 'aaabbbbccc'
         select '小売業', from: '業種カテゴリ'
         click_on '登録する'
+        expect(page).to have_content('企業登録を完了しました')
       end
     end
     context '登録ユーザーで企業登録が完了している場合' do

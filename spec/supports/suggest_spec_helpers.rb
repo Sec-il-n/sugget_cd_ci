@@ -23,9 +23,12 @@ module SuggestSpecHelpers
     click_button("#{I18n.t('.dictionary.words.submit')}")
 
   end
-  def join_to_suggest
+  def show_suggest
     visit suggests_path
     first('.title a').click
+  end
+  def join_to_suggest
+    show_suggest
     click_on("#{I18n.t('.dictionary.words.join')}")
   end
   # def get_url

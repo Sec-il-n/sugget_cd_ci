@@ -10,8 +10,6 @@ RSpec.describe Comment, type: :system do
           let!(:user_2) { create(:user, id: 2) }
           let!(:suggest) { create(:suggest, user_id: user_2.id) }
           before do
-            # user_2 = create(:user, id: 2)
-            # create(:suggest, user_id: user_2.id)
             suggest
             login_valid_user
           end
@@ -35,6 +33,42 @@ RSpec.describe Comment, type: :system do
         end
       end
     end
+    describe 'コメント表示機能' do
+      context '提案詳細画面に遷移した場合'do
+        context'提案に対するコメントが１件以上ある場合'do
+          let!(:user) { create(:user) }
+          let!(:user_2) { create(:user) }#Key (id)=(2) already exists.
+          let!(:suggest) { create(:suggest, user_id: user_2.id) }
+          let!(:comment) { create(:comment, suggest_id: suggest.id, user_id: user.id) }
+          before do
+            login(user)
+          end
+          it 'コメントが新着順で表示されている'do
+            list = comment_list
+            created_texts = sort_dcsc(list.last(2)).map(&:text)
+            show_suggest
+            shown_texts = all('.text').map(&:text)
+            created_texts.each_with_index do |text, idx|
+              expect(text).to eq(shown_texts[idx])
+            end
+          end
+          it '最初の２件までが表示されている'do
+            create_comment_list
+            show_suggest
+            expect(all('.comment').count).to eq(2)
+          end
+          context'「もっと見る」をクリックした場合'do
+            it '残りのコメントが全て表示される'do
+              create_comment_list
+              show_suggest
+              find('.more').click
+              sleep 2.0
+              expect(all('.comment').count).to eq(11)
+            end
+          end
+        end
+      end
+    end
     describe 'コメント編集機能' do
       context '提案詳細画面を表示した場合' do
         let!(:user) { create(:user) }
@@ -54,11 +88,7 @@ RSpec.describe Comment, type: :system do
             # wait_until { page.has_field('#edit_text_box') }
             find(:xpath,'//*[@id="edit_text_box"]').fill_in with: 'abc'
 
-            # 画面スクロール
-            # page.execute_script("window.scrollBy(0, 1000);")
             page.execute_script("$('#edit-area form').submit()")
-            # click_on('登録する')
-            # find(:xpath, '//*[@id="comment_submit"]/input').click
             expect(page).to have_content('abc')
           end
         end

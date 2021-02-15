@@ -19,28 +19,6 @@ RSpec.describe Suggest, type: :system do
         # 確認機能なしで実装
 
         # xit '確認画面が表示される' do
-        #   # SuggestSpecHelpers
-        #   confirm_view
-        #
-        #   url = URI.parse(current_url)
-        #   expect(url).to have_content('/suggests/confirm')
-        # end
-        #
-        # context '確認画面遷移後' do
-        #   xit '戻るボタンで新規投稿画面に戻る' do
-        #     confirm_view
-        #     click_on("#{I18n.t('.dictionary.words.back')}")
-        #     expect(page).to have_content("#{I18n.t('.dictionary.words.new suggest')}")
-        #   end
-        #   context '登録ボタンをクリックした場合' do
-        #     xit '登録が完了し一覧画面に遷移する' do
-        #       create_new_suggest
-        #
-        #       url = URI.parse(current_url)
-        #       expect(url).to have_content('/suggests')
-        #       expect(page).to have_content("#{I18n.t('.dictionary.words.suggest created')}")
-        #     end
-        #   end
         # end
       end
     end
@@ -153,20 +131,6 @@ RSpec.describe Suggest, type: :system do
           expect(page).to have_content("#{I18n.t('.dictionary.words.destroyed')}")
         end
       end
-      # adminで管理画面に行けないテスト済 visitでid指定して遷移できないテストが必要？？
-      # 編集・削除はGETリクエストではないのでパスを入力しての遷移は不可能(?)
-      # context 'ログインユーザーが管理者権限を持たない場合' do
-      #   let!(:user) { create(:user, admin: false) }
-      #   before do
-      #     login_valid_user
-      #   end
-      #   xit '投稿の削除が失敗する' do
-      #     # user_2 = create(:user)
-      #     # suggest = create(:suggest, user_id: user_2.id)
-      #     # binding.pry
-      #     # expect(page).to have_content("#{I18n.t('.dictionary.words.not admin')}")
-      #   end
-      # end
     end
   end
 end

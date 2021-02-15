@@ -14,8 +14,6 @@ RSpec.describe Room, type: :system do
       end
       it 'チャットルームを作成できる' do
         visit participants_path
-        # 　x
-        # find('#room-<%= suggest.id %> a').click
         expect(page).to have_link('チャットルーム開設')
         click_on 'チャットルーム開設'
         expect(page).to have_content('チャットルームを作成しました。提案者とチャットを開始できます。')
@@ -29,5 +27,4 @@ RSpec.describe Room, type: :system do
       end
     end
   end
-
 end

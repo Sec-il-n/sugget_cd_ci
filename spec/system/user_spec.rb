@@ -13,6 +13,14 @@ RSpec.describe User, type: :system do
         expect(page).to have_content("#{I18n.t('.dictionary.words.index')}")
       end
     end
+    context 'ログアウトリンクをクリックしたとき'do
+      it 'ログイン画面に遷移する'do
+        login_valid_user
+        find(:xpath, '//*[@id="navbarSupportedContent"]/ul/li[1]/a').click
+        url = URI.parse(current_url)
+        expect(url).to have_content('/users/sign_in')
+      end
+    end
   end
   describe 'ユーザー登録機能' do
     context 'ユーザーが企業登録を完了していない場合' do

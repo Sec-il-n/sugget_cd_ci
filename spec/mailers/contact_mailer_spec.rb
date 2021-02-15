@@ -10,7 +10,7 @@ RSpec.describe ContactMailer, type: :mailer do
       # before do
       #   login(user)
       # end
-      
+
       # Mailerクラスのメソッドを実行
       subject(:mail) do
         # described_class(describeのクラスで宣言されあtクラスを取得)＝ContactMailer
@@ -22,7 +22,9 @@ RSpec.describe ContactMailer, type: :mailer do
       end
 
       it '管理者に問い合わせのメールが届く' do
-        expect(mail.to.first).to eq('kannrisya@co.jp')
+        kannri = Rails.application.credentials.dig(:gmail, :user_name)
+        expect(mail.to.first).to eq(kannri)
+        expect(mail.from.first).to eq(user.email)
         expect(mail.subject).to eq('問い合わせがありました')
         expect(mail.body).to match("#{user.email}")
       end

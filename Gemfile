@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-nav'
   gem 'launchy'
   gem 'dotenv-rails'
+  gem 'rails-controller-testing'
 
   gem 'capistrano'
   gem 'capistrano-bundler'

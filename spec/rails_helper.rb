@@ -71,11 +71,13 @@ RSpec.configure do |config|
   config.include UserSpecHelpers
   config.include CommentSpecHelpers
   config.include MessageSpecHelpers
-  # ↓sign_in and sign_out methods使用可能
-  # 結合テスト
+  #　結合テストで (ex. request->fill_inできない)deviseのsign_in and sign_out methods使用可能
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.include ActionDispatch::TestProcess
-  # config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   # config.extend ControllerMacros, type: :controller
-
+  # capybaraの場合
+  # Warden::Test::Helpers
+  config.include ActionDispatch::TestProcess, type: :request
+  config.include WaitForAjax, type: :system
+  config.include WaitForCss, type: :system
 end

@@ -14,7 +14,6 @@ class ParticipantsController < ApplicationController
     @participants = current_user.participants
   end
   def destroy
-    binding.pry
       @participant = Participant.find_by(id: params[:id])
       if suggest_user?
         redirect_to participants_path, danger: '提案投稿者は非参加に出来ません'

@@ -12,7 +12,10 @@ RSpec.describe Proprietorship, type: :system do
         fill_in 'proprietorship[name]', with: 'fff.prop'
         fill_in '詳細', with: 'aaabbbbccc'
         select 'その他', from: '業種カテゴリ'
+        # controller specへ
+        # attach_file('proprietorship_image', './spec/fixtures/866-200x300.jpg', make_visible: true)
         click_on '登録する'
+        expect(page).to have_content('企業登録を完了しました')
       end
     end
     context '登録ユーザーで企業登録(個人)が完了している場合' do

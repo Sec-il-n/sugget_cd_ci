@@ -12,6 +12,7 @@ FactoryBot.define do
           suggest.suggest_tags << create(:suggest_tags, suggest_id: suggest.id, tag_id: rand(1..2))
       end
     end
+    # end
     # trait :suggest_with_tags_3 do
     #   after(:build) do |suggest|
     #     count = 1

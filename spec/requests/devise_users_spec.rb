@@ -9,7 +9,7 @@ RSpec.describe 'UserAuthentications', type: :request do
     before do
       ActionMailer::Base.deliveries.clear
     end
-    context 'パラメター有効' do
+    context 'パラメタ有効' do
       it 'requestが成功する' do
         post user_registration_path, params: { user: user_params }
         expect(response.status).to eq 302#redirect
