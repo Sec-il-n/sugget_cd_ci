@@ -9,10 +9,11 @@
     <%= f.label :info %>
     <%= f.text_area :info, class:'form-control' %>
   </div>
-  <!-- <div class="form-group">
+  <div class="form-group">
+    <p>未選択なら変更しません。</p>
     <%= f.label :image %>
     <%= f.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
-  </div> -->
+  </div>
   <div class="form-group">
     <%= f.label :category_id %>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>

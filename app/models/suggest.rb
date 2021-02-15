@@ -14,7 +14,8 @@ class Suggest < ApplicationRecord
   # accepts_nested_attributes_for :suggest_tags, allow_destroy: true
   # どっちにせよいらん↑　
   has_many :images, dependent: :destroy, foreign_key: 'suggest_id'
-  accepts_nested_attributes_for :images, reject_if: :reject_blank, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true
+  # accepts_nested_attributes_for :images, reject_if: :reject_blank, allow_destroy: true
   # mount_uploaders :images, ImageUploader#uploader  modelの複数形?
   # serialize :image, JSON #複数の画像をアップロードをする場合は左の1文が必要 カラムのデータ型がJSONの場合不要
 

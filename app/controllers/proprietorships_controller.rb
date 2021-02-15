@@ -8,7 +8,7 @@ class ProprietorshipsController < ApplicationController
   end
   def create
     @proprietorship = Proprietorship.new(params_proprietorship)
-    if @proprietorship.save!
+    if @proprietorship.valid? && @proprietorship.save!
       update_user_proprietorship_id
       redirect_to proprietorship_path(@proprietorship), notice: t('.registerd')
     else

@@ -36,6 +36,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before do
+    Fog::Mock.reset
+    Fog.mock!
+
+    Fog.credentials = {
+      aws_access_key_id:     'test',
+      aws_secret_access_key: 'test'
+    }
+    connection = Fog::Storage.new(provider: 'AWS')
+    connection.directories.create(key: 'test')
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
