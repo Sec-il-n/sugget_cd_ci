@@ -101,7 +101,7 @@ nav {
 }
 .message_added {
   position: relative;
-  display: inline-block;
+  display: grid;
   margin: 1.5em 0;
   padding: 7px 10px;
   min-width: 120px;

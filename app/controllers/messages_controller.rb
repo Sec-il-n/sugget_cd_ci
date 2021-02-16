@@ -4,15 +4,6 @@ class MessagesController < ApplicationController
   end
   def index
     @messages = @room.messages
-    # if @messages.length > 10
-    #   @over_ten = true
-    #   @messages = Message.where(id: @messages[-10..-1].pluck(:id))
-    # end
-    # if params[:m]#値があれば（trueであれば）その下の二行を実行
-    #   @over_ten = false
-    #   @messages = @room.messages
-    # end
-
     # （最後）のメッセージが存在し、かつユーザIDが自分でない
     if @messages.last
       @messages.where.not(user_id: current_user.id).update_all(read: true)

@@ -10,8 +10,6 @@ class SuggestsController < ApplicationController
   end
   def create
     @suggest = Suggest.new(suggest_params)
-    @suggest.suggest_tags.build
-    2.times{@suggest.images.build}
     if params[:back]
       render 'new'
     else
@@ -53,12 +51,16 @@ class SuggestsController < ApplicationController
   end
   def show
     @comment = Comment.new
-    # undefined method `comments' for nil:NilClass
     @comments = @suggest.comments.recent
   end
   def edit
-    # 現在の最低2+1⬇︎
-    @suggest.images.build
+    image_saved = @suggest.images.count
+    case image_saved
+    when 0
+      2.times{@suggest.images.build}
+    when 1
+      1.times{@suggest.images.build}
+    end
   end
   def update
     if current_user.admin? &&

@@ -1,26 +1,16 @@
 class ApplicationController < ActionController::Base
-  # 5.2以降はActionController::Baseに移行
-  # protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   add_flash_types :success, :info, :warning, :danger
 
   def configure_permitted_parameters
-    # カラム追加時　StorongParameter
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name])
-    # devise_parameter_sanitizer.permit(:sign_in, keys: [:])
+
     devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :user_image, :user_image_cache, :remove_user_image])
   end
   def after_sign_in_path_for(resource_or_scope)
     suggests_path
   end
-  # def after_sign_out_path_for(resource_or_scope)
-  #   # root_path
-  #   new_user_session_path# ログアウト後に遷移するpathを設定
-  # end
-  # def sign_out_and_redirect(resource_or_scope)
-  # end
-  # confirmable moduleが有効な時　inactive
   def after_inactive_sign_up_path_for
     choose_corp_or_prop_path
   end
