@@ -8,7 +8,6 @@
   <%= form_with(model: @suggest, local: true, url: choose_path) do |f| %>
   <div class="form-group">
     <%= f.hidden_field :image_cache %>
-    <%# <% binding.pry %>
     <% @suggest.tags.each do |tag| %>
       <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
     <% end %>
@@ -28,18 +27,27 @@
   <% count = 1 %>
     <%= f.fields_for :images do |ff| %>
     <div class="form-group">
-      <p><%= ff.label "#{t('.file')}#{count}" %></p>
+      <p><%= ff.label "#{t('.file')} #{count}" %></p>
       <%= ff.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
       <% count += 1 %>
+
     </div>
     <% end %>
   <div class="form-group">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
   <% end %>
-</div>
-<div class="">
-  <% @suggest.images.each do |image| %>
-  <%= image_tag image.image.url if image && image.image.url.present? %>
-  <% end %>
+  <div class="back">
+    <%= link_to '戻る', admin_users_path %>
+  </div>
+
+  <div class="">
+    <% if @suggest.images.present? %>
+      <%# <% count = 1 %>
+      <% @suggest.images.each_with_index do |image, idx| %>
+        <p>画像　<%= "#{idx + 1}" %> : </p>
+        <%= image_tag image.image.url if image && image.image.url.present? %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

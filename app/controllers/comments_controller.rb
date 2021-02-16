@@ -50,8 +50,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
   end
   def params_comment
-    # ↓ :suggest_idが✖︎　
-    # params.require(:comment).permit(:text, :suggest_id, :user_id)
     params.require(:comment).permit(:text).merge(suggest_id: params[:suggest_id])
   end
   def contributor?

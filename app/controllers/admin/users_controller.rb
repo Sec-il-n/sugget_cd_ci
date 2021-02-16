@@ -1,17 +1,11 @@
 class Admin::UsersController < ApplicationController
   before_action :not_admin
-  # headerに管理者画面
   def index
     @suggests = Suggest.all
+    if params[:category_id].present?
+      @suggests = @suggests.category_search(params[:category_id])
+    end
   end
-  # def show　<-元のものを使用
-  #   @suggest = Suggest.find_by(id: params[:id])
-  #   @comments = @suggest.comments
-  # end
-  # def destroy　<-CommentsController
-  #   @comment = Comment.find_by(id: params[:id])
-  #
-  # end
   private
   def not_admin
     unless current_user.admin?

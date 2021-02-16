@@ -2,27 +2,31 @@
   <h1><%= t('.title') %></h1>
 
   <%# カテゴリ検索 %>
-  <%= form_with(url: suggests_path, method: 'get', local: true)do |f| %>
+  <%= form_with(url: admin_users_path, method: 'get', local: true)do |f| %>
     <div class="form-group">
     <%= f.label t('.category search') %>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
     <%= f.submit '検索', :class => 'btn btn-primary' %>
     </div>
   <% end %>
+  <div class="count">
+    <% if @suggests.present? %>
+      <p>全　<%= "#{@suggests.count}" %>  件</p>
+    <% end %>
+  </div>
   <div class="ht-hm-codeblock">
-    <% @suggests.each do |suggest| %>
+    <table class="table table-hover table-striped ht-tm-element">
 
-      <table class="table table-hover table-striped ht-tm-element">
-
-        <thead class="thead-dark">
-          <tr>
-            <th><%= t('.suggest') %></th>
-            <th><%= t('.details') %></th>
-            <!-- <th><%= t('.com') %></th> -->
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+      <thead class="thead-dark">
+        <tr>
+          <th><%= t('.suggest') %></th>
+          <th><%= t('.details') %></th>
+          <!-- <th><%= t('.com') %></th> -->
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @suggests.each do |suggest| %>
         <tbody>
           <tr>
             <th><%= link_to suggest.title, suggest_path(suggest.id) %></th>
@@ -32,7 +36,7 @@
             <td><%= link_to t('.edit'), edit_suggest_path(suggest.id) %></td>
           </tr>
         </tbody>
-      </table>
-    <% end %>
+      <% end %>
+    </table>
   </div>
 </div>
