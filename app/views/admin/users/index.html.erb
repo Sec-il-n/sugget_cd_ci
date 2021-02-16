@@ -31,9 +31,9 @@
           <tr>
             <th><%= link_to suggest.title, suggest_path(suggest.id) %></th>
             <td class="table_format"><%= suggest.details %></td>
-            <td><%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') } %>
+            <td><%= link_to t('.delete'), suggest_path(suggest), method: 'delete', data: { confirm: t('.confirmation') }, class: "btn btn-danger btn-sm" %>
             </td>
-            <td><%= link_to t('.edit'), edit_suggest_path(suggest.id) %></td>
+            <td><%= link_to t('.edit'), edit_suggest_path(suggest.id), class: "btn btn-success btn-sm" %></td>
           </tr>
         </tbody>
       <% end %>
