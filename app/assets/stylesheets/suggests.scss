@@ -43,8 +43,13 @@ nav {
   margin: 15px;
 }
 .suggest-images {
-  margin: auto;
-  padding: 20px;
+  display: flex;
+  // margin: auto;
+  // padding: 20px;
+  // margin-bottom: 15px;
+}
+.img {
+  flex: 1;
 }
 .space {
   padding: 50px;
@@ -95,6 +100,9 @@ nav {
 .pagination {
   justify-content: center;
   background-color: #fff;
+}
+.carousel-item {
+  height: 400px;
 }
 .chat {
   margin-top: 30px;

@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
         @comment.destroy!
       rescue => e
         puts e.class
-        redirect_to admin_users_path, danger: t('.delete faild')
+        redirect_to admin_users_path, alart: t('.delete faild')
       end
       flash[:notice] = t('.deleted')
       render 'index'

@@ -4,6 +4,9 @@
     <%= @user.user_name %>
     <% if @user.user_image.present? %>
       <%= image_tag @user.user_image.url, class: "user_image" %>
+    <% else %>
+      <% url = '' %>
+      <%= image_tag url, class: "user_image" %>
     <% end %>
   </div>
 
@@ -22,25 +25,27 @@
   <% end %>
   <div class="participants">
     <strong><%= t('.participants') %>: </strong>
-    <table class="table table-hover table-striped ht-tm-element">
-      <thead>
-        <tr>
-          <th>提案名</th>
-          <th>企業名</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
+    <% if @participants.present? %>
+      <table class="table table-hover table-striped ht-tm-element table-secondary">
+        <thead>
+          <tr>
+            <th>提案名</th>
+            <th>企業名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
 
-        <% @participants.each do |participant| %>
-        <% corp_or_prop = corp_or_prop(participant.suggest) %>
-        <tr>
-          <td><%= link_to participant.suggest.title, suggest_path(participant.suggest_id), class: 'space' %></td>
+          <% @participants.each do |participant| %>
+          <% corp_or_prop = corp_or_prop(participant.suggest) %>
+          <tr>
+            <td><%= link_to participant.suggest.title, suggest_path(participant.suggest_id), class: 'space' %></td>
 
-          <td><%= link_to corp_or_prop.name, choose_corp_or_prop_path(participant.suggest) if corp_or_prop %></td>
-          <td></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+            <td><%= link_to corp_or_prop.name, choose_corp_or_prop_path(participant.suggest) if corp_or_prop %></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
