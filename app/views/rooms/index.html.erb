@@ -1,13 +1,29 @@
-<h1><%= t('.rooms') %></h1>
-<strong><%= t('.suggest') %>: </strong><br>
-<% @rooms.each do |room| %>
-<%# まだチャットルームを開設していない場合@roomsの配列にnilがはいる %>
-  <% unless room.nil? %>
-    <div class="card">
-      <div class="card-body">
-        <%= " #{room.suggest.title}" %>
-        <%= link_to "#{t('.move_to_room')}", room_path(room.id), class: 'right btn btn-light' %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+<h1><%= t('.rooms') %></h1><br>
+<div class="container">
+  <div class="ht-hm-codeblock">
+    <table class="table table-hover table-striped ht-tm-element">
+      <thead class="thead-dark">
+        <tr>
+          <th><%= t('.suggest') %>: </th>
+          <th>最終更新日時: </th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <% @rooms.each do |room| %>
+      <%# まだチャットルームを開設していない場合@roomsの配列にnilがはいる %>
+        <% unless room.nil? %>
+          <tbody>
+            <tr>
+              <th><%= " #{room.suggest.title}" %></th>
+              <td><%= room.messages.last.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td></td>
+              <td><%= link_to "#{t('.move_to_room')}", room_path(room.id), class: 'right btn btn-info' %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
