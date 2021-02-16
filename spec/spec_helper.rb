@@ -20,9 +20,6 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
 
-
-
-
   # テスト実行前にシードデータ挿入
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

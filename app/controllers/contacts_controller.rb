@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  include ContactConcern
   def new
     @contact = Contact.new
   end
@@ -16,9 +17,5 @@ class ContactsController < ApplicationController
       flash.now[:warning] = t('.contact faild')
       render 'new'
     end
-  end
-  private
-  def params_contact
-    params.require(:contact).permit(:content).merge(user_id: current_user.id)
   end
 end

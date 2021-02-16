@@ -15,7 +15,8 @@ RSpec.describe Corporation, type: :system do
         fill_in '企業名', with: 'fff.com'
         fill_in '詳細', with: 'aaabbbbccc'
         select '小売業', from: '業種カテゴリ'
-        click_on '登録する'
+        find(:xpath, '/html/body/div[2]/div/form/div[5]/input').click
+        # click_on '登録する'
         expect(page).to have_content('企業登録を完了しました')
       end
     end

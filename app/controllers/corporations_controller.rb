@@ -1,5 +1,6 @@
 class CorporationsController < ApplicationController
   include UsersHelper
+  include CorporationConcern
   before_action :set_corporation, only:[:show, :edit, :update, :destroy]
   before_action :create_not_permitted, only:[:new, :create]
   before_action :edit_not_permitted, only:[:edit, :update, :destroy]
@@ -9,7 +10,7 @@ class CorporationsController < ApplicationController
   end
   def create
     @corporation = Corporation.new(params_corporation)
-    if @coporation &&  begin @corporation.save!
+    if @corporation && begin @corporation.save!
     rescue => e
       puts e.class
       flash[:danger] = '企業登録が失敗しました'
@@ -17,37 +18,27 @@ class CorporationsController < ApplicationController
     end
       update_user_corporation_id
       redirect_to corporation_path(@corporation.id), notice: t('.registerd')
-
     else
+      flash.now[:danger] = '企業登録が失敗しました'
       render 'new'
     end
   end
   def show
     @users = @corporation.users
-    # @suggests = @users.map { |user| user. suggests_on_going}
     @user_images = @users.map { |user| user.user_image }
-    # 企業の提案中案件
-    # @suggests = @users.map { |user| user.suggests }
-    # suggests.each do |suggest|
-    #   @users_joined = suggest.users
-    # end
   end
   def edit
 
   end
   def update
-    # if edit_permitted? &&
-      begin
-        @corporation.update!(params_corporation)
-        redirect_to corporation_path(@corporation), notice: '企業登録を編集しました'
-      rescue => e
-        puts e.class
-        flash.now[:danger] = '編集に失敗しました'
-        render 'edit'
-      end
-    # else
-    #   redirect_to suggests_path, warning: '編集権限がありません'
-    # end
+    begin
+      @corporation.update!(params_corporation)
+      redirect_to corporation_path(@corporation), notice: '企業登録を編集しました'
+    rescue => e
+      puts e.class
+      flash.now[:danger] = '編集に失敗しました'
+      render 'edit'
+    end
   end
   def select
 
@@ -58,32 +49,5 @@ class CorporationsController < ApplicationController
     else
       corp_or_prop
     end
-  end
-  private
-  def set_corporation
-    @corporation = Corporation.find_by(id: params[:id])
-  end
-  def update_user_corporation_id
-    @user = User.find(current_user.id)
-    @user.update!(corporation_id: @corporation.id)
-  end
-  def params_corporation
-    params.require(:corporation).permit(:figure, :name, :info, :image, :category_id)
-  end
-  def corp_or_prop
-    if params[:figure] == 'corporation'
-      redirect_to new_corporation_path
-    elsif params[:figure] == 'proprietorship'
-      redirect_to new_proprietorship_path
-    end
-  end
-  def edit_permitted?
-    @corporation.id == current_user.corporation_id
-  end
-  def edit_not_permitted
-    # unlessと条件の順番　@proprietorshipがnilの場合.idでerrorになるので、一つ目の条件で評価しないようにする
-     unless @corporation.present? && @corporation.id == current_user.corporation_id
-       redirect_to suggests_path, warning: '編集権限がありません'
-     end
   end
 end

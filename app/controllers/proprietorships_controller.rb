@@ -1,5 +1,6 @@
 class ProprietorshipsController < ApplicationController
   include UsersHelper
+  include ProprietorshipConcern
   before_action :set_proprietorship, only:[:show, :edit, :update, :destroy]
   before_action :create_not_permitted, only:[:new, :create]
   before_action :edit_not_permitted, only:[:edit, :update, :destroy]
@@ -8,10 +9,11 @@ class ProprietorshipsController < ApplicationController
   end
   def create
     @proprietorship = Proprietorship.new(params_proprietorship)
-    if @proprietorship.valid? && @proprietorship.save!
+    if @proprietorship && @proprietorship.save!
       update_user_proprietorship_id
       redirect_to proprietorship_path(@proprietorship), notice: t('.registerd')
     else
+      flash.now[:danger] = '企業登録が失敗しました'
       render 'new'
     end
   end
@@ -21,32 +23,13 @@ class ProprietorshipsController < ApplicationController
   def edit
   end
   def update
-      begin
-         @proprietorship.update!(params_proprietorship)
-         redirect_to proprietorship_path(@proprietorship), notice: '企業登録(個人)を編集しました'
-      rescue => e
-        puts e.class
-        flash.now[:danger] = '編集に失敗しました'
-        render 'edit'
-      end
-  end
-  private
-  def set_proprietorship
-    @proprietorship = Proprietorship.find_by(id: params[:id])
-  end
-  def update_user_proprietorship_id
-    @user = User.find(current_user.id)
-    @user.update!(proprietorship_id: @proprietorship.id)
-  end
-  def params_proprietorship
-    params.require(:proprietorship).permit(:name, :info, :image, :category_id)
-  end
-  def edit_permitted?
-    @proprietorship.id == current_user.proprietorship_id
-  end
-  def edit_not_permitted
-     unless @proprietorship.present? && @proprietorship.id == current_user.proprietorship_id
-       redirect_to suggests_path, warning: '編集権限がありません'
-     end
+    begin
+       @proprietorship.update!(params_proprietorship)
+       redirect_to proprietorship_path(@proprietorship), notice: '企業登録(個人)を編集しました'
+    rescue => e
+      puts e.class
+      flash.now[:danger] = '編集に失敗しました'
+      render 'edit'
+    end
   end
 end

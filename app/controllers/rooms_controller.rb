@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  include RoomConcern
   before_action :authenticate_user!
   before_action :room_alredy_created, only:[:create]
   def index
@@ -21,10 +22,5 @@ class RoomsController < ApplicationController
     @room = Room.find_by(id: params[:id])
     @messages = @room.messages
     @suggest = @room.suggest
-  end
-  private
-  def room_alredy_created
-    @rooms = Room.where(suggest_id: params[:suggest_id])
-    redirect_to participants_path if @rooms.present?
   end
 end

@@ -81,11 +81,11 @@ RSpec.describe Comment, type: :system do
             login(user)
             comment
           end
+          # 機能不安定　保留　（機能要件　優先度：中）
           xit '編集リンクからコメントの編集ができる' do
             first(:xpath, '/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
-            # ↓のリンク１クリックでは編集フォームが表示されない
-            first(:xpath, '/html/body/div[2]/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/a').double_click
-            # wait_until { page.has_field('#edit_text_box') }
+            sleep 2.0
+            execute_script('window.scrollBy(0,10000)')
             find(:xpath,'//*[@id="edit_text_box"]').fill_in with: 'abc'
 
             page.execute_script("$('#edit-area form').submit()")
