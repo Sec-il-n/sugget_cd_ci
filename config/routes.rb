@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # get 'users/show'
   root to: 'tops#index'
   post '/suggests/:id', to: 'suggests#update'
   # controllers/usets内のコントローラを割り当てる
@@ -7,10 +6,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  # 独自ルーティングの作成方法→devise session#destroyを書き換える(？)
-  # devise_scope :user do
-  #   delete 'logout', to: 'devise/session#destroy'
-  # end
   resources :users, only:[:show]
   namespace :admin do
     resources :users, only:[:index, :edit, :update, :destroy]
@@ -18,9 +13,9 @@ Rails.application.routes.draw do
 
   resources :suggests do
     resources :comments, only:[:create, :edit, :update, :destroy]
-    collection do
-      post :confirm
-    end
+    # collection do
+    #   post :confirm
+    # end
   end
 
   resources :rooms, only:[:index, :create, :show] do
@@ -42,7 +37,6 @@ Rails.application.routes.draw do
 
   resources :proprietorships
   resources :participants, only:[:create, :index, :destroy]
-
   resources :contacts, only:[:new, :create]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

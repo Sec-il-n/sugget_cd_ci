@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe User, type: :system  do
   describe '管理画面のテスト' do
     context ' ログインユーザが管理者権を持つユーザーの場合'do
@@ -26,7 +27,10 @@ RSpec.describe User, type: :system  do
           click_on '更新する'
         end
         it '提案の削除ができる' do
-
+          visit admin_users_path
+          find(:xpath, '/html/body/div[2]/div/div[2]/table/tbody[1]/tr/td[2]/a').click
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content('を削除しました')
         end
       end
       context 'プロジェクト詳細画面へ遷移した場合' do
@@ -39,8 +43,11 @@ RSpec.describe User, type: :system  do
         end
         it 'コメントの削除ができる' do
           visit suggests_path
+          # 詳細へ
           find(:xpath, '/html/body/div[2]/div[2]/div[1]/div[1]/strong/a').click
-          expect(page).to have_link('削除する')
+          first('.comment-destroy').click
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content('コメントを削除しました')
         end
       end
     end

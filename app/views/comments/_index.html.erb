@@ -1,3 +1,8 @@
+<% if notice %>
+  <div class="ht-tm-element info alert-dismissible fade show alert-info">
+    <p class="notice"><%= notice %></p>
+  </div>
+<% end %>
 <% if warning %>
   <div class="ht-tm-element alert alert-dismissible fade show alert-warning">
     <p class="warning"><%= warning %></p>
@@ -20,20 +25,20 @@
           <div class="texts_link">
             <p class="text"><%= comment.text %></p>
             <% if current_user.admin? && comment.user == current_user %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
-
+              <div class="">
+                <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm comment-destroy' %>
+              </div>
               <div id="js-comment-<%= comment.id %>">
                 <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
               </div>
             <% elsif current_user.admin? %>
-              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm' %>
+              <%= link_to t('dictionary.words.destroy'), suggest_comment_path(comment.suggest, comment), method: 'delete', data: { confirm: t('.confirmation') }, remote: true, class: 'btn btn-danger btn-sm comment-destroy' %>
 
             <% elsif comment.user == current_user %>
-            <div id="js-comment-<%= comment.id %>">
-              <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
-            </div>
-
-          <% end %>
+              <div id="js-comment-<%= comment.id %>">
+                <%= link_to t('dictionary.words.edit'),  edit_suggest_comment_path(comment.suggest, comment), remote: true, class: 'btn btn-success btn-sm edit' %>
+              </div>
+            <% end %>
           </div>
           <span class="date_created">
             <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
@@ -42,6 +47,9 @@
         <div class="right">
           <% if comment.user.user_image.present? %>
             <%= image_tag comment.user.user_image.url, class: 'user_image' %>
+          <% else %>
+            <% url = '' %>
+            <%= image_tag url, class: "user_image" %>
           <% end %>
           <%= link_to "@#{comment.user.user_name}", user_path(comment.user.id) %>
         </div>
@@ -49,8 +57,6 @@
     </div>
   <% end %>
 <% end %>
-
-
 <!-- 3件目以降 -->
 <div class="collapse" id="collapseExample">
     <% comments.offset(2).each do |comment| %>

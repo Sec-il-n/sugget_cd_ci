@@ -1,43 +1,45 @@
-
-<h1><%= t('.title') %></h1>
 <%# <%= render 'form', suggest: @suggest %>
 <div class="container">
-  <div class="belonging_registration">
-    <% if belonging_registration_path.present? %>
-      <%= link_to t('.belonging_registration'), select_corporations_path %>
-    <% end %>
-  </div>
-    <%= form_with(model: @suggest, local: true) do |f| %>
-    <div class="">
-      <%= f.hidden_field :image_cache %>
-      <%# <% binding.pry %>
-      <% @suggest.tags.each do |tag| %>
-        <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
-      <% end %>
-    </div>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_area :title, class: 'field' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :details %>
-      <%= f.text_area :details, class: 'field' %>
-    </div>
-    <div class="form-group">
-      <%# controllerで変数作成すると途中から画面遷移したときにTag.allがnillでエラーになる %>
-      <% tags = Tag.all %>
-      <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
-    </div>
-    <% count = 1 %>
-      <%= f.fields_for :images do |ff| %>
-      <div class="form-group">
-        <p><%= ff.label "#{t('.file')}#{count}" %></p>
-        <%= ff.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
-        <% count += 1 %>
+  <div class="card">
+    <div class="card-body">
+      <h1><%= t('.title') %></h1>
+      <div class="belonging_registration">
+        <% if belonging_registration_path.present? %>
+          <%= link_to t('.belonging_registration'), select_corporations_path %>
+        <% end %>
       </div>
+      <%= form_with(model: @suggest, local: true) do |f| %>
+        <div class="">
+          <%= f.hidden_field :image_cache %>
+          <% @suggest.tags.each do |tag| %>
+            <%= f.hidden_field :tag_ids, id: tag.id, value: tag.id, maltiple: true %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_area :title, class: 'field' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :details %>
+          <%= f.text_area :details, class: 'field' %>
+        </div>
+        <div class="form-group">
+          <%# controllerで変数作成すると途中から画面遷移したときにTag.allがnillでエラーになる %>
+          <% tags = Tag.all %>
+          <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
+        </div>
+        <% count = 1 %>
+        <%= f.fields_for :images do |ff| %>
+          <div class="form-group">
+            <p><%= ff.label "#{t('.file')}#{count}" %></p>
+            <%= ff.file_field :image, accept: 'image/png, image/jpeg, image/gif' %>
+            <% count += 1 %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit :class => 'btn btn-primary' %>
+        </div>
       <% end %>
-    <div class="form-group">
-      <%= f.submit :class => 'btn btn-primary' %>
     </div>
-    <% end %>
   </div>
+</div>

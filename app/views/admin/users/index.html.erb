@@ -10,8 +10,11 @@
     </div>
   <% end %>
   <div class="count">
-    <% if @suggests.present? %>
-      <p>全　<%= "#{@suggests.count}" %>  件</p>
+    <% total_count = Suggest.all.count %>
+    <% if @suggests.present? && @suggests.last_page? %>
+      <p><%= total_count %> 　件/全　<%= total_count %>  件</p>
+    <% elsif @suggests.present? %>
+        <p><%= @suggests.current_page * 20 %> 　件/全　<%= total_count %>  件</p>
     <% end %>
   </div>
   <div class="ht-hm-codeblock">
@@ -21,7 +24,6 @@
         <tr>
           <th><%= t('.suggest') %></th>
           <th><%= t('.details') %></th>
-          <!-- <th><%= t('.com') %></th> -->
           <th></th>
           <th></th>
         </tr>
@@ -38,5 +40,8 @@
         </tbody>
       <% end %>
     </table>
+  </div>
+  <div class="">
+    <%= paginate @suggests, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

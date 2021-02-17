@@ -24,24 +24,24 @@ class SuggestsController < ApplicationController
       end
     end
   end
-  def confirm
-    @suggest = Suggest.new(suggest_params)
-    @images = @suggest.images.collect(&:image)
-    @tags = @suggest.tags.collect(&:name)
-
-    if @suggest.invalid?
-      @suggest.suggest_tags.build
-      2.times{@suggest.images.build}
-      render 'new'
-
-    elsif @suggest.valid?
-      @suggest.suggest_tags.build
-      2.times{@suggest.images.build}
-      flash.now[:notice] = t('.confirmation')
-      render 'confirm'
-
-    end
-  end
+  # def confirm
+  #   @suggest = Suggest.new(suggest_params)
+  #   @images = @suggest.images.collect(&:image)
+  #   @tags = @suggest.tags.collect(&:name)
+  #
+  #   if @suggest.invalid?
+  #     @suggest.suggest_tags.build
+  #     2.times{@suggest.images.build}
+  #     render 'new'
+  #
+  #   elsif @suggest.valid?
+  #     @suggest.suggest_tags.build
+  #     2.times{@suggest.images.build}
+  #     flash.now[:notice] = t('.confirmation')
+  #     render 'confirm'
+  #
+  #   end
+  # end
   def index
     @suggests = Suggest.all.page(params[:page]).per(5)
     if params[:tag].present?
@@ -76,13 +76,12 @@ class SuggestsController < ApplicationController
     end
   end
   def destroy
-      begin
-        @suggest.destroy!
-        redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
-      rescue => e
-        puts e.class
-        redirect_to admin_users_path, danger: t('.destroy faild')
-      end
+    begin
+      @suggest.destroy!
+      redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
+    rescue => e
+      puts e.class
+      redirect_to admin_users_path, danger: t('.destroy faild')
+    end
   end
-
 end
