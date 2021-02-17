@@ -43,7 +43,7 @@ class SuggestsController < ApplicationController
   #   end
   # end
   def index
-    @suggests = Suggest.all.page(params[:page]).per(5)
+    @suggests = Suggest.all.default_orderd.page(params[:page]).per(5)
     if params[:tag].present?
       @suggests = Tag.find_by(id: params[:tag]).suggests.all.page(params[:page]).per(5)
     elsif params[:category_id].present?

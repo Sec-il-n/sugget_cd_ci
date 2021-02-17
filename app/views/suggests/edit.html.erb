@@ -1,11 +1,10 @@
-<%# <%= render 'form', suggest: @suggest %>
   <div class="belonging_registration">
     <% if belonging_registration_path.present? %>
       <%= link_to t('.belonging_registration'), select_corporations_path %>
     <% end %>
   </div>
 <div class="container">
-  <%= form_with(model: @suggest, local: true, url: choose_path) do |f| %>
+  <%= form_with(model: @suggest, local: true, url: suggest_path) do |f| %>
   <div class="form-group">
     <%= f.hidden_field :image_cache %>
     <% @suggest.tags.each do |tag| %>
@@ -21,8 +20,10 @@
     <%= f.text_area :details, class:'form-control field' %>
   </div>
   <div class="form-group">
+    <%# <% binding.pry %>
     <%# <% tags = Tag.all %>
-    <%# <%= f.collection_check_boxes :tag_ids, tags, :id, :name, include_hidden: false %>
+    <%# <%= f.collection_check_boxes :tag_ids, tags, :id, :name, { checked: @suggest.tag_ids.map(&:to_param) }, include_hidden: false %>
+    <%# "[array]"<-String %>
   </div>
   <% count = 1 %>
     <%= f.fields_for :images do |ff| %>

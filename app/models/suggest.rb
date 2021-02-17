@@ -20,5 +20,5 @@ class Suggest < ApplicationRecord
   has_one :room, foreign_key: 'suggest_id'#, optional: true
 
   scope :category_search, -> (category_id) {  where(category_id: category_id) }
-
+  scope :default_orderd, -> { order(created_at: :desc) }
 end
