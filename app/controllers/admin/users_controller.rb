@@ -1,7 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :not_admin
   def index
-    # @suggests = Suggest.all
     @suggests = Suggest.all.page(params[:page]).per(20)
     if params[:category_id].present?
       @suggests = @suggests.category_search(params[:category_id])

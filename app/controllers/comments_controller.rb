@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
   end
   def update
     begin
+      flash.now[:notice] = 'コメントを編集しました'
       render 'update' if @comment.update!(params_comment)
     rescue => e
         puts e.class
