@@ -1,18 +1,12 @@
 <h1><%= t('.room') %></h1>
-<!-- <p>説明文</p> -->
-<div class="">
+<div class="container chat-box">
   <strong><%= "#{t('.suggest')}: #{@suggest.title}" %></strong>
-
   <div id="messages">
     <%= render 'message', collection: @messages %>
   </div>
-
   <div class="chat">
     <%= t('.chat') %>
     <input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>" class="form-control" id="chat_input">
-  </div>
-
-  <div class="">
     <%= link_to t('.leave'), rooms_path, class: 'ht-tm-element btn btn-link' %>
   </div>
 </div>

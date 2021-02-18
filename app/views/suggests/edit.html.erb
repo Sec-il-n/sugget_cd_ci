@@ -21,10 +21,9 @@
     <%= f.text_area :details, class:'form-control field' %>
   </div>
   <div class="form-group">
-    <%# <% binding.pry %>
-    <% @tags = Tag.all %>
+    <%# <% @tags = Tag.all %>
     <%# <% tag_array = [] %>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { checked: @suggest.tag_ids.map(&:to_param) }, include_hidden: false %>
+    <%# <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { checked: @suggest.tag_ids.map(&:to_param) }, include_hidden: false %>
     <%# <% tags.each do |tag| %>
       <%# <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
       <%# <%= f.label tag.name %>
