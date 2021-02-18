@@ -6,7 +6,7 @@ class Proprietorship < ApplicationRecord
     validates :category
   end
   belongs_to :category, optional: true
-  has_one :user, foreign_key: 'proprietorship_id'
+  has_one :user, foreign_key: 'proprietorship_id', dependent: :destroy
   # polymorphic: 適応後　追加
   # has_many :images, as: :imageable
 end

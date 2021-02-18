@@ -3,7 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :html, :json
 
   def update
-    binding.pry
     super
   end
   protected
