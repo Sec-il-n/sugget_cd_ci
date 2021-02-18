@@ -1,5 +1,7 @@
+<!-- /views/comments = Comment model　に対してAjax -->
 <div class="ht-tm-codeblock">
-  <%= form_with(model: [suggest, comment], url: suggest_comment_path(suggest.id, comment.id))do |f| %>
+  <%= form_with(model: comment, url:           suggest_comment_path(
+  comment.suggest.id, comment.id))do |f| %>
     <div class="form-group">
       <%= f.label t('.edit') %><br>
       <%= f.text_area :text, class:'field', id: 'edit_text_box' %>

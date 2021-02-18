@@ -1,6 +1,0 @@
-$(function() {
-  $('#js-comment-<%= @comment.id %> .edit').on("click", function () {
-    $("#edit-area").html("<%= j(render 'edit', { comment: @comment, suggest: @suggest }) %>")
-    $("#edit_text_box").val('<%= @comment.text %>')
-  });
-});

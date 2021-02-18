@@ -1,0 +1,4 @@
+(function () {
+    $("#index_edit_area").html("<%= j(render 'ajax_edit', { comment: @comment}) %>")
+    $("#edit_text_box").val('<%= @comment.text %>')
+})();

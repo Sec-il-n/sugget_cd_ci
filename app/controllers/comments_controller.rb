@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   include SuggestsHelper
   include CommentConcern
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :corp_prop_registerd, only:[:create, :edit, :update]
-  before_action :comment_user, only:[:edit, :update]
+  before_action :set_comment, only: [:update, :destroy, :ajax_edit]
+  before_action :corp_prop_registerd, only:[:create, :ajax_edit, :update]
+  before_action :comment_user, only:[:ajax_edit, :update]
   def create
     @comment = current_user.comments.build(params_comment)
     if contributor?
@@ -18,13 +18,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-  def edit
-    @suggest = @comment.suggest
-    respond_to do|format|
-      format.js { render 'edit.js.erb' }
-      format.html { render }
-    end
-  end
   def update
     begin
       flash.now[:notice] = 'コメントを編集しました'
@@ -34,7 +27,6 @@ class CommentsController < ApplicationController
         redirect_to suggest_path(@comment.suggest), danger: t('.update comment faild')
     end
   end
-
   def destroy
     if current_user.admin?
       begin
@@ -45,6 +37,11 @@ class CommentsController < ApplicationController
       end
       flash[:notice] = t('.deleted')
       render 'index'
+    end
+  end
+  def ajax_edit
+    respond_to do|format|
+      format.js { @comment }
     end
   end
 end

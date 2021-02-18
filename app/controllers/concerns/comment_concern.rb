@@ -9,6 +9,9 @@ module CommentConcern
   def params_comment
     params.require(:comment).permit(:text).merge(suggest_id: params[:suggest_id])
   end
+  def params_comment_update
+    params.require(:comment).permit(:text, :id).merge(suggest_id: params[:suggest_id])
+  end
   def contributor?
     suggest = Suggest.find_by(id: params[:suggest_id])
     unless suggest.nil?

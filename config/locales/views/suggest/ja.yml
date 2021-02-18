@@ -144,6 +144,8 @@ ja:
     update:
       register needed: 企業登録が必要です
       update comment faild: コメントの編集に失敗しました
+    ajax_edit:
+      edit: 編集フォーム
   contacts:
     new:
       title: お問い合わせ

@@ -1,5 +1,4 @@
-// showのrender部
 $(function() {
-    $("#edit-area").html('')
+    $("#index_edit_area").html('')
     $("#comment-area").html("<%= j(render 'index', { comments: @comment.suggest.comments.recent }) %>")
 });

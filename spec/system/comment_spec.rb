@@ -81,15 +81,17 @@ RSpec.describe Comment, type: :system do
             login(user)
             comment
           end
-          # 機能不安定　保留　（機能要件　優先度：中）
-          xit '編集リンクからコメントの編集ができる' do
+          it '編集リンクからコメントの編集ができる' do
+            binding.pry
             first(:xpath, '/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
-            sleep 2.0
-            execute_script('window.scrollBy(0,10000)')
-            find(:xpath,'//*[@id="edit_text_box"]').fill_in with: 'abc'
 
-            page.execute_script("$('#edit-area form').submit()")
+            execute_script('window.scrollBy(0,10000)')
+            find(:xpath, '//*[@id="js-comment-1-edit-btn"]').click
+
+            find(:xpath,'//*[@id="edit_text_box"]').fill_in with: 'abc'
+            find(:xpath, '//*[@id="subumit_edit"]/input').click
             expect(page).to have_content('abc')
+            expect(page).to have_content('コメントを編集しました')
           end
         end
         context 'コメント投稿者でない場合' do
@@ -98,7 +100,7 @@ RSpec.describe Comment, type: :system do
             comment
           end
           it 'コメントの編集ができない' do
-            find(:xpath, '/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
+            first(:xpath, '/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
             expect(page).not_to have_link('編集する')
           end
         end

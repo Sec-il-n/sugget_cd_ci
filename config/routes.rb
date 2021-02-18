@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :suggests do
-    resources :comments, only:[:create, :edit, :update, :destroy]
+    resources :comments, only:[:create, :edit, :update, :destroy] do
+      member do
+        post :ajax_edit, as: 'ajax_edit'
+      end
+    end
     # collection do
     #   post :confirm
     # end

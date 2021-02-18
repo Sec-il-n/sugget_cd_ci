@@ -51,8 +51,15 @@ class SuggestsController < ApplicationController
     end
   end
   def show
-    @comment = Comment.new
-    @comments = @suggest.comments.recent
+    # @comment = Comment.new
+    # @comments = @suggest.comments.recent
+    if params[:comment_id]
+      @comment = @suggest.comments.where(id: params[:comment_id])
+      render template: "comments/ajax_edit"
+    else
+      @comment = Comment.new
+      @comments = @suggest.comments.recent
+    end
   end
   def edit
     image_saved = @suggest.images.count

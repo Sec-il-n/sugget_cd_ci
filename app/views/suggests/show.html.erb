@@ -1,8 +1,8 @@
-<% if belonging_registration_path.present? %>
-  <div class="belonging_registration">
-    <%= link_to t('.belonging_registration'), select_corporations_path %>
-  </div>
-<% end %>
+<div class="belonging_registration">
+  <% if belonging_registration_path.present? %>
+    <%= link_to t('.belonging_registration'), select_corporations_path, class: 'ht-tm-element btn btn-block btn-outline-warning' %>
+  <% end %>
+</div>
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -52,8 +52,8 @@
           <%= render partial: 'comments/index', locals: { comments: @comments } %>
         </div>
         <% if user_signed_in? %>
-          <div id="edit-area">
-            <!--  -->
+          <div id="index_edit_area">
+            
           </div>
           <div create="comment-post" id="form-area">
             <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
