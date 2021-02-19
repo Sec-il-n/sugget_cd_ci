@@ -17,7 +17,7 @@ class Suggest < ApplicationRecord
   has_many :images, dependent: :destroy, foreign_key: 'suggest_id'
   accepts_nested_attributes_for :images, allow_destroy: true#, reject_if: :reject_blank
 
-  has_one :room, foreign_key: 'suggest_id'#, optional: true
+  has_one :room, foreign_key: 'suggest_id', dependent: :destroy#, optional: true
 
   scope :category_search, -> (category_id) {  where(category_id: category_id) }
   scope :default_orderd, -> { order(created_at: :desc) }

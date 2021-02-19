@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_051010) do
+ActiveRecord::Schema.define(version: 2021_02_19_144303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_051010) do
     t.bigint "user_id"
     t.bigint "category_id", default: 11, null: false
     t.index ["category_id"], name: "index_suggests_on_category_id"
-    t.index ["user_id"], name: "index_suggests_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -174,7 +173,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_051010) do
   add_foreign_key "suggest_tags", "suggests"
   add_foreign_key "suggest_tags", "tags"
   add_foreign_key "suggests", "categories"
-  add_foreign_key "suggests", "users"
   add_foreign_key "users", "corporations"
   add_foreign_key "users", "proprietorships"
 end

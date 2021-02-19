@@ -88,6 +88,7 @@ class SuggestsController < ApplicationController
       redirect_to admin_users_path, notice: "#{@suggest.title}#{t('.destroyed')}"
     rescue => e
       puts e.class
+      puts e
       redirect_to admin_users_path, danger: t('.destroy faild')
     end
   end
