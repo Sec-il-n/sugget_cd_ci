@@ -9,11 +9,16 @@ class ProprietorshipsController < ApplicationController
   end
   def create
     @proprietorship = Proprietorship.new(params_proprietorship)
-    if @proprietorship && @proprietorship.save!
+    if @proprietorship && @proprietorship.save
+    # if @proprietorship && @proprietorship.save!
       update_user_proprietorship_id
       redirect_to proprietorship_path(@proprietorship), notice: t('.registerd')
     else
       flash.now[:danger] = '企業登録が失敗しました'
+      # respond_to do |format|
+      #   format.html { render :new }
+      #   format.js { @proprietorship }
+      # end
       render 'new'
     end
   end

@@ -10,14 +10,17 @@ class CorporationsController < ApplicationController
   end
   def create
     @corporation = Corporation.new(params_corporation)
-    if @corporation && begin @corporation.save!
-    rescue => e
-      puts e.class
-      flash[:danger] = '企業登録が失敗しました'
-      render 'new'
-    end
+    if @corporation && @corporation.save
+    # if @corporation && begin @corporation.save!
       update_user_corporation_id
       redirect_to corporation_path(@corporation.id), notice: t('.registerd')
+    # rescue => e
+    #   puts e.class
+    #   flash[:danger] = '企業登録が失敗しました'
+    #   render 'new'
+    # end
+    #   update_user_corporation_id
+    #   redirect_to corporation_path(@corporation.id), notice: t('.registerd')
     else
       flash.now[:danger] = '企業登録が失敗しました'
       render 'new'
