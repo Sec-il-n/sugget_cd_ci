@@ -50,11 +50,15 @@
 
   <div class="">
     <% if @suggest.images.present? %>
-      <%# <% count = 1 %>
+      <p>登録中の画像</p>
       <% @suggest.images.each_with_index do |image, idx| %>
-        <p>画像　<%= "#{idx + 1}" %> : </p>
-        <%= image_tag image.image.url if image && image.image.url.present? %>
+        <!-- <p>画像　<%= "#{idx + 1}" %> : </p> -->
+        <div class="img-items text-center">
+          <%= image_tag image.image.url, class: "suggest-images img-fluid img-thumbnail rounded" if image && image.image.url.present? %>
+        </div>
       <% end %>
+    <% else %>
+      <p>画像は未登録です</p>
     <% end %>
   </div>
 </div>

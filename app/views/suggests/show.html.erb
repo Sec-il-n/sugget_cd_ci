@@ -40,7 +40,7 @@
         <% @suggest.images.each do |image| %>
           <% if image.present? && image.image.url %>
             <div class="img-items text-center">
-              <%= image_tag image.image.url, class: "suggest-images", class: "img-fluid img-thumbnail rounded" %>
+              <%= image_tag image.image.url, class: "suggest-images img-fluid img-thumbnail rounded" %>
             </div>
           <% end %>
         <% end %>
@@ -53,7 +53,7 @@
         </div>
         <% if user_signed_in? %>
           <div id="index_edit_area">
-            
+
           </div>
           <div create="comment-post" id="form-area">
             <%= render partial: 'comments/form', locals: { comment: @comment, suggest: @suggest } %>
