@@ -24,8 +24,8 @@ class ProprietorshipsController < ApplicationController
   end
   def update
     begin
-       @proprietorship.update!(params_proprietorship)
-       redirect_to proprietorship_path(@proprietorship), notice: '企業登録(個人)を編集しました'
+      @proprietorship.update!(params_proprietorship)
+      redirect_to proprietorship_path(@proprietorship), notice: '企業登録(個人)を編集しました'
     rescue => e
       puts e.class
       flash.now[:danger] = '編集に失敗しました'

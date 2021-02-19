@@ -15,9 +15,9 @@ class SuggestsController < ApplicationController
       render 'new'
     else
       if @suggest.save
-          Participant.create(suggest_id: @suggest.id, user_id: current_user.id)
-          redirect_to suggests_path,
-          notice: t('.suggest.created')
+        Participant.create(suggest_id: @suggest.id, user_id: current_user.id)
+        redirect_to suggests_path,
+        notice: t('.suggest.created')
       else
         flash.now[:warning] = t('.suggest.create_faild')
         render 'new'
