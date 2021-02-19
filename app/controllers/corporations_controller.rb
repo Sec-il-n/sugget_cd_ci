@@ -13,7 +13,6 @@ class CorporationsController < ApplicationController
     if @corporation && @corporation.save
       update_user_corporation_id
       redirect_to corporation_path(@corporation.id), notice: t('.registerd')
-    poration_path(@corporation.id), notice: t('.registerd')
     else
       flash.now[:danger] = '企業登録が失敗しました'
       render 'new'
