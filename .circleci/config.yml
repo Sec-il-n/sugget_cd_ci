@@ -30,8 +30,8 @@ jobs: # step
       - run:
         　name: install dependencies
         　command: |
-          　gem install Bundler -v 2.1.4
-          　bundle install --jobs=4 --retry=3 --path vendor/bundle
+            gem install Bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Ruby の依存関係のバンドル キャッシュを保存
       - save_cache:
         　key: v1-dependencies-{{ checksum "Gemfile.lock" }}
