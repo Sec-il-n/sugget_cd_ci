@@ -38,7 +38,7 @@ jobs: # step
           　bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Ruby の依存関係のバンドル キャッシュを保存
       - save_cache:
-        　keys: v1-dependencies-{{ checksum "Gemfile.lock" }}
+        　key: v1-dependencies-{{ checksum "Gemfile.lock" }}
         　paths:
           　- ./vendor/bundle
       - run:
