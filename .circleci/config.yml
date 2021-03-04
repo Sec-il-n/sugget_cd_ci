@@ -27,8 +27,8 @@ jobs: # step
       #bundle キャッシュを復元
       - restore_cache:
         　keys: # リストされているキーの順番でキャッシュを復元
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
 
       # bundle install で依存関係をインストール
       - run:
