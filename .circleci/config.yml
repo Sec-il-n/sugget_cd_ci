@@ -17,36 +17,36 @@ jobs: # step
           POSTGRES_DB: docker_suggests_test
           POSTGRES_PASSWORD: ""
       #working_directory: ~/workspace/dic/dic-graduate-docker/dic_issue_graduate
-      steps:
-        - checkout
-        # Bundler のバージョンを指定
-        - run:
-          name: Bundler version
-          command: bundle -v
+    steps:
+      - checkout
+      # Bundler のバージョンを指定
+      - run:
+        name: Bundler version
+        command: bundle -v
 
-        #bundle キャッシュを復元
-        - restore_cache:
-          keys: # リストされているキーの順番でキャッシュを復元
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
+      #bundle キャッシュを復元
+      - restore_cache:
+        keys: # リストされているキーの順番でキャッシュを復元
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
 
-        # bundle install で依存関係をインストール
-        - run:
-          name: install dependencies
-          command: |
-            gem install Bundler -v 2.1.4
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-        # Ruby の依存関係のバンドル キャッシュを保存
-        - save_cache:
-          keys: v1-dependencies-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-        - run:
-          name: wait untill db up
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
-        - run: bundle exec rake db:create
-        - run: bundle exec rake db:schema:load
-        
-        - run:
-          name: run tests
-          command: bundle exec rspec
+      # bundle install で依存関係をインストール
+      - run:
+        name: install dependencies
+        command: |
+          gem install Bundler -v 2.1.4
+          bundle install --jobs=4 --retry=3 --path vendor/bundle
+      # Ruby の依存関係のバンドル キャッシュを保存
+      - save_cache:
+        keys: v1-dependencies-{{ checksum "Gemfile.lock" }}
+        paths:
+          - ./vendor/bundle
+      - run:
+        name: wait untill db up
+        command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      - run:
+        name: run tests
+        command: bundle exec rspec
