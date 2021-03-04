@@ -35,7 +35,7 @@ jobs: # step
       - save_cache:
         　key: v1-dependencies-{{ checksum "Gemfile.lock" }}
         　paths:
-          　- ./vendor/bundle
+            - ./vendor/bundle
       - run:
         　name: wait untill db up
         　command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
