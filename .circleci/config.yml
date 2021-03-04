@@ -22,16 +22,15 @@ jobs: # step
       - checkout
       #bundle キャッシュを復元
       - restore_cache:
-          name: Restore bundle cache
+          # name: Restore bundle cache
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
       # bundle install で依存関係をインストール
       - run:
         　name: install dependencies
-        　command: |
-            gem install Bundler -v 2.1.4
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+        　command: gem install bundler -v 2.1.4
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Ruby の依存関係のバンドル キャッシュを保存
       - save_cache:
         　key: v1-dependencies-{{ checksum "Gemfile.lock" }}
