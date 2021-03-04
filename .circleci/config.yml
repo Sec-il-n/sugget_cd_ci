@@ -28,8 +28,8 @@ jobs: # step
             - v1-dependencies-
       # bundle install で依存関係をインストール
       - run:
-        　name: install dependencies
-        　command: gem install bundler -v 2.1.4
+          name: install dependencies
+          command: gem install bundler -v 2.1.4
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Ruby の依存関係のバンドル キャッシュを保存
       - save_cache:
