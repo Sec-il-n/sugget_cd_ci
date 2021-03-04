@@ -19,10 +19,10 @@ jobs: # step
       #working_directory: ~/workspace/dic/dic-graduate-docker/dic_issue_graduate
     steps:
       - checkout
-      # Bundler のバージョンを指定
-      - run:
-        　name: Bundler version
-        　command: bundle -v
+      # # Bundler のバージョンを指定
+      # - run:
+      #   　name: Bundler version
+      #   　command: bundle -v
 
       #bundle キャッシュを復元
       - restore_cache:
