@@ -11,7 +11,7 @@ jobs: # step
           PGHOST: 127.0.0.1
           PGUSER: pposegres
           RAILS_ENV: test
-      - image: circleci/postgres:13-alpine # データベース イメージ
+      - image: circleci/postgres:13 # データベース イメージ
         environment: # データベースの環境変数
           POSTGRES_USER: postgres
           POSTGRES_DB: docker_suggests_test
