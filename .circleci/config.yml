@@ -17,19 +17,15 @@ jobs: # step
           POSTGRES_DB: docker_suggests_test
           POSTGRES_PASSWORD: ""
       #working_directory: ~/workspace/dic/dic-graduate-docker/dic_issue_graduate
+    working_directory: ~/dic_issue_graduate
     steps:
       - checkout
-      # # Bundler のバージョンを指定
-      # - run:
-      #   　name: Bundler version
-      #   　command: bundle -v
-
       #bundle キャッシュを復元
       - restore_cache:
+        # リストされているキーの順番でキャッシュを復元
         　keys: # リストされているキーの順番でキャッシュを復元
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
-
       # bundle install で依存関係をインストール
       - run:
         　name: install dependencies
