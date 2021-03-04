@@ -9,9 +9,11 @@ default: &default
   socket: /tmp/sockets/
 development:
   <<: *default
+
   database: docker_suggests_development
 test:
   <<: *default
+  
   database: docker_suggests_test
 production:
   <<: *default
