@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Proprietorship, type: :system do
+RSpec.describe Proprietorship, type: :system, js: true do
+# RSpec.describe Proprietorship, type: :system do
   describe '企業情報登録(個人)機能' do
     context '登録ユーザーで企業未登録の場合' do
       let!(:user) { create(:user, corporation_id: nil) }

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Suggest, type: :system do
+RSpec.describe Suggest, type: :system , js: true do
+# RSpec.describe Suggest, type: :system do
   describe '新規提案/プロジェクト管理機能' do
     let!(:user) { create(:user) }
     describe '入力が正しい場合' do

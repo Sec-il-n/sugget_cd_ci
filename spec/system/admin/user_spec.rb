@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :system  do
+RSpec.describe User, type: :system, js: true do
+# RSpec.describe User, type: :system  do
   describe '管理画面のテスト' do
     context ' ログインユーザが管理者権を持つユーザーの場合'do
       let!(:user) { create(:user, admin: true) }

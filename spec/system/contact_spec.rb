@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Contact, type: :system do
+RSpec.describe Contact, type: :system, js: true do
+# RSpec.describe Contact, type: :system do
   describe 'お問い合わせ機能' do
 
     context'お問い合わせ画面に遷移した場合'do

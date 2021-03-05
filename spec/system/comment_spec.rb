@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Comment, type: :system do
+RSpec.describe Comment, type: :system, js: true do
+# RSpec.describe Comment, type: :system do
   describe 'コメント機能' do
     describe 'コメント投稿機能' do
       context '提案詳細画面を表示した場合' do

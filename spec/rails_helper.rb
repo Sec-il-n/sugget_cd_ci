@@ -8,7 +8,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 # どっち？？
 require 'supports/capybara'
-# require 'capybara/rspec'
+# require only the support files necessary.
+# Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].sort.each { |f| require f }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -25,9 +26,6 @@ require 'devise'
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
-#
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -94,3 +92,19 @@ RSpec.configure do |config|
   config.include WaitForAjax, type: :system
   config.include WaitForCss, type: :system
 end
+# 追記
+# RSpec実行時にdocker-seleniumのコンテナのブラウザを使用するように設定
+# Capybara.register_driver :remote_chrome do |app|
+#   url = "http://chrome:4444/wd/hub"
+#   caps = ::Selenium::WebDriver::Remote::Capabilities.chrome
+#     "goog:chromeOptions" => {
+#       "args" => [
+#         "no-sandbox",
+#         "headless",
+#         "disable-gpu",
+#         "window-size=1680,1050"
+#       ]
+#     }
+#   )
+#   Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
+# end

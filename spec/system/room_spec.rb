@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Room, type: :system do
+RSpec.describe Room, type: :system, js: true do
+# RSpec.describe Room, type: :system do
   # 提案投稿時投稿者を参加済にする　◯
   # Participantの重複制御　◯
   describe 'チャット機能' do

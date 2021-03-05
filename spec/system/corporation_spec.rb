@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Corporation, type: :system do
+RSpec.describe Corporation, type: :system, js: true do
+# RSpec.describe Corporation, type: :system do
   describe '企業情報登録機能' do
     context '登録ユーザーで企業未登録の場合' do
       let!(:user) { create(:user, corporation_id: nil) }

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :system do
+RSpec.describe User, type: :system, js: true do
+# RSpec.describe User, type: :system do
   describe 'ログイン/ログアウト機能' do
     let!(:user) { create(:user) }
     let(:user_params) { attributes_for(:user) }
