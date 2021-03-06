@@ -83,14 +83,11 @@ RSpec.describe Comment, type: :system, js: true do
             comment
           end
           it '編集リンクからコメントの編集ができる' do
-            binding.pry
-            first(:xpath, '/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
-
-            execute_script('window.scrollBy(0,10000)')
-            find(:xpath, '//*[@id="js-comment-1-edit-btn"]').click
-
+            find(:xpath,'/html/body/div[2]/div[3]/div[1]/div[1]/strong/a').click
+            find(:xpath,'/html/body/div[2]/div[2]/div/div/div[5]/div[1]/div[1]/div/div[1]/div/div/a').click
             find(:xpath,'//*[@id="edit_text_box"]').fill_in with: 'abc'
-            find(:xpath, '//*[@id="subumit_edit"]/input').click
+            execute_script('window.scrollBy(0,10000)')
+            find(:xpath,'//*[@id="subumit_edit"]/input').click
             expect(page).to have_content('abc')
             expect(page).to have_content('コメントを編集しました')
           end

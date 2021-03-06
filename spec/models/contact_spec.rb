@@ -6,7 +6,6 @@ RSpec.describe Contact, type: :model do
     let!(:contact) { create(:contact, user_id: user.id) }
     context'お問い合わせ内容が未入力の時' do
       it 'バリデーションに引っかかる' do
-        # build->createだとその時点でdbのバリデーションに引っかかってエラーになる
         contact = build(:contact, content: '')
         contact.valid?
         expect(contact.errors.full_messages).to include('お問い合わせ内容を入力してください')

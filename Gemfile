@@ -64,8 +64,10 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'webdrivers'
+  # gem 'webdrivers'
+  gem 'selenium-webdriver'
   gem 'database_cleaner-active_record'
   gem 'webmock'
   gem 'capybara-email'
+
 end

@@ -9,13 +9,12 @@ require 'rspec/rails'
 # どっち？？
 require 'supports/capybara'
 # require only the support files necessary.
-# Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].sort.each { |f| require f }
-
+# ⬇︎コメントアウト to work at circle ci？？
+Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].sort.each { |f| require f }
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 require 'devise'
-# ⬇︎コメントアウト to work at circle ci
-# Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].each { |f| require f }
 
 # run as spec files by default. This means that files in spec/support that end
 # in _spec.rb will both be required and run as specs, causing the specs to be
@@ -91,20 +90,7 @@ RSpec.configure do |config|
   config.include ActionDispatch::TestProcess, type: :request
   config.include WaitForAjax, type: :system
   config.include WaitForCss, type: :system
+
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
 end
-# 追記
-# RSpec実行時にdocker-seleniumのコンテナのブラウザを使用するように設定
-# Capybara.register_driver :remote_chrome do |app|
-#   url = "http://chrome:4444/wd/hub"
-#   caps = ::Selenium::WebDriver::Remote::Capabilities.chrome
-#     "goog:chromeOptions" => {
-#       "args" => [
-#         "no-sandbox",
-#         "headless",
-#         "disable-gpu",
-#         "window-size=1680,1050"
-#       ]
-#     }
-#   )
-#   Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
-# end
