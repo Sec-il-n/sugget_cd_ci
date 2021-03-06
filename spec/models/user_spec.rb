@@ -20,7 +20,8 @@ RSpec.describe User, type: :model do
       it 'バリデーションに引っかかる' do
         user = build(:user, email: '')
         user.valid?
-        expect(user.errors.full_messages).to include('Eメールが未入力です')
+        expect(user.errors.full_messages).to include('メールアドレスが未入力です')
+        # expect(user.errors.full_messages).to include('Eメールが未入力です')
       end
     end
     context'パスワードが未入力の時' do

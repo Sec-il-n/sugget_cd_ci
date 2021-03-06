@@ -12,12 +12,11 @@ jobs: # step
           PGUSER: postgres
           RAILS_ENV: test
           RACK_ENV: test
-      - image: circleci/postgres:13 # データベース イメージ
+      - image: circleci/postgres:13
         environment: # データベースの環境変数
           POSTGRES_USER: postgres
           POSTGRES_DB: docker_suggests_test
           POSTGRES_PASSWORD: password
-      #working_directory: ~/workspace/dic/dic-graduate-docker/dic_issue_graduate
     working_directory: ~/dic_issue_graduate
     steps:
       - checkout
