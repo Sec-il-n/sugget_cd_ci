@@ -9,7 +9,7 @@ jobs: # step
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
-          PGUSER: posegres
+          PGUSER: postgres
           RAILS_ENV: test
           RACK_ENV: test
       - image: circleci/postgres:13 # データベース イメージ
