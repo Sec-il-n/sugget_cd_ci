@@ -47,7 +47,7 @@ RSpec.describe 'UserAuthentications', type: :request do
       end
       it 'errorが表示される' do
         post user_registration_path, params: { user: invalid_user_params }
-        expect(response.body).to include('Eメールが未入力です')
+        expect(response.body).to include('メールアドレスが未入力です')
       end
     end
 
