@@ -13,14 +13,11 @@ RSpec.describe Suggest, type: :system , js: true do
           confirm_view
           expect(page).to have_content("#{I18n.t('.dictionary.words.suggest created')}")
         end
+        # controller spec でアップロード機能のみのテスト
         xit '画像のアップロードができる' do
           upload_image
           have_content("#{I18n.t('.dictionary.words.suggest created')}")
         end
-        # 確認機能なしで実装
-
-        # xit '確認画面が表示される' do
-        # end
       end
     end
     describe '入力が正しくない場合' do
