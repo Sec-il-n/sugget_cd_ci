@@ -2,18 +2,22 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: password
-  host: db
-  port: 5432
-  socket: /tmp/sockets/
+
 development:
   <<: *default
-
+  username: postgres
+  password: password
+  port: 5432
+  host: db
+  socket: /tmp/sockets/
   database: docker_suggests_development
 test:
   <<: *default
-  
+  username: postgres
+  password: password
+  port: 5432
+  host: db
+  socket: /tmp/sockets/
   database: docker_suggests_test
 production:
   <<: *default
