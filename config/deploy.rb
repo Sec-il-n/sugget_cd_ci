@@ -2,14 +2,14 @@
 # バージョン書き換え
 lock "~> 3.15.0"
 # デプロイするアプリケーション名
-set :application, 'suggests_and_projects_2-production'
+set :application, 'dic_issue_graduate'
 # cloneするgitのレポジトリ
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/Sec-il-n/dic_issue_graduate.git'
+set :repo_url, 'https://github.com/Sec-il-n/sugget_cd_ci.git'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
-set :branch, 'chat'
+set :branch, 'cd_ci'
 # deploy先のディレクトリ。
-set :deploy_to, '/var/www/suggests_and_projects_2-production'
+set :deploy_to, '/var/www/suggests_cd_ci-production'
 # シンボリックリンクをはるフォルダ・ファイル
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
 # set :linked_files, %w{.env config/secrets.yml}

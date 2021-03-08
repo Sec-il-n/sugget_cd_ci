@@ -1,6 +1,6 @@
 $worker  = 2
 $timeout = 30
-$app_dir = "/var/www/suggests_and_projects_2-production/current"#アプリケーション名
+$app_dir = "/var/www/suggests_cd_ci-production/current"#アプリケーション名
 $listen  = File.expand_path 'tmp/sockets/unicorn.sock', $app_dir
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 #エラーログのディレクトリ
