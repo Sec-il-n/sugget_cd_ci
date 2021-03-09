@@ -44,24 +44,24 @@ jobs: # step
       - run:
           name: run tests
           command: bundle exec rspec
-      deploy:
-        docker:
-          - image: circleci/ruby:2.6.5-node-browsers
-          environment:
-            BUNDLER_VERSION: 2.1.4
-        steps:
-          - checkout
-          - ruby/install-deps
-          - add_ssh_keys:
-              fingerprints:
-                - "92:38:33:e6:f7:08:e2:f3:8f:49:1e:1f:88:d1:2f:a1"
-          - deploy:
-              name: capistrano deploy
-              command: |
-                if [ "${CIRCLE_BRANCH}" != "cd_ci" ]; then
-                  exit 0
-                fi
-                bundle exec cap production deploy
+    deploy:
+      docker:
+        - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
+      steps:
+        - checkout
+        - ruby/install-deps
+        - add_ssh_keys:
+            fingerprints:
+              - "92:38:33:e6:f7:08:e2:f3:8f:49:1e:1f:88:d1:2f:a1"
+        - deploy:
+            name: capistrano deploy
+            command: |
+              if [ "${CIRCLE_BRANCH}" != "cd_ci" ]; then
+                exit 0
+              fi
+              bundle exec cap production deploy
       # - add_ssh_keys:
       #     fingerprints:
       #       - "92:38:33:e6:f7:08:e2:f3:8f:49:1e:1f:88:d1:2f:a1"
