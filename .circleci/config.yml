@@ -47,8 +47,8 @@ jobs: # step
     deploy:
       docker:
         - image: circleci/ruby:2.6.5-node-browsers
-        environment:
-          BUNDLER_VERSION: 2.1.4
+          environment:
+            BUNDLER_VERSION: 2.1.4
       steps:
         - checkout
         - ruby/install-deps
