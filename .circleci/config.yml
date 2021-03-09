@@ -47,10 +47,10 @@ jobs: # step
       - add_ssh_keys:
           fingerprints:
             - "61:47:7b:4d:2a:d3:47:50:5c:0c:a6:37:8c:fd:27:29"
-      # - deploy:
-      #     name: capistrano deploy
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" != "cd_ci" ]; then
-      #         exit 0
-      #       fi
-      #       bundle exec cap production deploy
+      - deploy:
+          name: capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "cd_ci" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
