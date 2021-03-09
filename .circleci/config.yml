@@ -1,7 +1,4 @@
-version: 2.1
-# version: 2
-orbs:
-  ruby: circleci/ruby@1.1.0
+version: 2
 jobs: # step
   build: # as a entry point
     parallelism: 3
