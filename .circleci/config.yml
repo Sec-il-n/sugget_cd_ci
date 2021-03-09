@@ -70,7 +70,7 @@ jobs: # step
           - deploy:
               requires:
                 - build
-              fileters:
+              filters:
                 branches:
                   only: cd_ci
       # - add_ssh_keys:
