@@ -46,7 +46,7 @@ jobs: # step
           command: bundle exec rspec
       - add_ssh_keys:
           fingerprints:
-            - "61:47:7b:4d:2a:d3:47:50:5c:0c:a6:37:8c:fd:27:29"
+            - "92:38:33:e6:f7:08:e2:f3:8f:49:1e:1f:88:d1:2f:a1"
       - deploy:
           name: capistrano deploy
           command: |
