@@ -25,7 +25,7 @@ set :rbenv_type, :system
 # 追記
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['../aws/suggest_cd_ci-key.pem']
+                  keys: ['../../../aws/suggest_cd_ci-key.pem']
 # プロセス番号を記載したファイルの場所 /config/unicorn/production.rb
 set :unicorn_pid, -> {"#{shared_path}/tmp/pids/unicorn.pid"}
 # Unicornの設定ファイルの場所
