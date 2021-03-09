@@ -4,11 +4,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: password
-  host: db
   port: 5432
   socket: /tmp/sockets/
 development:
   <<: *default
+  host: db
   database: docker_suggests_development
 test:
   <<: *default
