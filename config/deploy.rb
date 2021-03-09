@@ -18,15 +18,16 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 set :keep_releases, 5
 # Rubyのバージョン
 set :rbenv_ruby, '2.6.5'
+# :rbenv_typeは rbenv のインストール先がデプロイ先ユーザーのホームディレクトリであれば:userを、/usr/local/rbenv であれば:systemを指定
 set :rbenv_type, :system
 # 出力するログのレベル。エラーログを詳細に見たい場合は :debug に設定する。
 # 本番環境用のものであれば、 :info程度が普通。
 # ただし挙動をしっかり確認したいのであれば :debug に設定する。
 # 追記
 # どの公開鍵を利用してデプロイするか
-set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/suggest_cd_ci-key.pem']
-                  # keys: ['../../../aws/suggest_cd_ci-key.pem']
+# set :ssh_options, auth_methods: ['publickey'],
+#                   keys: ['~/.ssh/id_rsa']
+                  # keys: ['~/.ssh/suggest_cd_ci-key.pem']
 # プロセス番号を記載したファイルの場所 /config/unicorn/production.rb
 set :unicorn_pid, -> {"#{shared_path}/tmp/pids/unicorn.pid"}
 # Unicornの設定ファイルの場所
