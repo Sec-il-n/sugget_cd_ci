@@ -1,6 +1,6 @@
 Rails.application.configure do
   # ActionMailer
-  host = '35.72.121.208'
+  host = '35.72.239.105'
   Rails.application.routes.default_url_options[:host] = host
   # Settings specified here will take precedence over those in config/application.rb.
   # Code is not reloaded between requests.
@@ -45,10 +45,10 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   ActionCable.server.config.disable_request_forgery_protection = true
   # ドメイン or IP
-  config.action_cable.url = 'ws://35.72.121.208/cable'
+  config.action_cable.url = 'ws://35.72.239.105/cable'
   # ドメイン使用時には↓に当てはめて変更
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-  config.action_cable.allowed_request_origins = [ 'http://35.72.121.208' ]
+  config.action_cable.allowed_request_origins = [ 'http://35.72.239.105' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
