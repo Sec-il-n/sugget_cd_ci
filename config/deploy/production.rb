@@ -7,6 +7,8 @@ set :ssh_options, {
   forward_agent: true,
   auth_methods: %w[publickey]
 }
+# ここに設定するのは、自分のローカルマシンのSSH公開鍵
+# すなわちCircleCI上？
 # set :ssh_options, {
 #   user: 'app',
 #   keys: ['~/.ssh/cd_ci_rsa'],

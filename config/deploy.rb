@@ -25,15 +25,12 @@ set :rbenv_type, :system
 # ただし挙動をしっかり確認したいのであれば :debug に設定する。
 # 追記
 # どの公開鍵を利用してデプロイするか
-set :ssh_options, {
-  user: 'app',
-  keys: ['~/.ssh/cd_ci_rsa'],
-  forward_agent: true,
-  auth_methods: ['publickey']
-}
-# set :ssh_options, auth_methods: ['publickey'],
-#                   keys: ['~/.ssh/id_rsa']
-                  # keys: ['~/.ssh/suggest_cd_ci-key.pem']
+# set :ssh_options, {
+#   user: 'app',
+#   keys: ['~/.ssh/cd_ci_rsa'],
+#   forward_agent: true,
+#   auth_methods: ['publickey']
+# }
 # プロセス番号を記載したファイルの場所 /config/unicorn/production.rb
 set :unicorn_pid, -> {"#{shared_path}/tmp/pids/unicorn.pid"}
 # Unicornの設定ファイルの場所
