@@ -82,6 +82,11 @@ jobs: # step
             for _k in $(ls ${HOME}/.ssh/id*); do
               ssh-add ${_k} || true
             done
+            cat <<EOF >> ${HOME}/.ssh/config
+              Host github github.com
+              IdentityFile ~/.ssh/id_rsa_923833e6f708e2f38f491e1f88d12fa1
+              User sec_il_n
+            EOF
       - deploy:
           name: capistrano deploy
           command: |
