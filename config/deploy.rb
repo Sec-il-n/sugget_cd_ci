@@ -11,7 +11,7 @@ set :branch, 'cd_ci'
 # deploy先のディレクトリ。
 set :deploy_to, '/var/www/suggests_cd_ci-production'
 # シンボリックリンクをはるフォルダ・ファイル
-set :linked_files, fetch(:linked_files, []).push("config/master.key")
+# set :linked_files, fetch(:linked_files, []).push("config/master.key")
 # set :linked_files, %w{.env config/secrets.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 # 保持するバージョンの個数(※後述)
