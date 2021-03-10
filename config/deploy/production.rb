@@ -7,7 +7,8 @@ server '35.72.239.105', user: 'app', roles: %w{app db web}
 #   auth_methods: %w[publickey]
 # }
 set :ssh_options, {
+  user: 'app',
   keys: ['~/.ssh/cd_ci_rsa'],
   forward_agent: true,
-  auth_methods: %w[publickey]
+  auth_methods: ['publickey']
 }
