@@ -4,7 +4,6 @@ lock "~> 3.15.0"
 # デプロイするアプリケーション名 ログの表示に利用
 set :application, 'dic_issue_graduate'
 # cloneするgitのレポジトリ
-# （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/Sec-il-n/sugget_cd_ci.git'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'cd_ci'
@@ -20,22 +19,12 @@ set :keep_releases, 5
 set :rbenv_ruby, '2.6.5'
 # :rbenv_typeは rbenv のインストール先がデプロイ先ユーザーのホームディレクトリであれば:userを、/usr/local/rbenv であれば:systemを指定
 set :rbenv_type, :system
+set :unicorn_pid, -> {"#{shared_path}/tmp/pids/unicorn.pid"}
+# プロセス番号を記載したUnicornの設定ファイルの場所 /config/unicorn/production.rb
+set :unicorn_config_path, -> {"#{current_path}/config/unicorn/production.rb"}
 # 出力するログのレベル。エラーログを詳細に見たい場合は :debug に設定する。
 # 本番環境用のものであれば、 :info程度が普通。
 # ただし挙動をしっかり確認したいのであれば :debug に設定する。
-# 追記
-# どの公開鍵を利用してデプロイするか
-# set :ssh_options, {
-#   user: 'app',
-#   keys: ['~/.ssh/cd_ci_rsa'],
-#   forward_agent: true,
-#   auth_methods: ['publickey']
-# }
-# プロセス番号を記載したファイルの場所 /config/unicorn/production.rb
-set :unicorn_pid, -> {"#{shared_path}/tmp/pids/unicorn.pid"}
-# Unicornの設定ファイルの場所
-set :unicorn_config_path, -> {"#{current_path}/config/unicorn/production.rb"}
-
 set :log_level, :debug
 namespace :deploy do
   desc 'Restart application'
