@@ -94,3 +94,4 @@ jobs: # step
               exit 0
             fi
             bundle exec cap production deploy --trace
+# https://qiita.com/dich1/items/67cad8fa072c61a89c83
