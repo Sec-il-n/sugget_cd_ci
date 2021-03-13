@@ -1,4 +1,4 @@
-<mxfile modified="2021-03-13T17:27:17.707Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" etag="cLina0CNN96HAhlTtaJf" version="14.4.2" type="github">
+<mxfile modified="2021-03-13T17:28:49.194Z" host="app.diagrams.net" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" etag="cYfEDeAjZWF4Oy8VmUvs" version="14.4.2" type="github">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="977" dy="501" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -306,6 +306,18 @@
         </mxCell>
         <mxCell id="85ZPFwhJCiWZITmBggzm-38" value="EC2 instance contents" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ec2_instance_contents;strokeColor=#D86613;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#D86613;dashed=0;" vertex="1" parent="85ZPFwhJCiWZITmBggzm-64">
           <mxGeometry x="-10" y="2.5" width="360" height="307.5" as="geometry" />
+        </mxCell>
+        <mxCell id="85ZPFwhJCiWZITmBggzm-67" value="Docker" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="890.5" y="3230" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="85ZPFwhJCiWZITmBggzm-68" value="GitHub" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="3230" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="85ZPFwhJCiWZITmBggzm-69" value="Capistrano" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="588.5" y="3230" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="85ZPFwhJCiWZITmBggzm-70" value="CircleCL" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="3230" width="60" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
