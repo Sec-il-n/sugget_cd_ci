@@ -7,6 +7,7 @@
 - [Requirement](#requirement)<br>
 - [Diagram](#diagram)<br>
 - [Usage](#usage)<br>
+- [Demonstration](#demonstration)<br>
 - [URL](#url)<br>
 - [Process](#process)<br>
 - [Author](#author)
@@ -140,8 +141,10 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 - email:`admin_10@hoge0.jp`, password: `password`で[ログイン](http://35.72.239.105/users/sign_in)
   - [管理者画面](http://35.72.239.105/admin/users)から提案・プロジェクトの編集・削除ができる
 
-## URL
+## Demonstration
 ![demo](https://github.com/Sec-il-n/resume_auther_public/blob/main/suggest_projyect_demo.gif)<br>
+
+## URL
 [http://35.72.239.105/](http://35.72.239.105/)
 
 ## Process
