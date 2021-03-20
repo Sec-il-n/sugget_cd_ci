@@ -188,7 +188,7 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 #### 今後取り入れたい技術
 - SNSログイン <br>
 - AWS <br>
-  - route53　実装しかけたが、時間的都合で断念。現在作成中[ポートフォリオ](https://github.com/Sec-il-n/personal_development_1_help_doctor)に使用予定。 <br>
+  - route53　実装しかけたが、時間的都合で断念。現在新たに作成中のポートフォリオに使用予定。 <br>
   - RDS <br>
 - API <br>
   - 現在作成開始したポートフォリオにZoom、Google Mapを使用予定。 <br>
