@@ -6,9 +6,9 @@
 - [Features](#features)<br>
 - [Requirement](#requirement)<br>
 - [Diagram](#diagram)<br>
+- [URL](#url)<br>
 - [Usage](#usage)<br>
 - [Demonstration](#demonstration)<br>
-- [URL](#url)<br>
 - [Process](#process)<br>
 - [Author](#author)
 
@@ -109,6 +109,8 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 #### インフラ構成図
 ![インフラ構成図](https://github.com/Sec-il-n/sample_4_release/blob/main/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E6%A7%8B%E6%88%90%E5%9B%B3.png)
 
+## URL
+[http://35.72.239.105/](http://35.72.239.105/)
 
 ## Usage
 ユーザー登録後ログイン、もしくは下記登録済みユーザーでログイン後、各リンクをクリックすると画面へ移動します<br>
@@ -143,8 +145,6 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 ## Demonstration
 ![demo](https://github.com/Sec-il-n/resume_auther_public/blob/main/suggest_projyect_demo.gif)<br>
 
-## URL
-[http://35.72.239.105/](http://35.72.239.105/)
 
 ## Process
 ![作成過程](https://github.com/Sec-il-n/sample_4_release/blob/main/%E6%99%82%E7%B3%BB%E5%88%97.png)
