@@ -112,9 +112,11 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 
 ## Usage
 ユーザー登録後ログイン、もしくは下記登録済みユーザーでログイン後、各リンクをクリックすると画面へ移動します<br>
-#### 登録済み管理者ユーザーでログイン
-- email:`test@test.jp`, password: `123456`で[ログイン](http://35.72.239.105/users/sign_in)
 
+#### 管理者
+#### 登録済み管理者ユーザーでログイン
+- email:`test@test.jp`, password: `123456`で[ログイン](http://35.72.239.105/users/sign_in)<br>
+  - [管理者画面](http://35.72.239.105/admin/users)から提案・プロジェクトの編集・削除ができる
 
 #### 利用者
 #### 企業登録済みユーザーでログイン
@@ -137,10 +139,6 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
   - **参加中の提案・プロジェクト投稿者とチャットルームを開設**できる
   - チャットルーム退出後再度入室するとメッセージ一覧が表示される
   - **参加中のプロジェクトを一覧表示**できる
-
-#### 管理者
-
-  - [管理者画面](http://35.72.239.105/admin/users)から提案・プロジェクトの編集・削除ができる
 
 ## Demonstration
 ![demo](https://github.com/Sec-il-n/resume_auther_public/blob/main/suggest_projyect_demo.gif)<br>
