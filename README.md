@@ -109,7 +109,7 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 ![インフラ構成図](https://github.com/Sec-il-n/sample_4_release/blob/main/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E6%A7%8B%E6%88%90%E5%9B%B3.png)
 
 ## URL
-[http://35.72.239.105/](http://35.72.239.105/)
+[http://35.72.121.208/](http://35.72.121.208/)
 
 ## Usage
 ユーザー登録後ログイン、もしくは下記登録済みユーザーでログイン後、各リンクをクリックすると画面へ移動します<br>
