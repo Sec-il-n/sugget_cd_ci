@@ -124,7 +124,7 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 - email: `user_1_corp@hoge1.jp`,  password: `password`で[ログイン](http://35.72.239.105/users/sign_in)<br>
 
 - [ユーザー登録](http://35.72.239.105/users/sign_up)をする
-- [ログイン](http://35.72.121.208/users/sign_in)する
+- [ログイン](http://35.72.239.105/users/sign_in)する
   - 提案・プロジェクトの一覧・詳細を閲覧できる
   - 提案・プロジェクトの詳細画面でコメントを閲覧できる
   - サービスの管理者に対して[問い合わせ](http://35.72.239.105/contacts/new)が出来る
