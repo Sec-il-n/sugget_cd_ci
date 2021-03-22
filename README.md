@@ -116,15 +116,15 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 
 #### 管理者
 #### 登録済み管理者ユーザーでログイン
-- email:`test@test.jp`, password: `123456`で[ログイン](http://35.72.239.105/users/sign_in)<br>
-  - [管理者画面](http://35.72.239.105/admin/users)から提案・プロジェクトの編集・削除ができる
+- email:`test@test.jp`, password: `123456`で[ログイン](http://35.72.121.208/users/sign_in)<br>
+  - [管理者画面](http://35.72.121.208/admin/users)から提案・プロジェクトの編集・削除ができる
 
 #### 利用者
 #### 企業登録済みユーザーでログイン
-- email: `user_1_corp@hoge1.jp`,  password: `password`で[ログイン](http://35.72.239.105/users/sign_in)<br>
+- email: `user_1_corp@hoge1.jp`,  password: `password`で[ログイン](http://35.72.121.208/users/sign_in)<br>
 
 - [ユーザー登録](http://35.72.121.208/users/sign_up)をする
-- [ログイン](http://35.72.239.105/users/sign_in)する
+- [ログイン](http://35.72.121.208/users/sign_in)する
   - 提案・プロジェクトの一覧・詳細を閲覧できる
   - 提案・プロジェクトの詳細画面でコメントを閲覧できる
   - サービスの管理者に対して[問い合わせ](http://35.72.239.105/contacts/new)が出来る
