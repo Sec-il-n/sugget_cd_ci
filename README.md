@@ -184,8 +184,9 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 - フロントエンド
   - ユーザビリティとデザイン性が乏しい<br>
 
-#### 今後取り入れたい技術
+#### 今後取り入れたい技術等
 - SNSログイン <br>
+  - devise Facebook／Twitter認証機能を新たに作成中のポートフォリオで使用予定。
 - AWS <br>
   - route53　実装しかけたが、時間的都合で断念。現在新たに作成中のポートフォリオに使用予定。 <br>
   - RDS <br>
