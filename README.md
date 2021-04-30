@@ -163,7 +163,7 @@ https://github.com/Sec-il-n/sample_4_release/blob/main/%E7%94%BB%E9%9D%A2%E9%81%
 - **アソシエーション**<br>
   - 設計段階で理解不十分だった為実装開始後に修正が多発
 - **I18N**<br>
-  - どのファイルを使用するか、ymlファイル内の定義の場所<br>
+  - どのymlファイルのどの表記が、どのviewどのの部分に反映されるか、瞬時に理解すること<br>
 - **RSpec**<br>
   - Systemの要素取得<br>
   - 画像アップロードのテスト（mockの使用）<br>
